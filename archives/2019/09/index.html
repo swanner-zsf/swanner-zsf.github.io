@@ -1,10 +1,20 @@
+extends views/main.pug
 
-extends includes/layout.pug
+block head
+  title
+    = config.title
 
-block content
-  include ./includes/mixins/article-sort.pug
-  #archive
-    .article-sort-title= 'Articles' + ' - ' + site.posts.length
-    +articleSort(page.posts)
-  include includes/partial/page-nav.pug
-
+block main
+  include mixins/post.pug
+  -var time
+  -site.posts.sort('date', 'desc').each(function(post) {
+    -var year = post.date.year()
+    -if (time != year) {
+      -if (time) {
+        h2.archive-title
+          = year
+      -}
+      -time = year
+    -}
+    +post(post, 'archive')
+  -})

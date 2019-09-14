@@ -1,23 +1,26 @@
-extends includes/layout.pug
+extends views/main.pug
 
-block content
-  article#post.article-entry
-    != page.content
-  // lincense
-  if(theme.copyright.enable === true && page.copyright !== false)
-    .license-wrapper
-      p 
-        span Author:  
-        a(href=config.url)= config.author
-      p 
-        span Link:  
-        a(href=page.permalink)= page.permalink
-      p 
-        span Copyright:  
-        span!= theme.copyright.license
-  include includes/partial/post-nav.pug
-  #comment
-    include includes/comment/livere.pug
-    include includes/comment/disqus.pug
-    include includes/comment/changyan.pug
-    include includes/comment/gitment.pug
+block head
+  title
+    = page.title + ' - ' + config.title
+
+block main
+  if page.type === 'tags'
+    include mixins/tags.pug
+    +tags('TAGS', site.tags.length)
+  else
+    include mixins/post.pug
+    +post(page, 'post')
+
+  //-
+  include plugins/reward.pug
+
+  //- comment
+  if theme.comment_plugin == 'valine'
+    include plugins/valine.pug
+  else
+    include plugins/livere.pug
+
+  //- mathjax
+  if page.mathjax
+    include plugins/mathjax.pug
