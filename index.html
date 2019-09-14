@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 16 words)
+                    a minute read (About 132 words)
                 </span>
                 
                 
@@ -155,7 +155,15 @@
         </h1>
         <div class="content">
             <h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>在行后空两格回车，自动换行。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>表格内文本位置默认居左，<br>居右写法 —:<br>居中写法 :—:  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">大标题1|大标题2|大标题3 </span><br><span class="line"></span><br><span class="line">---|---|---  </span><br><span class="line"></span><br><span class="line">内容1|内容2|内容3  </span><br><span class="line"></span><br><span class="line">内容1|内容2|内容3</span><br></pre></td></tr></table></figure>
 
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表形式需与上文空行；<br>符号 - + * 和内容之间需加空格。 </p>
+<p>无序列表：   </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br></pre></td></tr></table></figure>
+
+<p>有序列表：<br>任意数字加点、加空格、加内容</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 列表内容</span><br><span class="line">2. 列表内容</span><br><span class="line">3. 列表内容</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -182,7 +190,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 290 words)
+                    a minute read (About 221 words)
                 </span>
                 
                 
@@ -191,29 +199,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/14/face++/">微信小程序身份证识别</a>
+                <a class="has-link-black-ter" href="/2019/09/14/face++/">前端调用 face++ API实现微信小程序身份证识别</a>
             
         </h1>
         <div class="content">
-            <p>Face++ 身份证识别描述:</p>
-<blockquote>
-<p>检测和识别中华人民共和国第二代身份证的关键字段内容，并支持返回身份证正反面信息、身份证照片分类判断结果。</p>
-</blockquote>
-<h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><h2 id="媒体组件-camera"><a href="#媒体组件-camera" class="headerlink" title="媒体组件-camera"></a>媒体组件-camera</h2><p>拍摄身份证得到照片，<br>将照片路径保存至data变量:src下：</p>
+            <h2 id="小程序拍照并本地保存"><a href="#小程序拍照并本地保存" class="headerlink" title="小程序拍照并本地保存"></a>小程序拍照并本地保存</h2><p>拍摄身份证得到照片，将照片路径保存至data中：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- camera.wxml --&gt;</span><br><span class="line">&lt;camera device-position=&quot;back&quot; flash=&quot;off&quot; binderror=&quot;error&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/camera&gt;</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;takePhoto&quot;&gt;拍照&lt;/button&gt;</span><br><span class="line">&lt;view&gt;预览&lt;/view&gt;</span><br><span class="line">&lt;image mode=&quot;widthFix&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: &apos;high&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="照片转base64编码格式"><a href="#照片转base64编码格式" class="headerlink" title="照片转base64编码格式"></a>照片转base64编码格式</h2><p>通过微信小程序文件管理器wx.getFileSystemManager获得照片路径，通过encoding将它转为base64编码格式。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">      wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">        filePath: this.data.src,</span><br><span class="line">        encoding: &apos;base64&apos;,</span><br><span class="line">        success: res =&gt; &#123;</span><br><span class="line">          let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: &apos;base64&apos;,</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><p>通过wx.request向face++请求回数据:<br>请求参数(必选）:  </p>
+<h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><h3 id="通过wx-request向face-请求回数据"><a href="#通过wx-request向face-请求回数据" class="headerlink" title="通过wx.request向face++请求回数据"></a>通过wx.request向face++请求回数据</h3><p>请求参数(必选）:   </p>
 <ul>
-<li>api_key: “xxx”  </li>
-<li>api_secret: ‘’    </li>
-<li>image_url / image_file / imgage_base64<br>数据返回成功后，将数据保存在data变量:identity中。</li>
+<li>api_key: “xxx”    </li>
+<li>api_secret: “xxx” </li>
+<li>image_url / image_file / image_base64  </li>
 </ul>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">             url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">             data: &#123;</span><br><span class="line">               api_key: &apos;&apos;,</span><br><span class="line">               api_secret: &apos;&apos;,</span><br><span class="line">               image_base64: _img_base64</span><br><span class="line">             &#125;,</span><br><span class="line">             method: &quot;POST&quot;,</span><br><span class="line">             header: &#123;</span><br><span class="line">               &apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">             &#125;,</span><br><span class="line">             success: function(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 identity : res.data.cards[0]</span><br><span class="line">               &#125;);</span><br><span class="line">               console.log(that.data.identity);</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: &apos;&apos;,</span><br><span class="line">		api_secret: &apos;&apos;,</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: &quot;POST&quot;,</span><br><span class="line">	header: &#123;</span><br><span class="line">		&apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -287,10 +291,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -360,6 +364,15 @@
 </div>
     
         
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/小程序-身份证识别-face/" style="font-size: 10px;">小程序 身份证识别 face++</a>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -394,14 +407,14 @@
             
             <a href="/2019/09/14/face++/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序身份证识别">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="前端调用 face++ API实现微信小程序身份证识别">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
+                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端调用 face++ API实现微信小程序身份证识别</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -444,6 +457,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/小程序-身份证识别-face/">
+                        <span class="tag">小程序 身份证识别 face++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -491,14 +511,14 @@
             
             <a href="/2019/09/14/face++/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序身份证识别">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="前端调用 face++ API实现微信小程序身份证识别">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
+                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端调用 face++ API实现微信小程序身份证识别</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -541,6 +561,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/小程序-身份证识别-face/">
+                        <span class="tag">小程序 身份证识别 face++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>

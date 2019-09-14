@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Archives: 2019 - Hexo</title>
+<title>Tag: 小程序 身份证识别 face++ - Hexo</title>
 
 
 
@@ -128,48 +128,71 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-14T09:58:11.000Z">2019-09-14</time>
-                        <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown 基本语法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
-                        <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端调用 face++ API实现微信小程序身份证识别</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">小程序 身份证识别 face++</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 221 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/14/face++/">前端调用 face++ API实现微信小程序身份证识别</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="小程序拍照并本地保存"><a href="#小程序拍照并本地保存" class="headerlink" title="小程序拍照并本地保存"></a>小程序拍照并本地保存</h2><p>拍摄身份证得到照片，将照片路径保存至data中：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- camera.wxml --&gt;</span><br><span class="line">&lt;camera device-position=&quot;back&quot; flash=&quot;off&quot; binderror=&quot;error&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/camera&gt;</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;takePhoto&quot;&gt;拍照&lt;/button&gt;</span><br><span class="line">&lt;view&gt;预览&lt;/view&gt;</span><br><span class="line">&lt;image mode=&quot;widthFix&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: &apos;high&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="照片转base64编码格式"><a href="#照片转base64编码格式" class="headerlink" title="照片转base64编码格式"></a>照片转base64编码格式</h2><p>通过微信小程序文件管理器wx.getFileSystemManager获得照片路径，通过encoding将它转为base64编码格式。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: &apos;base64&apos;,</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><h3 id="通过wx-request向face-请求回数据"><a href="#通过wx-request向face-请求回数据" class="headerlink" title="通过wx.request向face++请求回数据"></a>通过wx.request向face++请求回数据</h3><p>请求参数(必选）:   </p>
+<ul>
+<li>api_key: “xxx”    </li>
+<li>api_secret: “xxx” </li>
+<li>image_url / image_file / image_base64  </li>
+</ul>
+<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: &apos;&apos;,</span><br><span class="line">		api_secret: &apos;&apos;,</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: &quot;POST&quot;,</span><br><span class="line">	header: &#123;</span><br><span class="line">		&apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>
