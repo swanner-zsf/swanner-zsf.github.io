@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 21 words)
+                    a few seconds read (About 16 words)
                 </span>
                 
                 
@@ -150,11 +150,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/14/markdown-notes/">markdown_notes</a>
+                <a class="has-link-black-ter" href="/2019/09/14/markdown-notes/">markdown 基本语法</a>
             
         </h1>
         <div class="content">
-            <h1 id="markdown-基础语法"><a href="#markdown-基础语法" class="headerlink" title="markdown 基础语法"></a>markdown 基础语法</h1><h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>在行后空两格回车，自动换行。</p>
+            <h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>在行后空两格回车，自动换行。</p>
 
         </div>
         
@@ -191,11 +191,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/14/test-post/">微信小程序身份证识别</a>
+                <a class="has-link-black-ter" href="/2019/09/14/face++/">微信小程序身份证识别</a>
             
         </h1>
         <div class="content">
-            <h1 id="Face-身份证识别描述"><a href="#Face-身份证识别描述" class="headerlink" title="Face++ 身份证识别描述"></a>Face++ 身份证识别描述</h1><blockquote>
+            <p>Face++ 身份证识别描述:</p>
+<blockquote>
 <p>检测和识别中华人民共和国第二代身份证的关键字段内容，并支持返回身份证正反面信息、身份证照片分类判断结果。</p>
 </blockquote>
 <h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><h2 id="媒体组件-camera"><a href="#媒体组件-camera" class="headerlink" title="媒体组件-camera"></a>媒体组件-camera</h2><p>拍摄身份证得到照片，<br>将照片路径保存至data变量:src下：</p>
@@ -215,86 +216,6 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">             url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">             data: &#123;</span><br><span class="line">               api_key: &apos;&apos;,</span><br><span class="line">               api_secret: &apos;&apos;,</span><br><span class="line">               image_base64: _img_base64</span><br><span class="line">             &#125;,</span><br><span class="line">             method: &quot;POST&quot;,</span><br><span class="line">             header: &#123;</span><br><span class="line">               &apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">             &#125;,</span><br><span class="line">             success: function(res) &#123;</span><br><span class="line">               that.setData(&#123;</span><br><span class="line">                 identity : res.data.cards[0]</span><br><span class="line">               &#125;);</span><br><span class="line">               console.log(that.data.identity);</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure>
 
 
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 0 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/14/demo/">demo</a>
-            
-        </h1>
-        <div class="content">
-            
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-13T15:32:06.000Z">2019-09-13</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 0 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/13/record001/">record001</a>
-            
-        </h1>
-        <div class="content">
-            
         </div>
         
         
@@ -349,7 +270,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        2
                     </p>
                 </div>
             </div>
@@ -493,14 +414,14 @@
             
             <a href="/2019/09/14/markdown-notes/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown_notes">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown 基本语法">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:58:11.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown_notes</a>
+                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown 基本语法</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -510,7 +431,7 @@
         
         <article class="media">
             
-            <a href="/2019/09/14/test-post/" class="media-left">
+            <a href="/2019/09/14/face++/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序身份证识别">
                 </p>
@@ -519,45 +440,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/test-post/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/14/demo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="demo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/demo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">demo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/13/record001/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record001">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-13T15:32:06.000Z">2019-09-13</time></div>
-                    <a href="/2019/09/13/record001/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record001</a>
+                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -583,7 +466,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -628,14 +511,14 @@
             
             <a href="/2019/09/14/markdown-notes/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown_notes">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown 基本语法">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:58:11.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown_notes</a>
+                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown 基本语法</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -645,7 +528,7 @@
         
         <article class="media">
             
-            <a href="/2019/09/14/test-post/" class="media-left">
+            <a href="/2019/09/14/face++/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序身份证识别">
                 </p>
@@ -654,45 +537,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/test-post/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/14/demo/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="demo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/demo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">demo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/13/record001/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record001">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-13T15:32:06.000Z">2019-09-13</time></div>
-                    <a href="/2019/09/13/record001/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record001</a>
+                    <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序身份证识别</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -718,7 +563,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
