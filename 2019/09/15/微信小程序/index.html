@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>前端调用 face++ API实现微信小程序身份证识别 - Hexo</title>
+<title>微信小程序前端开发 - Hexo</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="前端调用 face++ API实现微信小程序身份证识别" height="28">
+                <img src="/images/logo.svg" alt="微信小程序前端开发" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2019-09-15T07:12:09.000Z">2019-09-15</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 221 words)
+                    a few seconds read (About 57 words)
                 </span>
                 
                 
@@ -149,36 +149,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                前端调用 face++ API实现微信小程序身份证识别
+                微信小程序前端开发
             
         </h1>
         <div class="content">
-            <h2 id="小程序拍照并本地保存"><a href="#小程序拍照并本地保存" class="headerlink" title="小程序拍照并本地保存"></a>小程序拍照并本地保存</h2><p>拍摄身份证得到照片，将照片路径保存至data中：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- camera.wxml --&gt;</span><br><span class="line">&lt;camera device-position=&quot;back&quot; flash=&quot;off&quot; binderror=&quot;error&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/camera&gt;</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;takePhoto&quot;&gt;拍照&lt;/button&gt;</span><br><span class="line">&lt;view&gt;预览&lt;/view&gt;</span><br><span class="line">&lt;image mode=&quot;widthFix&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: &apos;high&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="照片转base64编码格式"><a href="#照片转base64编码格式" class="headerlink" title="照片转base64编码格式"></a>照片转base64编码格式</h2><p>通过微信小程序文件管理器wx.getFileSystemManager获得照片路径，通过encoding将它转为base64编码格式。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: &apos;base64&apos;,</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><h3 id="通过wx-request向face-请求回数据"><a href="#通过wx-request向face-请求回数据" class="headerlink" title="通过wx.request向face++请求回数据"></a>通过wx.request向face++请求回数据</h3><p>请求参数(必选）:   </p>
-<ul>
-<li>api_key: “xxx”    </li>
-<li>api_secret: “xxx” </li>
-<li>image_url / image_file / image_base64  </li>
+            <h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><h3 id="冒泡事件"><a href="#冒泡事件" class="headerlink" title="冒泡事件"></a>冒泡事件</h3><ul>
+<li>点击事件：tap</li>
+<li>长按事件：longtap</li>
+<li>触摸事件：touchstart / touchend / touchmove / touchcancel  </li>
 </ul>
-<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: &apos;&apos;,</span><br><span class="line">		api_secret: &apos;&apos;,</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: &quot;POST&quot;,</span><br><span class="line">	header: &#123;</span><br><span class="line">		&apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="bind绑定与catch绑定区别"><a href="#bind绑定与catch绑定区别" class="headerlink" title="bind绑定与catch绑定区别"></a>bind绑定与catch绑定区别</h3><ul>
+<li>bind不阻止事件向上冒泡  </li>
+<li>catch阻止事件向上冒泡</li>
+</ul>
 
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/小程序-身份证识别-face/">小程序 身份证识别 face++</a>
-                </div>
-            </div>
         </div>
         
         
@@ -203,12 +187,19 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/14/markdown-notes/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/16/微信小程序form提交/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">markdown 基本语法</span>
+                <span class="level-item">微信小程序form提交.md.</span>
             </a>
         </div>
         
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/14/markdown-notes/">
+                <span class="level-item">markdown 基本语法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
@@ -680,7 +671,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="前端调用 face++ API实现微信小程序身份证识别" height="28">
+                    <img src="/images/logo.svg" alt="微信小程序前端开发" height="28">
                 
                 </a>
                 <p class="is-size-7">

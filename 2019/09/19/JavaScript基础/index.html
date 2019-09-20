@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>前端调用 face++ API实现微信小程序身份证识别 - Hexo</title>
+<title>JavaScript基础 - Hexo</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="前端调用 face++ API实现微信小程序身份证识别" height="28">
+                <img src="/images/logo.svg" alt="JavaScript基础" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 221 words)
+                    8 minutes read (About 1154 words)
                 </span>
                 
                 
@@ -149,36 +149,178 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                前端调用 face++ API实现微信小程序身份证识别
+                JavaScript基础
             
         </h1>
         <div class="content">
-            <h2 id="小程序拍照并本地保存"><a href="#小程序拍照并本地保存" class="headerlink" title="小程序拍照并本地保存"></a>小程序拍照并本地保存</h2><p>拍摄身份证得到照片，将照片路径保存至data中：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- camera.wxml --&gt;</span><br><span class="line">&lt;camera device-position=&quot;back&quot; flash=&quot;off&quot; binderror=&quot;error&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/camera&gt;</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;takePhoto&quot;&gt;拍照&lt;/button&gt;</span><br><span class="line">&lt;view&gt;预览&lt;/view&gt;</span><br><span class="line">&lt;image mode=&quot;widthFix&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: &apos;high&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="照片转base64编码格式"><a href="#照片转base64编码格式" class="headerlink" title="照片转base64编码格式"></a>照片转base64编码格式</h2><p>通过微信小程序文件管理器wx.getFileSystemManager获得照片路径，通过encoding将它转为base64编码格式。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: &apos;base64&apos;,</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><h3 id="通过wx-request向face-请求回数据"><a href="#通过wx-request向face-请求回数据" class="headerlink" title="通过wx.request向face++请求回数据"></a>通过wx.request向face++请求回数据</h3><p>请求参数(必选）:   </p>
-<ul>
-<li>api_key: “xxx”    </li>
-<li>api_secret: “xxx” </li>
-<li>image_url / image_file / image_base64  </li>
+            <h1 id="1-Array"><a href="#1-Array" class="headerlink" title="1. Array"></a>1. Array</h1><h2 id="1-1-熟悉"><a href="#1-1-熟悉" class="headerlink" title="1.1 熟悉"></a>1.1 熟悉</h2><ul>
+<li>toString()</li>
+<li>push() 数组末尾添加元素，<strong>并返回添加元素后的数组长度。</strong></li>
+<li>pop() 删除数组的最后一个元素，<strong>并返回该删除元素。</strong></li>
+<li>reverse() 用于颠倒排列数组元素，返回改变后的数组。</li>
 </ul>
-<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: &apos;&apos;,</span><br><span class="line">		api_secret: &apos;&apos;,</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: &quot;POST&quot;,</span><br><span class="line">	header: &#123;</span><br><span class="line">		&apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-不熟悉"><a href="#1-2-不熟悉" class="headerlink" title="1.2 不熟悉"></a>1.2 不熟悉</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Array.isArray()</td>
+<td>判断是否为数组,返回布尔值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valueOf()</td>
+<td>数组的valueOf()方法返回数组本身</td>
+</tr>
+<tr>
+<td>3</td>
+<td>shift()</td>
+<td>用于删除数组的第一个元素，并返回该元素</td>
+</tr>
+<tr>
+<td>4</td>
+<td>unshift()</td>
+<td>在数组的第一个位置添加元素，并返回添加新元素后的数组长度</td>
+</tr>
+<tr>
+<td>5</td>
+<td>join()</td>
+<td>以指定参数作为分隔符，将所有数组元素连接成为一个字符串返回</td>
+</tr>
+<tr>
+<td>6</td>
+<td>concat()</td>
+<td>用于多个数组的合并</td>
+</tr>
+<tr>
+<td>7</td>
+<td>slice()</td>
+<td>用于提取目标数组的一部分，返回一个新数组。第一个参数为起始位置，第二个参数为终止位置，如果省略第二个参数，则一直返回到数组最后一个元素 <strong>（重要应用：将类似数组的对象转为真正的数组</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>splice(start, count, addElement1, …)</td>
+<td>第一个参数是删除的起始位置，第二个参数是被删除的个数，后面的参数表示要被插入数组的新元素。<strong>（如果只是单纯地插入元素，第二个参数可以设为0；如果只提供第一个参数，等同于将原数组在指定位置拆分成两个数组）</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>sort()</td>
+<td>数值先被转成字符串再按字典排序;  <strong>自定义排序：传入一个函数作为参数</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>map()</td>
+<td>将数组的所有成员依次传入参数函数</td>
+</tr>
+<tr>
+<td>11</td>
+<td>forEach()</td>
+<td>forEach()无法中断执行，总是会将所有成员遍历完。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>filter()</td>
+<td>过滤数组成员，返回新数组，filter方法的参数函数可以接受三个参数：当前成员，当前位置和整个数组。filter方法还可以接受第二个参数，用来绑定参数函数内部的this变量。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>some(), every()</td>
+<td>接受一个函数作为参数，该函数接受三个参数：当前成员、当前位置和整个数组，然后返回一个布尔值。</td>
+</tr>
+<tr>
+<td>14</td>
+<td>reduce(), reduceRight()</td>
+<td>依次处理数组的每个成员，它的参数函数接受以下4个参数：1.累积变量，默认为数组的第一个成员 2.当前变量，默认为数组的第二个成员 3.当前位置（从0开始）4.原数组</td>
+</tr>
+<tr>
+<td>15</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>返回给定元素在数组中第一次和最后一次出现的位置， 如果没有出现则返回-1。</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-Array要点"><a href="#1-3-Array要点" class="headerlink" title="1.3 Array要点"></a>1.3 Array要点</h2><p>构造函数写法 new Array() 缺陷：<br>不同的参数会导致行为不一致，因此不建议使用它生成新数组，直接使用数组字面量更好：  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2];</span><br></pre></td></tr></table></figure>
 
+<p>判断对象类型：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof</span><br></pre></td></tr></table></figure>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/小程序-身份证识别-face/">小程序 身份证识别 face++</a>
-                </div>
-            </div>
+<h1 id="2-String"><a href="#2-String" class="headerlink" title="2. String"></a>2. String</h1><h2 id="2-1-String实例属性"><a href="#2-1-String实例属性" class="headerlink" title="2.1 String实例属性"></a>2.1 String实例属性</h2><p>String.prototype.length</p>
+<h2 id="2-2-String实例方法"><a href="#2-2-String实例方法" class="headerlink" title="2.2 String实例方法"></a>2.2 String实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>charAt()</td>
+<td>返回指定位置的字符，可以用数组下标代替</td>
+</tr>
+<tr>
+<td>2</td>
+<td>concat()</td>
+<td>连接两个字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slice()</td>
+<td>从原数组取出字符串并返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>substring()</td>
+<td>与slice()方法相似，不同之处：substring()会将负数的参数自动变成0；当第二个参数小于第一个参数，会自动互换位置。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>substr()</td>
+<td>与slice(),substring()相似，不同之处：如果第一个参数是负数，表示倒数计算的字符位置。如果第二个参数是负数，将被自动转为0，因此会返回空字符串。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>可以接受第二个参数，表示从该位置向后（向前）匹配。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>trim()</td>
+<td>去除字符串两端的空格，返回一个新字符串，不改变原字符串</td>
+</tr>
+<tr>
+<td>8</td>
+<td>toLowerCase()/  toUpperCase()</td>
+<td>全部转为小写/全部转为大写</td>
+</tr>
+<tr>
+<td>9</td>
+<td>match()</td>
+<td>用于确定原字符串是否匹配某个子字符串，返回匹配的第一个字符串，没找到返回null;返回的数组还有index属性和input属性，分别表示匹配字符串开始的位置和原始字符串。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>search(), replace()</td>
+<td>基本等同于match(),返回值为匹配的第一个位置，没找到返回-1；replace() 一般情况下只替换第一个匹配。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>split()</td>
+<td>分割字符串，第二个参数限定返回数组的最大成员数。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>localeCompare()</td>
+<td>比较两个字符串：&lt;0,0,&gt;0</td>
+</tr>
+</tbody></table>
+<h1 id="3-Math"><a href="#3-Math" class="headerlink" title="3. Math"></a>3. Math</h1><h2 id="3-1-Math静态属性"><a href="#3-1-Math静态属性" class="headerlink" title="3.1 Math静态属性"></a>3.1 Math静态属性</h2><p>Math.E: </p>
+
         </div>
         
         
@@ -202,13 +344,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/14/markdown-notes/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">markdown 基本语法</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/16/微信小程序form提交/">
+                <span class="level-item">微信小程序form提交.md.</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -680,7 +822,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="前端调用 face++ API实现微信小程序身份证识别" height="28">
+                    <img src="/images/logo.svg" alt="JavaScript基础" height="28">
                 
                 </a>
                 <p class="is-size-7">
