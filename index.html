@@ -135,13 +135,55 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 94 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/23/node-js入门/">node.js入门</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="node-js入门"><a href="#node-js入门" class="headerlink" title="node.js入门"></a>node.js入门</h1><h2 id="1-node-js搭建http服务"><a href="#1-node-js搭建http服务" class="headerlink" title="1.node.js搭建http服务"></a>1.node.js搭建http服务</h2><h3 id="1-1-hello-word-demo"><a href="#1-1-hello-word-demo" class="headerlink" title="1.1 hello word demo"></a>1.1 hello word demo</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&quot;http&quot;);</span><br><span class="line"></span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line">    console,log(req.url);</span><br><span class="line">    res.write(&quot;&lt;html&gt;&lt;body&gt;hello world&lt;/body&gt;&lt;/html&gt;&quot;)</span><br><span class="line">&#125;).listen(3000, console.log(&quot;server running...&quot;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-GET-amp-amp-POST"><a href="#1-2-GET-amp-amp-POST" class="headerlink" title="1.2 GET &amp;&amp; POST"></a>1.2 GET &amp;&amp; POST</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&quot;http&quot;);</span><br><span class="line">var url = require(&quot;url&quot;);</span><br><span class="line"></span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line">    console.log(req.method);</span><br><span class="line">    if(req.method === &quot;GET&quot;) &#123;</span><br><span class="line">        var params = url.parse(req.url, true, true)</span><br><span class="line">        res.end(JSON.stringify(params));</span><br><span class="line">    &#125;else if(req.method === &quot;POST&quot;) &#123;</span><br><span class="line">        var data_str = &quot;&quot;;</span><br><span class="line">        req.on(&quot;data&quot;, (chunk) =&gt; &#123;</span><br><span class="line">            data_str += chunk</span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data_str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).listen(3000, () =&gt; &#123;</span><br><span class="line">    console.log(&quot;srever running...&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-21T15:19:16.000Z">2019-09-21</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 0 words)
+                    a few seconds read (About 20 words)
                 </span>
                 
                 
@@ -154,7 +196,21 @@
             
         </h1>
         <div class="content">
-            
+            <table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>问题</th>
+<th>相关链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>watch?computed</td>
+<td></td>
+<td><a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="noopener">link1</a></td>
+</tr>
+</tbody></table>
+
         </div>
         
         
@@ -477,7 +533,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 154 words)
+                    a minute read (About 164 words)
                 </span>
                 
                 
@@ -486,7 +542,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/09/14/markdown-notes/">markdown 基本语法</a>
+                <a class="has-link-black-ter" href="/2019/09/14/markdown-notes/">Markdown 基本语法</a>
             
         </h1>
         <div class="content">
@@ -502,6 +558,7 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 列表内容</span><br><span class="line">2. 列表内容</span><br><span class="line">3. 列表内容</span><br></pre></td></tr></table></figure>
 
 <h2 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h2><p>在markdown中使用下划线 “_” ,需要在前加反斜杠 “ \ “ 表示。</p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>[链接名](链接地址)</p>
 
         </div>
         
@@ -613,7 +670,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
@@ -725,6 +782,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/node-js入门/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="node.js入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/node-js入门/" class="title has-link-black-ter is-size-6 has-text-weight-normal">node.js入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/Vue-js入门/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js入门">
@@ -799,25 +875,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/14/markdown-notes/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown 基本语法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:58:11.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown 基本语法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -836,7 +893,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -886,6 +943,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/node-js入门/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="node.js入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/node-js入门/" class="title has-link-black-ter is-size-6 has-text-weight-normal">node.js入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/Vue-js入门/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js入门">
@@ -960,25 +1036,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/14/markdown-notes/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="markdown 基本语法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T09:58:11.000Z">2019-09-14</time></div>
-                    <a href="/2019/09/14/markdown-notes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">markdown 基本语法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -997,7 +1054,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
