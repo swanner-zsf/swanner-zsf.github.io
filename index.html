@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 212 words)
+                    2 minutes read (About 312 words)
                 </span>
                 
                 
@@ -192,6 +192,95 @@
 <td>默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ },如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }</td>
 </tr>
 </tbody></table>
+<h2 id="2-Express搭建http服务"><a href="#2-Express搭建http服务" class="headerlink" title="2. Express搭建http服务"></a>2. Express搭建http服务</h2><h3 id="2-1-Express安装"><a href="#2-1-Express安装" class="headerlink" title="2.1 Express安装"></a>2.1 Express安装</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install express --save</span><br><span class="line">$ cnpm install</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Express框架实例"><a href="#2-2-Express框架实例" class="headerlink" title="2.2 Express框架实例"></a>2.2 Express框架实例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">"express"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> app = express();</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded());</span><br><span class="line"></span><br><span class="line">app.get(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="hljs-string">"hello world"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RetObj</span>(<span class="hljs-params">statusCode, msg</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>;</span><br><span class="line">    ret.statusCode = statusCode;</span><br><span class="line">    ret.msg = msg,</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.post(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="hljs-comment">//检查key值是否存在</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(!(<span class="hljs-string">""</span> <span class="hljs-keyword">in</span> req.body)) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">4000</span>, <span class="hljs-string">"fail"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">2000</span>, <span class="hljs-string">"success"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="hljs-number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"express server running on 3000..."</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-22T16:00:00.000Z">2019-09-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 307 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/23/node-js入门_/"></a>
+            
+        </h1>
+        <div class="content">
+            <hr>
+<p>title: node.js入门<br>date: 2019-09-23T00:12:28.000Z</p>
+<h2 id="tags-null"><a href="#tags-null" class="headerlink" title="tags: null"></a>tags: null</h2><h1 id="node-js入门"><a href="#node-js入门" class="headerlink" title="node.js入门"></a>node.js入门</h1><h2 id="1-node-js搭建http服务"><a href="#1-node-js搭建http服务" class="headerlink" title="1.node.js搭建http服务"></a>1.node.js搭建http服务</h2><h3 id="1-1-hello-word-demo"><a href="#1-1-hello-word-demo" class="headerlink" title="1.1 hello word demo"></a>1.1 hello word demo</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);</span><br><span class="line">  </span><br><span class="line">http.createServer(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>,log(req.url);</span><br><span class="line">    res.write(<span class="hljs-string">"&lt;html&gt;&lt;body&gt;hello world&lt;/body&gt;&lt;/html&gt;"</span>)</span><br><span class="line">&#125;).listen(<span class="hljs-number">3000</span>, <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"server running..."</span>))</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-2-GET-amp-amp-POST"><a href="#1-2-GET-amp-amp-POST" class="headerlink" title="1.2 GET &amp;&amp; POST"></a>1.2 GET &amp;&amp; POST</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">"url"</span>);</span><br><span class="line">  </span><br><span class="line">http.createServer(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(req.method);</span><br><span class="line">    <span class="hljs-keyword">if</span>(req.method === <span class="hljs-string">"GET"</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> params = url.parse(req.url, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>)</span><br><span class="line">        res.end(<span class="hljs-built_in">JSON</span>.stringify(params));</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(req.method === <span class="hljs-string">"POST"</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> data_str = <span class="hljs-string">""</span>;</span><br><span class="line">        req.on(<span class="hljs-string">"data"</span>, (chunk) =&gt; &#123;</span><br><span class="line">            data_str += chunk</span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data_str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).listen(<span class="hljs-number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"srever running..."</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>node.js中url.parse() 方法使用说明:</strong></p>
+<p>将一个url字符串转换成对象并返回</p>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url.parse(urlStr,  [parseQueryString], [slashesDenoteHost])</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>接收参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>urlStr</td>
+<td>url字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>parseQueryString</td>
+<td>为true时将使用查询模块分析查询字符串，默认为false</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slashesDenoteHost</td>
+<td>默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ },如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }</td>
+</tr>
+</tbody></table>
+<h2 id="2-Express搭建http服务"><a href="#2-Express搭建http服务" class="headerlink" title="2. Express搭建http服务"></a>2. Express搭建http服务</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">"express"</span>);</span><br><span class="line">  </span><br><span class="line"><span class="hljs-keyword">var</span> app = express();</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded());</span><br><span class="line">  </span><br><span class="line">app.get(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="hljs-string">"&lt;html&gt;hello world&lt;/html&gt;"</span>)</span><br><span class="line">&#125;)</span><br><span class="line">  </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RetObj</span>(<span class="hljs-params">statusCode, msg</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>;</span><br><span class="line">    ret.statusCode = statusCode;</span><br><span class="line">    ret.msg = msg,</span><br><span class="line">  </span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">app.post(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="hljs-comment">//检查key值是否存在</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(!(<span class="hljs-string">""</span> <span class="hljs-keyword">in</span> req.body)) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">4000</span>, <span class="hljs-string">"fail"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">2000</span>, <span class="hljs-string">"success"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">  </span><br><span class="line">app.listen(<span class="hljs-number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"express server running on 3000..."</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -219,7 +308,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 20 words)
+                    a few seconds read (About 91 words)
                 </span>
                 
                 
@@ -232,21 +321,10 @@
             
         </h1>
         <div class="content">
-            <table>
-<thead>
-<tr>
-<th>知识点</th>
-<th>问题</th>
-<th>相关链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>watch?computed</td>
-<td></td>
-<td><a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="noopener">link1</a></td>
-</tr>
-</tbody></table>
-
+            <h1 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h1><h2 id="1-Vue-js知识点"><a href="#1-Vue-js知识点" class="headerlink" title="1. Vue.js知识点"></a>1. Vue.js知识点</h2><h3 id="1-1-mount-amp-el"><a href="#1-1-mount-amp-el" class="headerlink" title="1.1 $mount() &amp; el"></a>1.1 $mount() &amp; el</h3><p>$mount()为手动挂载，在项目中可用于延时挂载，之后要手动挂载上。new Vue时，el和$mount并没有本质上的不同。</p>
+<p><strong>未答疑：</strong><br>| 知识点 | 问题 | 相关链接 |<br>| — | — | — |<br>| watch?computed | | <a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="noopener">link1</a> |  </p>
+<h2 id="2-iview"><a href="#2-iview" class="headerlink" title="2. iview"></a>2. iview</h2><h3 id="2-1-input"><a href="#2-1-input" class="headerlink" title="2.1 input"></a>2.1 input</h3><p>input数据双向绑定:</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=<span class="hljs-string">"value"</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -706,7 +784,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        8
                     </p>
                 </div>
             </div>
@@ -837,6 +915,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/node-js入门_/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:00:00.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/node-js入门_/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/Vue-js入门/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js入门">
@@ -892,25 +989,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/15/微信小程序/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序前端开发">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T07:12:09.000Z">2019-09-15</time></div>
-                    <a href="/2019/09/15/微信小程序/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序前端开发</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -929,7 +1007,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -998,6 +1076,25 @@
         
         <article class="media">
             
+            <a href="/2019/09/23/node-js入门_/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:00:00.000Z">2019-09-23</time></div>
+                    <a href="/2019/09/23/node-js入门_/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/21/Vue-js入门/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js入门">
@@ -1053,25 +1150,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/15/微信小程序/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序前端开发">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T07:12:09.000Z">2019-09-15</time></div>
-                    <a href="/2019/09/15/微信小程序/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序前端开发</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1090,7 +1168,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
