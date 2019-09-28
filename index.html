@@ -278,7 +278,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 500 words)
+                    5 minutes read (About 702 words)
                 </span>
                 
                 
@@ -326,6 +326,22 @@
 <h3 id="2-4-扩展运算符-…"><a href="#2-4-扩展运算符-…" class="headerlink" title="2.4 扩展运算符(…)"></a>2.4 扩展运算符(…)</h3><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;</span><br><span class="line"><span class="hljs-keyword">let</span> b = &#123; ...a &#125;  <span class="hljs-comment">//&#123; a: 1, b: 2 &#125;</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="2-5-css-scoped与module"><a href="#2-5-css-scoped与module" class="headerlink" title="2.5 css:scoped与module"></a>2.5 css:scoped与module</h3><h4 id="2-5-1-scoped"><a href="#2-5-1-scoped" class="headerlink" title="2.5.1 scoped"></a>2.5.1 scoped</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>scoped作用:<br>阻止上层的css样式传递到下层，限制当前css作用域，使其只对当前组件生效。<br>深度作用:<br>如果希望scoped中的某个样式能够作用的更深，影响到子组件，可以使用&gt;&gt;&gt;操作符</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.content &gt;&gt;&gt; .title-wrap &#123;</span><br><span class="line">    font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意看我将style中的lang=”scss”去掉了，因为加了预处理器后无法正确解析&gt;&gt;&gt;，这种情况可以使用/deep/代替，本质是&gt;&gt;&gt;的别名</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> scoped&gt;</span><br><span class="line">.content &#123;</span><br><span class="line">  /deep/ &#123;</span><br><span class="line">    .title-wrap &#123;</span><br><span class="line">      font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">      color: red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-2-module"><a href="#2-5-2-module" class="headerlink" title="2.5.2 module"></a>2.5.2 module</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> <span class="hljs-built_in">module</span>&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>module作用:</p>
+<ul>
+<li>快速定位</li>
+<li>灵活传递到任意子组件</li>
+</ul>
+<p>它在布局中的引用，都需要添加前缀$style,因为通过module作用的style都被保存到$style对象中。</p>
 <h2 id="3-Vuex"><a href="#3-Vuex" class="headerlink" title="3. Vuex"></a>3. Vuex</h2><h3 id="3-1-Vuex介绍"><a href="#3-1-Vuex介绍" class="headerlink" title="3.1 Vuex介绍"></a>3.1 Vuex介绍</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，将我们需要共享的data，使用vuex进行统一集中式的管理。</p>
 <h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
