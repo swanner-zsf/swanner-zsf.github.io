@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 702 words)
+                    5 minutes read (About 712 words)
                 </span>
                 
                 
@@ -204,6 +204,9 @@
 <li>灵活传递到任意子组件</li>
 </ul>
 <p>它在布局中的引用，都需要添加前缀$style,因为通过module作用的style都被保存到$style对象中。</p>
+<h3 id="2-6-disabled"><a href="#2-6-disabled" class="headerlink" title="2.6 disabled"></a>2.6 disabled</h3><p>控制元素是否可用</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button :disable=<span class="hljs-string">"true/false"</span>&gt;&#123;&#123; &#125;&#125;&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="3-Vuex"><a href="#3-Vuex" class="headerlink" title="3. Vuex"></a>3. Vuex</h2><h3 id="3-1-Vuex介绍"><a href="#3-1-Vuex介绍" class="headerlink" title="3.1 Vuex介绍"></a>3.1 Vuex介绍</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，将我们需要共享的data，使用vuex进行统一集中式的管理。</p>
 <h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -324,7 +327,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        10
                     </p>
                 </div>
             </div>
@@ -436,6 +439,44 @@
         
         <article class="media">
             
+            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/27/express框架连接数据库/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="express框架连接数据库">
@@ -491,44 +532,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/19/JavaScript基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/JavaScript基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/16/微信小程序form提交/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序form提交.md.">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/微信小程序form提交/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序form提交.md.</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -547,7 +550,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -597,6 +600,44 @@
         
         <article class="media">
             
+            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/27/express框架连接数据库/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="express框架连接数据库">
@@ -652,44 +693,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/19/JavaScript基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/JavaScript基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/16/微信小程序form提交/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序form提交.md.">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/微信小程序form提交/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序form提交.md.</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -708,7 +711,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>

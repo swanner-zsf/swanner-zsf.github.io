@@ -135,6 +135,118 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 203 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/28/Node-js之fs模块/">Node.js之fs模块</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-fs介绍"><a href="#1-fs介绍" class="headerlink" title="1. fs介绍"></a>1. fs介绍</h2><p>node.js内置的fs模块就是文件系统模块，负责读写文件。和所有其他JS模块不同的是，fs模块同时提供了异步和同步的方法。</p>
+<h2 id="2-fs用法详解"><a href="#2-fs用法详解" class="headerlink" title="2. fs用法详解"></a>2. fs用法详解</h2><h3 id="2-1-fs引入"><a href="#2-1-fs引入" class="headerlink" title="2.1 fs引入"></a>2.1 fs引入</h3> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-fs功能"><a href="#2-2-fs功能" class="headerlink" title="2.2 fs功能"></a>2.2 fs功能</h3><p>进行网络爬虫的时候，有时我们需要保存图片、js、css等文件，request支持文件流.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request(<span class="hljs-string">'https://www.baidu.com/img/bd_logo1.png'</span>).pipe(fs.createWriteStream(<span class="hljs-string">'a.png'</span>))</span><br><span class="line"><span class="hljs-comment">//抓取百度logo并保存到本地</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以将文件传给PUT或POST请求，用于文件上传。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.createReadStream(<span class="hljs-string">'pic.jpg'</span>).pipe(request.put(<span class="hljs-string">'http://veb.com/upload'</span>))</span><br><span class="line"><span class="hljs-comment">//读取流pipe上传</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 272 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/28/Node-js之request模块/">Node.js之request模块</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-request介绍"><a href="#1-request介绍" class="headerlink" title="1. request介绍"></a>1. request介绍</h2><p>node中，http模块也可作为客户端使用（发送请求），第三方模块request对其使用方法进行了封装，操作更方便。</p>
+<h2 id="2-request安装"><a href="#2-request安装" class="headerlink" title="2. request安装"></a>2. request安装</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install request --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p><strong>引入request</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-1-GET"><a href="#3-1-GET" class="headerlink" title="3.1 GET"></a>3.1 GET</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 发送Get请求</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数:请求的完整URL,包括参数</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数:请求结果回调函数,会传入3个参数,第一个错误,第二个响应对象,第三个请求数据</span></span><br><span class="line">request(url,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, data</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-POST"><a href="#3-2-POST" class="headerlink" title="3.2 POST"></a>3.2 POST</h4><p>post请求有3种方式，由请求头中的content-type决定，属于哪一种post请求:</p>
+<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>application/json</li>
+<li>multipart/form-data</li>
+</ul>
+<p><strong>1.application/x-www-form-urlencoded</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">form</span>:&#123;<span class="hljs-attr">key</span>:<span class="hljs-string">'value'</span>&#125;&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.application/json</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="hljs-string">"POST"</span>,</span><br><span class="line">    json: <span class="hljs-literal">true</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"application/json"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="hljs-built_in">JSON</span>.stringify(requestData)</span><br><span class="line">&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.multipart/form-data</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> formData = &#123;</span><br><span class="line">    <span class="hljs-comment">// Pass a simple key-value pair</span></span><br><span class="line">    my_field: <span class="hljs-string">'my_value'</span>,</span><br><span class="line">    <span class="hljs-comment">// Pass data via Buffers</span></span><br><span class="line">    my_buffer: <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),</span><br><span class="line">    <span class="hljs-comment">// Pass data via Streams</span></span><br><span class="line">    my_file: fs.createReadStream(__dirname + <span class="hljs-string">'/unicycle.jpg'</span>),</span><br><span class="line">&#125;;</span><br><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">formData</span>: formData&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) </span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-27T02:45:59.000Z">2019-09-27</time>
                 
                 
@@ -278,7 +390,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 702 words)
+                    5 minutes read (About 712 words)
                 </span>
                 
                 
@@ -342,6 +454,9 @@
 <li>灵活传递到任意子组件</li>
 </ul>
 <p>它在布局中的引用，都需要添加前缀$style,因为通过module作用的style都被保存到$style对象中。</p>
+<h3 id="2-6-disabled"><a href="#2-6-disabled" class="headerlink" title="2.6 disabled"></a>2.6 disabled</h3><p>控制元素是否可用</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button :disable=<span class="hljs-string">"true/false"</span>&gt;&#123;&#123; &#125;&#125;&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="3-Vuex"><a href="#3-Vuex" class="headerlink" title="3. Vuex"></a>3. Vuex</h2><h3 id="3-1-Vuex介绍"><a href="#3-1-Vuex介绍" class="headerlink" title="3.1 Vuex介绍"></a>3.1 Vuex介绍</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，将我们需要共享的data，使用vuex进行统一集中式的管理。</p>
 <h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -406,7 +521,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1154 words)
+                    10 minutes read (About 1427 words)
                 </span>
                 
                 
@@ -585,7 +700,81 @@
 <td>比较两个字符串：&lt;0,0,&gt;0</td>
 </tr>
 </tbody></table>
-<h1 id="3-Math"><a href="#3-Math" class="headerlink" title="3. Math"></a>3. Math</h1><h2 id="3-1-Math静态属性"><a href="#3-1-Math静态属性" class="headerlink" title="3.1 Math静态属性"></a>3.1 Math静态属性</h2><p>Math.E: </p>
+<h1 id="3-Math"><a href="#3-Math" class="headerlink" title="3. Math"></a>3. Math</h1><h2 id="3-1-Math静态属性"><a href="#3-1-Math静态属性" class="headerlink" title="3.1 Math静态属性"></a>3.1 Math静态属性</h2><p>Math.E: 常数e<br>Math.PI: 常数π</p>
+<h2 id="3-2-Math静态方法"><a href="#3-2-Math静态方法" class="headerlink" title="3.2 Math静态方法"></a>3.2 Math静态方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Math.abs()</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Math.ceil()</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Math.floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Math.max()</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Math.min()</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Math.round()</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Math.random</td>
+<td>随机值</td>
+</tr>
+</tbody></table>
+<h1 id="4-Number"><a href="#4-Number" class="headerlink" title="4. Number"></a>4. Number</h1><h2 id="4-1-Number静态属性"><a href="#4-1-Number静态属性" class="headerlink" title="4.1 Number静态属性"></a>4.1 Number静态属性</h2><p>Number.POSITIVE_INFINITY：正的无限，指向Infinity。<br>Number.NEGATIVE_INFINITY：负的无限，指向-Infinity。<br>Number.NaN：表示非数值，指向NaN。<br>Number.MIN_VALUE：表示最小的正数（即最接近0的正数，在64位浮点数体系中为5e-324）。<br>Number.MAX_SAFE_INTEGER：表示能够精确表示的最大整数，即9007199254740991。<br>Number.MIN_SAFE_INTEGER：表示能够精确表示的最小整数，即-9007199254740991。</p>
+<h2 id="4-2-Number实例方法"><a href="#4-2-Number实例方法" class="headerlink" title="4.2 Number实例方法"></a>4.2 Number实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Number.prototype.toString()</td>
+<td>用来将一个数值转为字符串形式</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Number.prototype.toFixed()</td>
+<td>将一个数转为指定位数的小数，然后返回这个小数对应的字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Number.prototype.toExponential()</td>
+<td>将一个数转为科学计数法形式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Number.prototype.toPrecision()</td>
+<td>将一个数转为指定位数的有效数字</td>
+</tr>
+</tbody></table>
 
         </div>
         
@@ -839,7 +1028,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        10
                     </p>
                 </div>
             </div>
@@ -951,6 +1140,44 @@
         
         <article class="media">
             
+            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/27/express框架连接数据库/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="express框架连接数据库">
@@ -1006,44 +1233,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/19/JavaScript基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/JavaScript基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/16/微信小程序form提交/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序form提交.md.">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/微信小程序form提交/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序form提交.md.</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1062,7 +1251,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1112,6 +1301,44 @@
         
         <article class="media">
             
+            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
+                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/27/express框架连接数据库/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="express框架连接数据库">
@@ -1167,44 +1394,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/19/JavaScript基础/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript基础">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time></div>
-                    <a href="/2019/09/19/JavaScript基础/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript基础</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/16/微信小程序form提交/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微信小程序form提交.md.">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time></div>
-                    <a href="/2019/09/16/微信小程序form提交/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微信小程序form提交.md.</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1223,7 +1412,7 @@
                     <span class="level-item">September 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
