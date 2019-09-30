@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Vue.js入门 - Hexo</title>
+<title>Vue.js入门 - Super Swanner</title>
 
 
 
@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 728 words)
+                    5 minutes read (About 776 words)
                 </span>
                 
                 
@@ -177,6 +177,7 @@
 <h2 id="2-iview"><a href="#2-iview" class="headerlink" title="2. iview"></a>2. iview</h2><h3 id="2-1-input"><a href="#2-1-input" class="headerlink" title="2.1 input"></a>2.1 input</h3><p>input数据双向绑定:</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=<span class="hljs-string">"value"</span></span><br></pre></td></tr></table></figure>
 
+<p>input type=”radio” name:<br>name 属性可设置或返回单选按钮的名称。<br>在多个单选按钮存在情况下，设置相同name，可实现单选效果。</p>
 <h3 id="2-2-监听键盘事件"><a href="#2-2-监听键盘事件" class="headerlink" title="2.2 监听键盘事件"></a>2.2 监听键盘事件</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-input v-model=<span class="hljs-string">"input"</span> @keyup.enter.native=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">i-input</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>绑定事件多一个.native修饰符，是因为iview封装了个div在input标签外面，把原来的事件隐藏了，所以如果不加.native的话，按键不会生效。</p>
