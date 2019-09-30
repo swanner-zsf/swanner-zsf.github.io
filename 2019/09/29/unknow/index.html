@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Node.js之fs模块 - Hexo</title>
+<title>unknown - Hexo</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Node.js之fs模块" height="28">
+                <img src="/images/logo.svg" alt="unknown" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time>
+                <time class="level-item has-text-grey" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 203 words)
+                    3 minutes read (About 512 words)
                 </span>
                 
                 
@@ -149,20 +149,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Node.js之fs模块
+                unknown
             
         </h1>
         <div class="content">
-            <h2 id="1-fs介绍"><a href="#1-fs介绍" class="headerlink" title="1. fs介绍"></a>1. fs介绍</h2><p>node.js内置的fs模块就是文件系统模块，负责读写文件。和所有其他JS模块不同的是，fs模块同时提供了异步和同步的方法。</p>
-<h2 id="2-fs用法详解"><a href="#2-fs用法详解" class="headerlink" title="2. fs用法详解"></a>2. fs用法详解</h2><h3 id="2-1-fs引入"><a href="#2-1-fs引入" class="headerlink" title="2.1 fs引入"></a>2.1 fs引入</h3> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-fs功能"><a href="#2-2-fs功能" class="headerlink" title="2.2 fs功能"></a>2.2 fs功能</h3><p>进行网络爬虫的时候，有时我们需要保存图片、js、css等文件，request支持文件流.</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request(<span class="hljs-string">'https://www.baidu.com/img/bd_logo1.png'</span>).pipe(fs.createWriteStream(<span class="hljs-string">'a.png'</span>))</span><br><span class="line"><span class="hljs-comment">//抓取百度logo并保存到本地</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以将文件传给PUT或POST请求，用于文件上传。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.createReadStream(<span class="hljs-string">'pic.jpg'</span>).pipe(request.put(<span class="hljs-string">'http://veb.com/upload'</span>))</span><br><span class="line"><span class="hljs-comment">//读取流pipe上传</span></span><br></pre></td></tr></table></figure>
-
-
+            <h2 id="1-位运算"><a href="#1-位运算" class="headerlink" title="1. 位运算"></a>1. 位运算</h2><h3 id="1-1-and运算-amp"><a href="#1-1-and运算-amp" class="headerlink" title="1,1 and运算 &amp;"></a>1,1 and运算 &amp;</h3><p>and运算通常用于二进制的取位操作，可以用来判断一个整数的奇偶，二进制的最末位为0表示该数为偶数，最末位为1表示该数为奇数。<br>相同位的两个数字都为1，则为1；若有一个不为1，则为0。</p>
+<h3 id="1-2-or运算"><a href="#1-2-or运算" class="headerlink" title="1.2 or运算 |"></a>1.2 or运算 |</h3><p>or运算通常用于二进制特定位上的无条件赋值，例如一个数or 1的结果就是把二进制最末位强行变成1。如果需要把二进制最末位变成0，对这个数or 1之后再减一就可以了，其实际意义就是把这个数强行变成最接近的偶数。<br>相同位只要一个为1即为1。</p>
+<h3 id="1-3-xor运算"><a href="#1-3-xor运算" class="headerlink" title="1.3 xor运算 ^"></a>1.3 xor运算 ^</h3><p>异或的符号是^。按位异或运算, 对等长二进制模式按位或二进制数的每一位执行逻辑按位异或操作. 操作的结果是如果某位不同则该位为1, 否则该位为0.</p>
+<h3 id="1-4-not运算"><a href="#1-4-not运算" class="headerlink" title="1.4 not运算 ~"></a>1.4 not运算 ~</h3><p>not运算的定义是把内存中的0和1全部取反。使用not运算时要格外小心，你需要注意整数类型有没有符号。如果not的对象是无符号整数（不能表示负数），那么得到的值就是它与该类型上界的差，因为无符号类型的数是用00到$FFFF依次表示的。</p>
+<h3 id="1-5-shl运算-lt-lt"><a href="#1-5-shl运算-lt-lt" class="headerlink" title="1.5 shl运算 &lt;&lt;"></a>1.5 shl运算 &lt;&lt;</h3><p>a shl b就表示把a转为二进制后左移b位（在后面添b个0）。例如100的二进制为1100100，而110010000转成十进制是400，那么100 shl 2 = 400。可以看出，a shl b的值实际上就是a乘以2的b次方，因为在二进制数后添一个0就相当于该数乘以2。</p>
+<h3 id="1-6-shr运算-gt-gt"><a href="#1-6-shr运算-gt-gt" class="headerlink" title="1.6 shr运算 &gt;&gt;"></a>1.6 shr运算 &gt;&gt;</h3><p>和shl相似，a shr b表示二进制右移b位（去掉末b位），相当于a除以2的b次方（取整）。</p>
+<h2 id="2-单精度、双精度"><a href="#2-单精度、双精度" class="headerlink" title="2. 单精度、双精度"></a>2. 单精度、双精度</h2>
         </div>
         
         
@@ -186,17 +183,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/29/unknow/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">unknown</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/28/Node-js之request模块/">
-                <span class="level-item">Node.js之request模块</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/28/Node-js之fs模块/">
+                <span class="level-item">Node.js之fs模块</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -671,7 +661,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Node.js之fs模块" height="28">
+                    <img src="/images/logo.svg" alt="unknown" height="28">
                 
                 </a>
                 <p class="is-size-7">

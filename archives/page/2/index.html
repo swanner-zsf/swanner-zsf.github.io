@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Node.js之fs模块 - Hexo</title>
+<title>Archives - Hexo</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Node.js之fs模块" height="28">
+                <img src="/images/logo.svg" alt="Hexo" height="28">
             
             </a>
         </div>
@@ -128,83 +128,54 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 203 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                Node.js之fs模块
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-fs介绍"><a href="#1-fs介绍" class="headerlink" title="1. fs介绍"></a>1. fs介绍</h2><p>node.js内置的fs模块就是文件系统模块，负责读写文件。和所有其他JS模块不同的是，fs模块同时提供了异步和同步的方法。</p>
-<h2 id="2-fs用法详解"><a href="#2-fs用法详解" class="headerlink" title="2. fs用法详解"></a>2. fs用法详解</h2><h3 id="2-1-fs引入"><a href="#2-1-fs引入" class="headerlink" title="2.1 fs引入"></a>2.1 fs引入</h3> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-fs功能"><a href="#2-2-fs功能" class="headerlink" title="2.2 fs功能"></a>2.2 fs功能</h3><p>进行网络爬虫的时候，有时我们需要保存图片、js、css等文件，request支持文件流.</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request(<span class="hljs-string">'https://www.baidu.com/img/bd_logo1.png'</span>).pipe(fs.createWriteStream(<span class="hljs-string">'a.png'</span>))</span><br><span class="line"><span class="hljs-comment">//抓取百度logo并保存到本地</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以将文件传给PUT或POST请求，用于文件上传。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.createReadStream(<span class="hljs-string">'pic.jpg'</span>).pipe(request.put(<span class="hljs-string">'http://veb.com/upload'</span>))</span><br><span class="line"><span class="hljs-comment">//读取流pipe上传</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
+<div class="card widget">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
+        <h3 class="tag is-link">
+        2019
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
+                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-14T09:18:33.000Z">2019-09-14</time>
+                        <a href="/2019/09/14/face++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端调用 face++ API实现微信小程序身份证识别</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
         </div>
     </div>
 </div>
 
+    
 
-
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/29/unknow/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">unknown</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/">Previous</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/28/Node-js之request模块/">
-                <span class="level-item">Node.js之request模块</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/page/3/">Next</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/archives/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
 </div>
                 
 
@@ -671,7 +642,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Node.js之fs模块" height="28">
+                    <img src="/images/logo.svg" alt="Hexo" height="28">
                 
                 </a>
                 <p class="is-size-7">
