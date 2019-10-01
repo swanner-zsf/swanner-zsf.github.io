@@ -436,7 +436,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 776 words)
+                    6 minutes read (About 841 words)
                 </span>
                 
                 
@@ -474,6 +474,28 @@
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=<span class="hljs-string">"value"</span></span><br></pre></td></tr></table></figure>
 
 <p>input type=”radio” name:<br>name 属性可设置或返回单选按钮的名称。<br>在多个单选按钮存在情况下，设置相同name，可实现单选效果。</p>
+<p>input 遍历绑定</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;label v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"item in arr"</span> :<span class="hljs-keyword">for</span>=<span class="hljs-string">"item"</span>&gt;</span><br><span class="line">    &lt;input :value=<span class="hljs-string">"item"</span>/&gt;&#123;&#123; item &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/label&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        arr: []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>input 修饰符</p>
+<ul>
+<li>.lazy</li>
+</ul>
+<p>在失去焦点的时候才更新，而不是实时更新</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.lazy=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.number</li>
+</ul>
+<p>自动将用户的输入值转为 Number 类型</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.number=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.trim</li>
+</ul>
+<p>自动过滤用户输入的首尾空格</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
 <h3 id="2-2-监听键盘事件"><a href="#2-2-监听键盘事件" class="headerlink" title="2.2 监听键盘事件"></a>2.2 监听键盘事件</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-input v-model=<span class="hljs-string">"input"</span> @keyup.enter.native=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">i-input</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>绑定事件多一个.native修饰符，是因为iview封装了个div在input标签外面，把原来的事件隐藏了，所以如果不加.native的话，按键不会生效。</p>
