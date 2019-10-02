@@ -186,24 +186,24 @@
 <li>.lazy</li>
 </ul>
 <p>在失去焦点的时候才更新，而不是实时更新</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.lazy=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.lazy</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>.number</li>
 </ul>
 <p>自动将用户的输入值转为 Number 类型</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.number=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>.trim</li>
 </ul>
 <p>自动过滤用户输入的首尾空格</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.trim</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-监听键盘事件"><a href="#2-2-监听键盘事件" class="headerlink" title="2.2 监听键盘事件"></a>2.2 监听键盘事件</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-input v-model=<span class="hljs-string">"input"</span> @keyup.enter.native=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">i-input</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>绑定事件多一个.native修饰符，是因为iview封装了个div在input标签外面，把原来的事件隐藏了，所以如果不加.native的话，按键不会生效。</p>
-<h3 id="2-3-那些数组方法是响应式的"><a href="#2-3-那些数组方法是响应式的" class="headerlink" title="2.3 那些数组方法是响应式的"></a>2.3 那些数组方法是响应式的</h3><p>响应式：</p>
+<h3 id="2-3-响应式的数组方法"><a href="#2-3-响应式的数组方法" class="headerlink" title="2.3 响应式的数组方法"></a>2.3 响应式的数组方法</h3><p>响应式：</p>
 <ul>
 <li>push()</li>
 <li>pop()</li>
@@ -216,7 +216,7 @@
 <h3 id="2-4-扩展运算符-…"><a href="#2-4-扩展运算符-…" class="headerlink" title="2.4 扩展运算符(…)"></a>2.4 扩展运算符(…)</h3><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;</span><br><span class="line"><span class="hljs-keyword">let</span> b = &#123; ...a &#125;  <span class="hljs-comment">//&#123; a: 1, b: 2 &#125;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-5-css-scoped与module"><a href="#2-5-css-scoped与module" class="headerlink" title="2.5 css:scoped与module"></a>2.5 css:scoped与module</h3><h4 id="2-5-1-scoped"><a href="#2-5-1-scoped" class="headerlink" title="2.5.1 scoped"></a>2.5.1 scoped</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-5-css-scoped-与-module"><a href="#2-5-css-scoped-与-module" class="headerlink" title="2.5 css: scoped 与 module"></a>2.5 css: scoped 与 module</h3><h4 id="2-5-1-scoped"><a href="#2-5-1-scoped" class="headerlink" title="2.5.1 scoped"></a>2.5.1 scoped</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>scoped作用:<br>阻止上层的css样式传递到下层，限制当前css作用域，使其只对当前组件生效。<br>深度作用:<br>如果希望scoped中的某个样式能够作用的更深，影响到子组件，可以使用&gt;&gt;&gt;操作符</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.content &gt;&gt;&gt; .title-wrap &#123;</span><br><span class="line">    font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
@@ -355,7 +355,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
@@ -467,6 +467,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/03/Vue-js-basics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js-基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T16:39:05.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Vue-js-basics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js-基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
@@ -541,25 +560,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/23/node-js入门/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="node.js入门">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time></div>
-                    <a href="/2019/09/23/node-js入门/" class="title has-link-black-ter is-size-6 has-text-weight-normal">node.js入门</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -571,6 +571,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
@@ -628,6 +639,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/03/Vue-js-basics/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue.js-基础">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-02T16:39:05.000Z">2019-10-03</time></div>
+                    <a href="/2019/10/03/Vue-js-basics/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue.js-基础</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
@@ -702,25 +732,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/23/node-js入门/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="node.js入门">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time></div>
-                    <a href="/2019/09/23/node-js入门/" class="title has-link-black-ter is-size-6 has-text-weight-normal">node.js入门</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -732,6 +743,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/09/">
