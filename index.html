@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 187 words)
+                    2 minutes read (About 251 words)
                 </span>
                 
                 
@@ -159,14 +159,13 @@
 <li>chat-client</li>
 <li>chat-server</li>
 </ul>
-<h2 id="2-创建gitignore文件"><a href="#2-创建gitignore文件" class="headerlink" title="2. 创建gitignore文件"></a>2. 创建gitignore文件</h2><p>将node_modules等配置文件放入gitignore文件中，实现本地工程文件与gitee绑定更加轻便。</p>
-<h2 id="3-git绑定"><a href="#3-git绑定" class="headerlink" title="3. git绑定"></a>3. git绑定</h2><h3 id="3-1-初始化git仓库"><a href="#3-1-初始化git仓库" class="headerlink" title="3.1 初始化git仓库"></a>3.1 初始化git仓库</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<h2 id="2-git绑定remote-branch"><a href="#2-git绑定remote-branch" class="headerlink" title="2. git绑定remote branch"></a>2. git绑定remote branch</h2><h3 id="2-1-创建gitignore文件"><a href="#2-1-创建gitignore文件" class="headerlink" title="2.1 创建gitignore文件"></a>2.1 创建gitignore文件</h3><p>将node_modules等配置文件放入gitignore文件中，实现本地工程文件与gitee绑定更加轻便。</p>
+<h3 id="2-2-初始化git仓库"><a href="#2-2-初始化git仓库" class="headerlink" title="2.2 初始化git仓库"></a>2.2 初始化git仓库</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 
 <p>在vue-chat文件夹下，项目中生成了 .git 子目录，也就是生成了一个git仓库。</p>
-<h3 id="3-2-绑定git-remote-branch"><a href="#3-2-绑定git-remote-branch" class="headerlink" title="3.2 绑定git remote branch"></a>3.2 绑定git remote branch</h3><p>关联远程仓库</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add orgin &#123;REPO_URL&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-关联远程仓库"><a href="#2-3-关联远程仓库" class="headerlink" title="2.3 关联远程仓库"></a>2.3 关联远程仓库</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add orgin &#123;REPO_URL&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-add-files-amp-amp-commit"><a href="#3-3-add-files-amp-amp-commit" class="headerlink" title="3.3 add files &amp;&amp; commit"></a>3.3 add files &amp;&amp; commit</h3><ul>
+<h3 id="2-4-add-files-amp-amp-commit"><a href="#2-4-add-files-amp-amp-commit" class="headerlink" title="2.4 add files &amp;&amp; commit"></a>2.4 add files &amp;&amp; commit</h3><ul>
 <li>将文件添加到git仓库（暂存区）</li>
 </ul>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
@@ -182,8 +181,15 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u orgin master</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>回退指定版本号</p>
+<p>git回退指定版本号</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">$ git reset --hard &#123;COMMIT_LOG_NO&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-socket-io"><a href="#3-socket-io" class="headerlink" title="3. socket.io"></a>3. socket.io</h2><p>socket.io是基于Node.js和WebSocket协议的实时通信开源框架，它包括客户端的JavaScript和服务器端的Node.js。</p>
+<blockquote>
+<p>全双工通讯的协议<a href="https://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">WebSocket</a></p>
+</blockquote>
+<p>安装 socket.io</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save soclet.io</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -212,7 +218,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 424 words)
+                    3 minutes read (About 503 words)
                 </span>
                 
                 
@@ -255,7 +261,21 @@
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"myclick"</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    methods: &#123;</span><br><span class="line">        myclick: &#123;</span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$root)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>子组件通过$root获取根父组件的数据和方法。</p>
+<h3 id="插槽slot"><a href="#插槽slot" class="headerlink" title="插槽slot"></a>插槽slot</h3><ol>
+<li>匿名插槽</li>
+</ol>
+<p>单个插槽可以放置在组件的任意位置，一个组件中只能有一个该类插槽。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<ol start="2">
+<li>具名插槽</li>
+</ol>
+<p>具名插槽可以在一个组件中出现N次，出现在不同的位置。</p>
+<p>父组件:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">children</span> #&#123;<span class="hljs-attr">NAME</span>&#125;&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">children</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>“v-slot:”缩写”#”</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"&#123;NAME&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
