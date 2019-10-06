@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Vue-chat项目实战 - Super Swanner</title>
+<title>vue.js + express + socket.io 聊天室项目实战 - Super Swanner</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Vue-chat项目实战" height="28">
+                <img src="/images/logo.svg" alt="vue.js + express + socket.io 聊天室项目实战" height="28">
             
             </a>
         </div>
@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 251 words)
+                    6 minutes read (About 869 words)
                 </span>
                 
                 
@@ -149,17 +149,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Vue-chat项目实战
+                vue.js + express + socket.io 聊天室项目实战
             
         </h1>
         <div class="content">
-            <h2 id="1-新建vue-chat项目文件"><a href="#1-新建vue-chat项目文件" class="headerlink" title="1. 新建vue-chat项目文件"></a>1. 新建vue-chat项目文件</h2><p>新建前端文件，后端文件，实现前后端分离</p>
+            <h2 id="1-新建vue-chat项目"><a href="#1-新建vue-chat项目" class="headerlink" title="1. 新建vue-chat项目"></a>1. 新建vue-chat项目</h2><p>新建前端文件，后端文件，实现前后端分离</p>
 <ul>
 <li>chat-client</li>
 <li>chat-server</li>
 </ul>
 <h2 id="2-git绑定remote-branch"><a href="#2-git绑定remote-branch" class="headerlink" title="2. git绑定remote branch"></a>2. git绑定remote branch</h2><h3 id="2-1-创建gitignore文件"><a href="#2-1-创建gitignore文件" class="headerlink" title="2.1 创建gitignore文件"></a>2.1 创建gitignore文件</h3><p>将node_modules等配置文件放入gitignore文件中，实现本地工程文件与gitee绑定更加轻便。</p>
-<h3 id="2-2-初始化git仓库"><a href="#2-2-初始化git仓库" class="headerlink" title="2.2 初始化git仓库"></a>2.2 初始化git仓库</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-初始化git仓库"><a href="#2-2-初始化git仓库" class="headerlink" title="2.2 初始化git仓库"></a>2.2 初始化git仓库</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 
 <p>在vue-chat文件夹下，项目中生成了 .git 子目录，也就是生成了一个git仓库。</p>
 <h3 id="2-3-关联远程仓库"><a href="#2-3-关联远程仓库" class="headerlink" title="2.3 关联远程仓库"></a>2.3 关联远程仓库</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add orgin &#123;REPO_URL&#125;</span><br></pre></td></tr></table></figure>
@@ -172,24 +172,91 @@
 <ul>
 <li>保存</li>
 </ul>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -sam &quot;&#123;NAME&#125;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -sam <span class="hljs-string">"&#123;NAME&#125;"</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>第一次推送master分支的所有内容</li>
 </ul>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u orgin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u orgin master</span><br></pre></td></tr></table></figure>
 
 <hr>
 <p>git回退指定版本号</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">$ git reset --hard &#123;COMMIT_LOG_NO&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="hljs-built_in">log</span></span><br><span class="line">$ git reset --hard &#123;COMMIT_LOG_NO&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-socket-io"><a href="#3-socket-io" class="headerlink" title="3. socket.io"></a>3. socket.io</h2><p>socket.io是基于Node.js和WebSocket协议的实时通信开源框架，它包括客户端的JavaScript和服务器端的Node.js。</p>
 <blockquote>
-<p>全双工通讯的协议<a href="https://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">WebSocket</a></p>
+<p>双向通讯的协议<a href="https://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">WebSocket</a></p>
 </blockquote>
 <p>安装 socket.io</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save soclet.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save soclet.io</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-数据库新建与导入"><a href="#4-数据库新建与导入" class="headerlink" title="4. 数据库新建与导入"></a>4. 数据库新建与导入</h2><ol>
+<li><p>mysql中新建数据库chatroom</p>
+</li>
+<li><p>chatroom.sql中设置表格内容</p>
+</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS `message`;</span><br><span class="line">CREATE TABLE `message` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `message_content` varchar(140) NOT NULL,</span><br><span class="line">  `author` varchar(20) NOT NULL,</span><br><span class="line">  `created_at` datetime DEFAULT current_timestamp(),</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br><span class="line">DROP TABLE IF EXISTS `user`;</span><br><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `nickname` varchar(20) NOT NULL,</span><br><span class="line">  `created_at` datetime DEFAULT current_timestamp(),</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将文件chatroom.sql导入数据库chatroom中</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u -p chatroom &lt; chatroom.sql</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-集成-socket-io"><a href="#5-集成-socket-io" class="headerlink" title="5. 集成 socket.io"></a>5. 集成 socket.io</h2><p>Socket.IO由两部分组成：</p>
+<ul>
+<li>与Node.JS HTTP Server集成（或安装在其上）的服务器:socket.io</li>
+<li>在浏览器端加载的客户端库:socket.io-client</li>
+</ul>
+<h3 id="5-1-添加socket-io模块"><a href="#5-1-添加socket-io模块" class="headerlink" title="5.1 添加socket.io模块"></a>5.1 添加socket.io模块</h3><p>server端:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save socket.io</span><br></pre></td></tr></table></figure>
+
+<p>在index.js编辑:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var app = require(<span class="hljs-string">'../app'</span>);</span><br><span class="line">var http = require(<span class="hljs-string">'http'</span>);</span><br><span class="line">var server = http.createServer(app);</span><br><span class="line"></span><br><span class="line">var io = require(<span class="hljs-string">'socket.io'</span>)(server);</span><br></pre></td></tr></table></figure>
+
+<p>client端:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save socket.io-client</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import io from <span class="hljs-string">'socket.io-client'</span>;</span><br><span class="line"></span><br><span class="line">const socket = io(<span class="hljs-string">'http://localhost:3000'</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-client端向server端发射事件"><a href="#5-2-client端向server端发射事件" class="headerlink" title="5.2 client端向server端发射事件"></a>5.2 client端向server端发射事件</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-actionscript">socket.emit(<span class="hljs-string">'key'</span>, msg);</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-server端接收client端事件"><a href="#5-3-server端接收client端事件" class="headerlink" title="5.3 server端接收client端事件"></a>5.3 server端接收client端事件</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.on(<span class="hljs-string">'connection'</span>, <span class="hljs-keyword">function</span>(socket)&#123;</span><br><span class="line">  socket.on(<span class="hljs-string">'key'</span>, <span class="hljs-keyword">function</span>(msg)&#123;</span><br><span class="line">    console.log(<span class="hljs-string">'key: '</span> + msg);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-server端数据存入数据库"><a href="#6-server端数据存入数据库" class="headerlink" title="6. server端数据存入数据库"></a>6. server端数据存入数据库</h2><ul>
+<li>安装sequelize</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -S sequelize</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装mariadb</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -S mariadb</span><br></pre></td></tr></table></figure>
+
+<p>通过sequelize创建连接</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const Sequelize = require(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line">const sequelize = new Sequelize(<span class="hljs-string">'mariadb://admin:maxwit@localhost:3306/chatroom'</span>);</span><br><span class="line">sequelize</span><br><span class="line">    .authenticate()</span><br><span class="line">    .<span class="hljs-keyword">then</span>(() =&gt; &#123;</span><br><span class="line">        console.log(<span class="hljs-string">'connection success'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.log(<span class="hljs-string">'connection fail'</span>, error)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">module.exports = sequelize;</span><br></pre></td></tr></table></figure>
+
+<p>新建model文件夹,新建表格文件message.js</p>
+<p>在message.js中创建model形式映射数据库</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const Sequelize = require(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line">const sequelize = require(<span class="hljs-string">'../db'</span>);</span><br><span class="line">  </span><br><span class="line">const Model = Sequelize.Model;</span><br><span class="line">class Message extends Model &#123;&#125;</span><br><span class="line">//class User 继承 Model &#123;&#125;</span><br><span class="line">Message.init(&#123;</span><br><span class="line">  // User初始化</span><br><span class="line">  message_content: &#123;</span><br><span class="line">    <span class="hljs-built_in">type</span>: Sequelize.STRING,</span><br><span class="line">  &#125;,</span><br><span class="line">  author: &#123;</span><br><span class="line">    <span class="hljs-built_in">type</span>: Sequelize.STRING</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  createdAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  updatedAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  tableName: <span class="hljs-string">'message'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = Message;</span><br></pre></td></tr></table></figure>
+
+<p>在socket中连接成功情况下，向数据库传输数据:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">message.create(&#123;JSON&#125;)</span><br><span class="line">   .<span class="hljs-keyword">then</span>((data) =&gt; &#123;</span><br><span class="line">       io.emit(<span class="hljs-string">'key'</span>, data);</span><br><span class="line">   &#125;)</span><br><span class="line">   .catch((error) =&gt; &#123;</span><br><span class="line">       io.emit(<span class="hljs-string">'key'</span>, error);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-axios创建http请求，得到”聊天房间”路径"><a href="#7-axios创建http请求，得到”聊天房间”路径" class="headerlink" title="7. axios创建http请求，得到”聊天房间”路径"></a>7. axios创建http请求，得到”聊天房间”路径</h2><p>安装axios</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -S axios</span><br></pre></td></tr></table></figure>
+
+<p>client端<br>引入,发送post请求</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="hljs-actionscript">        <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-actionscript">            roomName: <span class="hljs-literal">null</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    methods: &#123;</span><br><span class="line"><span class="hljs-actionscript">        <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-keyword">const</span> that = <span class="hljs-keyword">this</span>;</span></span><br><span class="line"><span class="hljs-actionscript">            axios.post(<span class="hljs-string">'http://localhost:3000/create_room'</span>,&#123;</span></span><br><span class="line">                room: roomName,</span><br><span class="line">            &#125;)</span><br><span class="line"><span class="hljs-javascript">            .then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-vbscript">                console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">response</span>);</span></span><br><span class="line">            &#125;)</span><br><span class="line"><span class="hljs-javascript">            .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-vbscript">                console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">error</span>);</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>server端:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var message = require(<span class="hljs-string">'../model/message'</span>);</span><br><span class="line"></span><br><span class="line">router.post(<span class="hljs-string">'/create_room'</span>, <span class="hljs-keyword">function</span>(req, res, next) &#123;</span><br><span class="line">  <span class="hljs-built_in">let</span> room_name = req.body.room;</span><br><span class="line">  console.log(room_name);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">let</span> io = require(<span class="hljs-string">'socket.io'</span>)(&#123;</span><br><span class="line">    path: room_name,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (io == null) &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      <span class="hljs-string">'resultCode'</span>: 4000,</span><br><span class="line">      <span class="hljs-string">'resultMsg'</span>: <span class="hljs-string">'create fail'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  io.on(<span class="hljs-string">'connection'</span>, <span class="hljs-keyword">function</span>(socket) &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'socket connection established'</span>);</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    <span class="hljs-string">'resultCode'</span>: 2000,</span><br><span class="line">    <span class="hljs-string">'resultMsg'</span>: <span class="hljs-string">'create success'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-server端向所有用户发射事件"><a href="#8-server端向所有用户发射事件" class="headerlink" title="8. server端向所有用户发射事件"></a>8. server端向所有用户发射事件</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.on(<span class="hljs-string">'connection'</span>, <span class="hljs-keyword">function</span>(socket)&#123;</span><br><span class="line">  socket.on(<span class="hljs-string">'chat message'</span>, <span class="hljs-keyword">function</span>(msg)&#123;</span><br><span class="line">    io.emit(<span class="hljs-string">'chat message'</span>, msg);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>登入获取用户名，存入vuex,发送信息时自动发送用户名、发送时间</li>
+</ol>
 
         </div>
         
@@ -380,14 +447,14 @@
             
             <a href="/2019/10/03/Vue-chat/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue-chat项目实战">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time></div>
-                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue-chat项目实战</a>
+                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue.js + express + socket.io 聊天室项目实战</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -552,14 +619,14 @@
             
             <a href="/2019/10/03/Vue-chat/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue-chat项目实战">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time></div>
-                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue-chat项目实战</a>
+                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue.js + express + socket.io 聊天室项目实战</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -714,7 +781,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Vue-chat项目实战" height="28">
+                    <img src="/images/logo.svg" alt="vue.js + express + socket.io 聊天室项目实战" height="28">
                 
                 </a>
                 <p class="is-size-7">
