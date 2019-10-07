@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 503 words)
+                    4 minutes read (About 546 words)
                 </span>
                 
                 
@@ -197,7 +197,19 @@
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">children</span> #&#123;<span class="hljs-attr">NAME</span>&#125;&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">children</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>“v-slot:”缩写”#”</p>
+<p>子组件:</p>
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"&#123;NAME&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="滚动条scroll"><a href="#滚动条scroll" class="headerlink" title="滚动条scroll"></a>滚动条scroll</h3><p>安装vue-gemini-scrollbar</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm i vue-gemini-scrollbar --save</span><br></pre></td></tr></table></figure>
+
+<p>引入组件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import GeminiScrollbar from <span class="hljs-string">'vue-gemini-scrollbar'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(GeminiScrollbar);</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;GeminiScrollbar class=<span class="hljs-string">"my-scroll-bar"</span>&gt;</span><br><span class="line">    content...</span><br><span class="line">&lt;/GeminiScrollbar&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.my-scroll-bar&#123;</span><br><span class="line">    height:200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
