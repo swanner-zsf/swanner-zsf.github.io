@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 677 words)
+                    5 minutes read (About 676 words)
                 </span>
                 
                 
@@ -216,7 +216,7 @@
 <h2 id="数据存入数据库"><a href="#数据存入数据库" class="headerlink" title="数据存入数据库"></a>数据存入数据库</h2><ul>
 <li>生成model.py文件</li>
 </ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flask-sqlacodegen <span class="hljs-string">'mysql+pymysql://root:password@127.0.0.1/test'</span> --tables message --outfile <span class="hljs-string">"model.py"</span>  --flask</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flask-sqlacodegen <span class="hljs-string">'mysql+pymysql://&#123;USERNAME&#125;:&#123;PASSWORD&#125;@localhost/&#123;DATABASENAME&#125;'</span> --outfile <span class="hljs-string">"model.py"</span>  --flask</span><br></pre></td></tr></table></figure>
 
 <p>使用sqlacodegen声明数据模型:</p>
 <p>model.py:</p>
