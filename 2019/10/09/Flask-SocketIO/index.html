@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>express框架连接数据库 - Super Swanner</title>
+<title>Flask-SocketIO - Super Swanner</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="express框架连接数据库" height="28">
+                <img src="/images/logo.svg" alt="Flask-SocketIO" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-27T02:45:59.000Z">2019-09-27</time>
+                <time class="level-item has-text-grey" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 402 words)
+                    5 minutes read (About 677 words)
                 </span>
                 
                 
@@ -149,26 +149,89 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                express框架连接数据库
+                Flask-SocketIO
             
         </h1>
         <div class="content">
-            <h2 id="1-ORM"><a href="#1-ORM" class="headerlink" title="1. ORM"></a>1. ORM</h2><p>对象关系映射（Object Relational Mapping）：<br>ORM 技术是在对象和数据库之间提供了一条桥梁，前台的对象型数据和数据库中的关系型的数据通过这个桥梁来相互转化。</p>
-<h3 id="1-1-Sequelize"><a href="#1-1-Sequelize" class="headerlink" title="1.1 Sequelize"></a>1.1 Sequelize</h3><p>Sequelize 是一款比较流行的 ORM 框架</p>
-<h3 id="1-2-Sequelize安装"><a href="#1-2-Sequelize安装" class="headerlink" title="1.2 Sequelize安装"></a>1.2 Sequelize安装</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install sequelize --save</span><br></pre></td></tr></table></figure>
+            <h2 id="1-Flask-SocketIO介绍"><a href="#1-Flask-SocketIO介绍" class="headerlink" title="1. Flask-SocketIO介绍"></a>1. Flask-SocketIO介绍</h2><p>Flask是python的web框架,Flask-SocketIO使Flask应用程序可以访问客户端和服务器之间的低延迟双向通信。</p>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><ul>
+<li><p>pycharm新建flask项目</p>
+</li>
+<li><p>搭建虚拟环境</p>
+</li>
+</ul>
+<p>虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响。</p>
+<p>安装虚拟环境</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m venv venv</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-通过scquelize与数据库建立连接"><a href="#2-通过scquelize与数据库建立连接" class="headerlink" title="2.通过scquelize与数据库建立连接"></a>2.通过scquelize与数据库建立连接</h2><h3 id="2-1-创建sequelize实例"><a href="#2-1-创建sequelize实例" class="headerlink" title="2.1 创建sequelize实例"></a>2.1 创建sequelize实例</h3><p>要连接到数据库，必须创建一个Sequelize实例。这可以通过将连接参数分别传递到Sequelize构造函数或通过传递单个连接URI来完成：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'mariadb://user:pass@localhost:3306/dbname'</span>);</span><br></pre></td></tr></table></figure>
+<p>激活虚拟环境</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-测试连接"><a href="#2-2-测试连接" class="headerlink" title="2.2 测试连接"></a>2.2 测试连接</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sequelize</span><br><span class="line">  .authenticate()</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Connection has been established successfully.'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Unable to connect to the database:'</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><em>退出虚拟环境</em></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
 
-<p>通过</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">module</span>.exports = sequelize</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建需求文件requirement.txt，放置记录所有依赖包及其精确的版本号，以便新环境部署</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch requirement.txt</span><br></pre></td></tr></table></figure>
 
-<p>将sequelize模块导出。</p>
-<h3 id="2-3-建模表格"><a href="#2-3-建模表格" class="headerlink" title="2.3 建模表格"></a>2.3 建模表格</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../db'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="hljs-keyword">const</span> Model = Sequelize.Model;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-comment">//class User 继承 Model &#123;&#125;</span></span><br><span class="line">User.init(&#123;</span><br><span class="line">  <span class="hljs-comment">// User初始化</span></span><br><span class="line">  username: &#123;</span><br><span class="line">    type: Sequelize.STRING,</span><br><span class="line">  &#125;,</span><br><span class="line">  password: &#123;</span><br><span class="line">    type: Sequelize.STRING</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  createdAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  updatedAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  tableName: <span class="hljs-string">'zhuzhu'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = User;</span><br></pre></td></tr></table></figure>
+<p>requirement.txt:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">flask</span><br><span class="line">flask-appconfig</span><br><span class="line">flask-bootstrap</span><br><span class="line">flask-nav</span><br><span class="line">flask-sqlalchemy</span><br><span class="line">flask-login</span><br><span class="line">flask-debug</span><br><span class="line">flask-wtf</span><br><span class="line">flask-admin</span><br><span class="line">flask-sqlacodegen  <span class="hljs-comment">#创建数据库模型</span></span><br><span class="line">flask-babelex</span><br><span class="line">flask-httpauth</span><br><span class="line">flask-session</span><br><span class="line">flask-cors  <span class="hljs-comment">#跨域配置</span></span><br><span class="line">pymysql  <span class="hljs-comment">#python3连接数据库mysql的库</span></span><br><span class="line">requests</span><br><span class="line">flask-socketio  <span class="hljs-comment">#建立客户端与服务端双向通信</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-4-查询"><a href="#2-4-查询" class="headerlink" title="2.4 查询"></a>2.4 查询</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> router = express.Router();</span><br><span class="line"><span class="hljs-keyword">let</span> User = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../model/User'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> _user = <span class="hljs-literal">null</span>;</span><br><span class="line"><span class="hljs-comment">/* GET home page. */</span></span><br><span class="line">router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>&#123;</span><br><span class="line">  User.findAll().then(<span class="hljs-function"><span class="hljs-params">users</span> =&gt;</span> &#123;</span><br><span class="line">    _us = <span class="hljs-built_in">JSON</span>.stringify(users, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>)</span><br><span class="line">    <span class="hljs-comment">//JSON.stringify()</span></span><br><span class="line">    <span class="hljs-comment">//第一个参数：被转换的值</span></span><br><span class="line">    <span class="hljs-comment">//第二个参数：被转换的字符串属性</span></span><br><span class="line">    <span class="hljs-comment">//第三个参数：如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"All users:"</span>, <span class="hljs-built_in">JSON</span>.stringify(_user, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">  res.render(<span class="hljs-string">'index'</span>, &#123; <span class="hljs-attr">title</span>: _user &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>安装依赖包，安装requirement.txt依赖</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install -r requirement.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="flask-使用"><a href="#flask-使用" class="headerlink" title="flask 使用"></a>flask 使用</h2><ul>
+<li>创建flask实例对象</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构建实例对象从URL到python函数的映射关系</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(<span class="hljs-string">'/'</span>)</span><br><span class="line">def index():</span><br><span class="line">    <span class="hljs-built_in">return</span> <span class="hljs-string">'hello word'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动服务器</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>端口号设置</li>
+</ul>
+<p>PyCharm =&gt; edit Configurations =&gt; additional options =&gt; –port {NUMBER}</p>
+<h2 id="flask-socketio使用"><a href="#flask-socketio使用" class="headerlink" title="flask-socketio使用"></a>flask-socketio使用</h2><ul>
+<li>引入flask_socketio、flask_cors</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask_socketio import SocketIO, join_room, leave_room, send, emit</span><br><span class="line">from flask_cors import CORS</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">cors = CORS(app)  <span class="hljs-comment">#允许跨域</span></span><br><span class="line">app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'secret!'</span>  <span class="hljs-comment">#配置秘钥</span></span><br><span class="line">socketio = SocketIO(app, cors_allowed_origins=<span class="hljs-string">'*'</span>)  <span class="hljs-comment">#配置允许跨域访问的源，</span></span><br><span class="line">*表示全部允许</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    socketio.run(app)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建聊天房间</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'join'</span>)  <span class="hljs-comment">#监听key值</span></span><br><span class="line">def on_join(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    join_room(room)  <span class="hljs-comment">#加入房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has entered the room.'</span>, room=room)</span><br><span class="line"></span><br><span class="line">@socketio.on(<span class="hljs-string">'leave'</span>)</span><br><span class="line">def on_leave(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    leave_room(room)  <span class="hljs-comment">#离开房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has left the room.'</span>, room=room)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据存入数据库"><a href="#数据存入数据库" class="headerlink" title="数据存入数据库"></a>数据存入数据库</h2><ul>
+<li>生成model.py文件</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flask-sqlacodegen <span class="hljs-string">'mysql+pymysql://root:password@127.0.0.1/test'</span> --tables message --outfile <span class="hljs-string">"model.py"</span>  --flask</span><br></pre></td></tr></table></figure>
+
+<p>使用sqlacodegen声明数据模型:</p>
+<p>model.py:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from flask_sqlalchemy import SQLAlchemy</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line">class Message(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'message'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    message_content = db.Column(db.String(140), nullable=False)</span><br><span class="line">    author = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class User(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'user'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    nickname = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>app.py中:</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from model import db, Message</span><br><span class="line"></span><br><span class="line">app.config[<span class="hljs-string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="hljs-string">'mysql+pymysql://user:password@localhost:3306/databaseName'</span>  <span class="hljs-comment">#通过sqlacodegen将数据库与flask连接</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>socket.io监听数据并将数据存入数据库</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'msg'</span>)</span><br><span class="line">def on_msg(data):</span><br><span class="line">    author = data[<span class="hljs-string">'author'</span>]</span><br><span class="line">    message_content = data[<span class="hljs-string">'message'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    <span class="hljs-built_in">print</span>(author + <span class="hljs-string">' in '</span> + room + <span class="hljs-string">' says: '</span> + data[<span class="hljs-string">'message'</span>])</span><br><span class="line">    message = Message(</span><br><span class="line">        author=author,</span><br><span class="line">        message_content=message_content</span><br><span class="line">    )</span><br><span class="line">    db.session.add(message)  <span class="hljs-comment">#将message存入</span></span><br><span class="line">    db.session.commit()  <span class="hljs-comment">#保存</span></span><br><span class="line">    res = &#123;</span><br><span class="line">        <span class="hljs-string">'author'</span>: author,</span><br><span class="line">        <span class="hljs-string">'message_content'</span>: message_content</span><br><span class="line">    &#125;</span><br><span class="line">    emit(<span class="hljs-string">'broadcast_msg'</span>, res, room=room)</span><br></pre></td></tr></table></figure>
+
+
         </div>
         
         
@@ -192,17 +255,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/28/Node-js之request模块/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Node.js之request模块</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/23/node-js入门/">
-                <span class="level-item">node.js入门</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/03/Vue-chat/">
+                <span class="level-item">vue.js + express + socket.io 聊天室项目实战</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -699,7 +755,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="express框架连接数据库" height="28">
+                    <img src="/images/logo.svg" alt="Flask-SocketIO" height="28">
                 
                 </a>
                 <p class="is-size-7">

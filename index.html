@@ -135,6 +135,124 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 677 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/09/Flask-SocketIO/">Flask-SocketIO</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-Flask-SocketIO介绍"><a href="#1-Flask-SocketIO介绍" class="headerlink" title="1. Flask-SocketIO介绍"></a>1. Flask-SocketIO介绍</h2><p>Flask是python的web框架,Flask-SocketIO使Flask应用程序可以访问客户端和服务器之间的低延迟双向通信。</p>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><ul>
+<li><p>pycharm新建flask项目</p>
+</li>
+<li><p>搭建虚拟环境</p>
+</li>
+</ul>
+<p>虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响。</p>
+<p>安装虚拟环境</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m venv venv</span><br></pre></td></tr></table></figure>
+
+<p>激活虚拟环境</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
+
+<p><em>退出虚拟环境</em></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建需求文件requirement.txt，放置记录所有依赖包及其精确的版本号，以便新环境部署</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch requirement.txt</span><br></pre></td></tr></table></figure>
+
+<p>requirement.txt:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">flask</span><br><span class="line">flask-appconfig</span><br><span class="line">flask-bootstrap</span><br><span class="line">flask-nav</span><br><span class="line">flask-sqlalchemy</span><br><span class="line">flask-login</span><br><span class="line">flask-debug</span><br><span class="line">flask-wtf</span><br><span class="line">flask-admin</span><br><span class="line">flask-sqlacodegen  <span class="hljs-comment">#创建数据库模型</span></span><br><span class="line">flask-babelex</span><br><span class="line">flask-httpauth</span><br><span class="line">flask-session</span><br><span class="line">flask-cors  <span class="hljs-comment">#跨域配置</span></span><br><span class="line">pymysql  <span class="hljs-comment">#python3连接数据库mysql的库</span></span><br><span class="line">requests</span><br><span class="line">flask-socketio  <span class="hljs-comment">#建立客户端与服务端双向通信</span></span><br></pre></td></tr></table></figure>
+
+<p>安装依赖包，安装requirement.txt依赖</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install -r requirement.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="flask-使用"><a href="#flask-使用" class="headerlink" title="flask 使用"></a>flask 使用</h2><ul>
+<li>创建flask实例对象</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构建实例对象从URL到python函数的映射关系</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(<span class="hljs-string">'/'</span>)</span><br><span class="line">def index():</span><br><span class="line">    <span class="hljs-built_in">return</span> <span class="hljs-string">'hello word'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动服务器</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>端口号设置</li>
+</ul>
+<p>PyCharm =&gt; edit Configurations =&gt; additional options =&gt; –port {NUMBER}</p>
+<h2 id="flask-socketio使用"><a href="#flask-socketio使用" class="headerlink" title="flask-socketio使用"></a>flask-socketio使用</h2><ul>
+<li>引入flask_socketio、flask_cors</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask_socketio import SocketIO, join_room, leave_room, send, emit</span><br><span class="line">from flask_cors import CORS</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">cors = CORS(app)  <span class="hljs-comment">#允许跨域</span></span><br><span class="line">app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'secret!'</span>  <span class="hljs-comment">#配置秘钥</span></span><br><span class="line">socketio = SocketIO(app, cors_allowed_origins=<span class="hljs-string">'*'</span>)  <span class="hljs-comment">#配置允许跨域访问的源，</span></span><br><span class="line">*表示全部允许</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    socketio.run(app)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建聊天房间</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'join'</span>)  <span class="hljs-comment">#监听key值</span></span><br><span class="line">def on_join(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    join_room(room)  <span class="hljs-comment">#加入房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has entered the room.'</span>, room=room)</span><br><span class="line"></span><br><span class="line">@socketio.on(<span class="hljs-string">'leave'</span>)</span><br><span class="line">def on_leave(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    leave_room(room)  <span class="hljs-comment">#离开房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has left the room.'</span>, room=room)</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据存入数据库"><a href="#数据存入数据库" class="headerlink" title="数据存入数据库"></a>数据存入数据库</h2><ul>
+<li>生成model.py文件</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flask-sqlacodegen <span class="hljs-string">'mysql+pymysql://root:password@127.0.0.1/test'</span> --tables message --outfile <span class="hljs-string">"model.py"</span>  --flask</span><br></pre></td></tr></table></figure>
+
+<p>使用sqlacodegen声明数据模型:</p>
+<p>model.py:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from flask_sqlalchemy import SQLAlchemy</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line">class Message(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'message'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    message_content = db.Column(db.String(140), nullable=False)</span><br><span class="line">    author = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class User(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'user'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    nickname = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>app.py中:</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from model import db, Message</span><br><span class="line"></span><br><span class="line">app.config[<span class="hljs-string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="hljs-string">'mysql+pymysql://user:password@localhost:3306/databaseName'</span>  <span class="hljs-comment">#通过sqlacodegen将数据库与flask连接</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>socket.io监听数据并将数据存入数据库</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'msg'</span>)</span><br><span class="line">def on_msg(data):</span><br><span class="line">    author = data[<span class="hljs-string">'author'</span>]</span><br><span class="line">    message_content = data[<span class="hljs-string">'message'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    <span class="hljs-built_in">print</span>(author + <span class="hljs-string">' in '</span> + room + <span class="hljs-string">' says: '</span> + data[<span class="hljs-string">'message'</span>])</span><br><span class="line">    message = Message(</span><br><span class="line">        author=author,</span><br><span class="line">        message_content=message_content</span><br><span class="line">    )</span><br><span class="line">    db.session.add(message)  <span class="hljs-comment">#将message存入</span></span><br><span class="line">    db.session.commit()  <span class="hljs-comment">#保存</span></span><br><span class="line">    res = &#123;</span><br><span class="line">        <span class="hljs-string">'author'</span>: author,</span><br><span class="line">        <span class="hljs-string">'message_content'</span>: message_content</span><br><span class="line">    &#125;</span><br><span class="line">    emit(<span class="hljs-string">'broadcast_msg'</span>, res, room=room)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time>
                 
                 
@@ -1107,46 +1225,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 0 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/16/微信小程序form提交/">微信小程序form提交.md.</a>
-            
-        </h1>
-        <div class="content">
-            
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1206,7 +1284,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        13
+                        14
                     </p>
                 </div>
             </div>
@@ -1318,6 +1396,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time></div>
+                    <a href="/2019/10/09/Flask-SocketIO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flask-SocketIO</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/03/Vue-chat/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
@@ -1392,25 +1489,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1429,7 +1507,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1490,6 +1568,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time></div>
+                    <a href="/2019/10/09/Flask-SocketIO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flask-SocketIO</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/03/Vue-chat/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
@@ -1564,25 +1661,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之request模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之request模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之request模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之request模块</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1601,7 +1679,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
