@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>unknown - Super Swanner</title>
+<title>进制 - Super Swanner</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="unknown" height="28">
+                <img src="/images/logo.svg" alt="进制" height="28">
             
             </a>
         </div>
@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 512 words)
+                    4 minutes read (About 608 words)
                 </span>
                 
                 
@@ -149,11 +149,50 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                unknown
+                进制
             
         </h1>
         <div class="content">
-            <h2 id="1-位运算"><a href="#1-位运算" class="headerlink" title="1. 位运算"></a>1. 位运算</h2><h3 id="1-1-and运算-amp"><a href="#1-1-and运算-amp" class="headerlink" title="1,1 and运算 &amp;"></a>1,1 and运算 &amp;</h3><p>and运算通常用于二进制的取位操作，可以用来判断一个整数的奇偶，二进制的最末位为0表示该数为偶数，最末位为1表示该数为奇数。<br>相同位的两个数字都为1，则为1；若有一个不为1，则为0。</p>
+            <h2 id="1-位运算符"><a href="#1-位运算符" class="headerlink" title="1. 位运算符"></a>1. 位运算符</h2><table>
+<thead>
+<tr>
+<th></th>
+<th align="center">位运算符</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="center">&amp;</td>
+<td>相同位的两个数字都为1，则为1；若有一个不为1，则为0。</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="center">|</td>
+<td>相同位只要一个为1即为1。</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="center">^</td>
+<td>某位不同则该位为1, 否则该位为0.</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="center">~</td>
+<td>把内存中的0和1全部取反</td>
+</tr>
+<tr>
+<td>5</td>
+<td align="center">&lt;&lt;</td>
+<td>a &lt;&lt; b就表示把a转为二进制后左移b位（在后面添b个0）, a shl b的值实际上就是a乘以2的b次方</td>
+</tr>
+<tr>
+<td>6</td>
+<td align="center">&gt;&gt;</td>
+<td>a &gt;&gt; b表示二进制右移b位（去掉末b位），相当于a除以2的b次方（取整）</td>
+</tr>
+</tbody></table>
+<h3 id="1-1-与-amp"><a href="#1-1-与-amp" class="headerlink" title="1,1 与 &amp;"></a>1,1 与 &amp;</h3><p>用来判断一个整数的奇偶，二进制的最末位为0表示该数为偶数，最末位为1表示该数为奇数。</p>
 <h3 id="1-2-or运算"><a href="#1-2-or运算" class="headerlink" title="1.2 or运算 |"></a>1.2 or运算 |</h3><p>or运算通常用于二进制特定位上的无条件赋值，例如一个数or 1的结果就是把二进制最末位强行变成1。如果需要把二进制最末位变成0，对这个数or 1之后再减一就可以了，其实际意义就是把这个数强行变成最接近的偶数。<br>相同位只要一个为1即为1。</p>
 <h3 id="1-3-xor运算"><a href="#1-3-xor运算" class="headerlink" title="1.3 xor运算 ^"></a>1.3 xor运算 ^</h3><p>异或的符号是^。按位异或运算, 对等长二进制模式按位或二进制数的每一位执行逻辑按位异或操作. 操作的结果是如果某位不同则该位为1, 否则该位为0.</p>
 <h3 id="1-4-not运算"><a href="#1-4-not运算" class="headerlink" title="1.4 not运算 ~"></a>1.4 not运算 ~</h3><p>not运算的定义是把内存中的0和1全部取反。使用not运算时要格外小心，你需要注意整数类型有没有符号。如果not的对象是无符号整数（不能表示负数），那么得到的值就是它与该类型上界的差，因为无符号类型的数是用00到$FFFF依次表示的。</p>
@@ -242,7 +281,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        15
                     </p>
                 </div>
             </div>
@@ -354,6 +393,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/12/flask/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
+                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
@@ -413,33 +471,14 @@
             
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">unknown</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -465,7 +504,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -526,6 +565,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/12/flask/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
+                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
@@ -585,33 +643,14 @@
             
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">unknown</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -637,7 +676,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -690,7 +729,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="unknown" height="28">
+                    <img src="/images/logo.svg" alt="进制" height="28">
                 
                 </a>
                 <p class="is-size-7">

@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Node.js之request模块 - Super Swanner</title>
+<title>flask - Super Swanner</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Node.js之request模块" height="28">
+                <img src="/images/logo.svg" alt="flask" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time>
+                <time class="level-item has-text-grey" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 272 words)
+                    a few seconds read (About 14 words)
                 </span>
                 
                 
@@ -149,34 +149,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Node.js之request模块
+                flask
             
         </h1>
         <div class="content">
-            <h2 id="1-request介绍"><a href="#1-request介绍" class="headerlink" title="1. request介绍"></a>1. request介绍</h2><p>node中，http模块也可作为客户端使用（发送请求），第三方模块request对其使用方法进行了封装，操作更方便。</p>
-<h2 id="2-request安装"><a href="#2-request安装" class="headerlink" title="2. request安装"></a>2. request安装</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install request --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p><strong>引入request</strong></p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-1-GET"><a href="#3-1-GET" class="headerlink" title="3.1 GET"></a>3.1 GET</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 发送Get请求</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数:请求的完整URL,包括参数</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数:请求结果回调函数,会传入3个参数,第一个错误,第二个响应对象,第三个请求数据</span></span><br><span class="line">request(url,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, data</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-POST"><a href="#3-2-POST" class="headerlink" title="3.2 POST"></a>3.2 POST</h4><p>post请求有3种方式，由请求头中的content-type决定，属于哪一种post请求:</p>
-<ul>
-<li>application/x-www-form-urlencoded</li>
-<li>application/json</li>
-<li>multipart/form-data</li>
-</ul>
-<p><strong>1.application/x-www-form-urlencoded</strong></p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">form</span>:&#123;<span class="hljs-attr">key</span>:<span class="hljs-string">'value'</span>&#125;&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>2.application/json</strong></p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="hljs-string">"POST"</span>,</span><br><span class="line">    json: <span class="hljs-literal">true</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"application/json"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="hljs-built_in">JSON</span>.stringify(requestData)</span><br><span class="line">&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.multipart/form-data</strong></p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> formData = &#123;</span><br><span class="line">    <span class="hljs-comment">// Pass a simple key-value pair</span></span><br><span class="line">    my_field: <span class="hljs-string">'my_value'</span>,</span><br><span class="line">    <span class="hljs-comment">// Pass data via Buffers</span></span><br><span class="line">    my_buffer: <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),</span><br><span class="line">    <span class="hljs-comment">// Pass data via Streams</span></span><br><span class="line">    my_file: fs.createReadStream(__dirname + <span class="hljs-string">'/unicycle.jpg'</span>),</span><br><span class="line">&#125;;</span><br><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">formData</span>: formData&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) </span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
+            <h2 id="flask-全局变量g"><a href="#flask-全局变量g" class="headerlink" title="flask 全局变量g"></a>flask 全局变量g</h2><h2 id="flask-session组件"><a href="#flask-session组件" class="headerlink" title="flask-session组件"></a>flask-session组件</h2><h2 id="lask-caching组件"><a href="#lask-caching组件" class="headerlink" title="lask_caching组件"></a>lask_caching组件</h2>
         </div>
         
         
@@ -200,17 +177,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/28/Node-js之fs模块/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Node.js之fs模块</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/27/express框架连接数据库/">
-                <span class="level-item">express框架连接数据库</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/09/Flask-SocketIO/">
+                <span class="level-item">Flask-SocketIO</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -707,7 +677,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Node.js之request模块" height="28">
+                    <img src="/images/logo.svg" alt="flask" height="28">
                 
                 </a>
                 <p class="is-size-7">

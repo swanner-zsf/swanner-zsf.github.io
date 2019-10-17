@@ -135,6 +135,287 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1427 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/19/JavaScript基础/">JavaScript基础</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="1-Array"><a href="#1-Array" class="headerlink" title="1. Array"></a>1. Array</h1><h2 id="1-1-熟悉"><a href="#1-1-熟悉" class="headerlink" title="1.1 熟悉"></a>1.1 熟悉</h2><ul>
+<li>toString()</li>
+<li>push() 数组末尾添加元素，<strong>并返回添加元素后的数组长度。</strong></li>
+<li>pop() 删除数组的最后一个元素，<strong>并返回该删除元素。</strong></li>
+<li>reverse() 用于颠倒排列数组元素，返回改变后的数组。</li>
+</ul>
+<h2 id="1-2-不熟悉"><a href="#1-2-不熟悉" class="headerlink" title="1.2 不熟悉"></a>1.2 不熟悉</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Array.isArray()</td>
+<td>判断是否为数组,返回布尔值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valueOf()</td>
+<td>数组的valueOf()方法返回数组本身</td>
+</tr>
+<tr>
+<td>3</td>
+<td>shift()</td>
+<td>用于删除数组的第一个元素，并返回该元素</td>
+</tr>
+<tr>
+<td>4</td>
+<td>unshift()</td>
+<td>在数组的第一个位置添加元素，并返回添加新元素后的数组长度</td>
+</tr>
+<tr>
+<td>5</td>
+<td>join()</td>
+<td>以指定参数作为分隔符，将所有数组元素连接成为一个字符串返回</td>
+</tr>
+<tr>
+<td>6</td>
+<td>concat()</td>
+<td>用于多个数组的合并</td>
+</tr>
+<tr>
+<td>7</td>
+<td>slice()</td>
+<td>用于提取目标数组的一部分，返回一个新数组。第一个参数为起始位置，第二个参数为终止位置，如果省略第二个参数，则一直返回到数组最后一个元素 <strong>（重要应用：将类似数组的对象转为真正的数组</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>splice(start, count, addElement1, …)</td>
+<td>第一个参数是删除的起始位置，第二个参数是被删除的个数，后面的参数表示要被插入数组的新元素。<strong>（如果只是单纯地插入元素，第二个参数可以设为0；如果只提供第一个参数，等同于将原数组在指定位置拆分成两个数组）</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>sort()</td>
+<td>数值先被转成字符串再按字典排序;  <strong>自定义排序：传入一个函数作为参数</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>map()</td>
+<td>将数组的所有成员依次传入参数函数</td>
+</tr>
+<tr>
+<td>11</td>
+<td>forEach()</td>
+<td>forEach()无法中断执行，总是会将所有成员遍历完。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>filter()</td>
+<td>过滤数组成员，返回新数组，filter方法的参数函数可以接受三个参数：当前成员，当前位置和整个数组。filter方法还可以接受第二个参数，用来绑定参数函数内部的this变量。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>some(), every()</td>
+<td>接受一个函数作为参数，该函数接受三个参数：当前成员、当前位置和整个数组，然后返回一个布尔值。</td>
+</tr>
+<tr>
+<td>14</td>
+<td>reduce(), reduceRight()</td>
+<td>依次处理数组的每个成员，它的参数函数接受以下4个参数：1.累积变量，默认为数组的第一个成员 2.当前变量，默认为数组的第二个成员 3.当前位置（从0开始）4.原数组</td>
+</tr>
+<tr>
+<td>15</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>返回给定元素在数组中第一次和最后一次出现的位置， 如果没有出现则返回-1。</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-Array要点"><a href="#1-3-Array要点" class="headerlink" title="1.3 Array要点"></a>1.3 Array要点</h2><p>构造函数写法 new Array() 缺陷：<br>不同的参数会导致行为不一致，因此不建议使用它生成新数组，直接使用数组字面量更好：  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2];</span><br></pre></td></tr></table></figure>
+
+<p>判断对象类型：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-String"><a href="#2-String" class="headerlink" title="2. String"></a>2. String</h1><h2 id="2-1-String实例属性"><a href="#2-1-String实例属性" class="headerlink" title="2.1 String实例属性"></a>2.1 String实例属性</h2><p>String.prototype.length</p>
+<h2 id="2-2-String实例方法"><a href="#2-2-String实例方法" class="headerlink" title="2.2 String实例方法"></a>2.2 String实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>charAt()</td>
+<td>返回指定位置的字符，可以用数组下标代替</td>
+</tr>
+<tr>
+<td>2</td>
+<td>concat()</td>
+<td>连接两个字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slice()</td>
+<td>从原数组取出字符串并返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>substring()</td>
+<td>与slice()方法相似，不同之处：substring()会将负数的参数自动变成0；当第二个参数小于第一个参数，会自动互换位置。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>substr()</td>
+<td>与slice(),substring()相似，不同之处：如果第一个参数是负数，表示倒数计算的字符位置。如果第二个参数是负数，将被自动转为0，因此会返回空字符串。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>可以接受第二个参数，表示从该位置向后（向前）匹配。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>trim()</td>
+<td>去除字符串两端的空格，返回一个新字符串，不改变原字符串</td>
+</tr>
+<tr>
+<td>8</td>
+<td>toLowerCase()/  toUpperCase()</td>
+<td>全部转为小写/全部转为大写</td>
+</tr>
+<tr>
+<td>9</td>
+<td>match()</td>
+<td>用于确定原字符串是否匹配某个子字符串，返回匹配的第一个字符串，没找到返回null;返回的数组还有index属性和input属性，分别表示匹配字符串开始的位置和原始字符串。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>search(), replace()</td>
+<td>基本等同于match(),返回值为匹配的第一个位置，没找到返回-1；replace() 一般情况下只替换第一个匹配。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>split()</td>
+<td>分割字符串，第二个参数限定返回数组的最大成员数。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>localeCompare()</td>
+<td>比较两个字符串：&lt;0,0,&gt;0</td>
+</tr>
+</tbody></table>
+<h1 id="3-Math"><a href="#3-Math" class="headerlink" title="3. Math"></a>3. Math</h1><h2 id="3-1-Math静态属性"><a href="#3-1-Math静态属性" class="headerlink" title="3.1 Math静态属性"></a>3.1 Math静态属性</h2><p>Math.E: 常数e<br>Math.PI: 常数π</p>
+<h2 id="3-2-Math静态方法"><a href="#3-2-Math静态方法" class="headerlink" title="3.2 Math静态方法"></a>3.2 Math静态方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Math.abs()</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Math.ceil()</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Math.floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Math.max()</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Math.min()</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Math.round()</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Math.random</td>
+<td>随机值</td>
+</tr>
+</tbody></table>
+<h1 id="4-Number"><a href="#4-Number" class="headerlink" title="4. Number"></a>4. Number</h1><h2 id="4-1-Number静态属性"><a href="#4-1-Number静态属性" class="headerlink" title="4.1 Number静态属性"></a>4.1 Number静态属性</h2><p>Number.POSITIVE_INFINITY：正的无限，指向Infinity。<br>Number.NEGATIVE_INFINITY：负的无限，指向-Infinity。<br>Number.NaN：表示非数值，指向NaN。<br>Number.MIN_VALUE：表示最小的正数（即最接近0的正数，在64位浮点数体系中为5e-324）。<br>Number.MAX_SAFE_INTEGER：表示能够精确表示的最大整数，即9007199254740991。<br>Number.MIN_SAFE_INTEGER：表示能够精确表示的最小整数，即-9007199254740991。</p>
+<h2 id="4-2-Number实例方法"><a href="#4-2-Number实例方法" class="headerlink" title="4.2 Number实例方法"></a>4.2 Number实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Number.prototype.toString()</td>
+<td>用来将一个数值转为字符串形式</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Number.prototype.toFixed()</td>
+<td>将一个数转为指定位数的小数，然后返回这个小数对应的字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Number.prototype.toExponential()</td>
+<td>将一个数转为科学计数法形式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Number.prototype.toPrecision()</td>
+<td>将一个数转为指定位数的有效数字</td>
+</tr>
+</tbody></table>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time>
                 
                 
@@ -386,7 +667,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        15
                     </p>
                 </div>
             </div>
@@ -498,6 +779,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/12/flask/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
+                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
@@ -557,33 +857,14 @@
             
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">unknown</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -609,7 +890,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -670,6 +951,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/12/flask/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
+                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
@@ -729,33 +1029,14 @@
             
             <a href="/2019/09/29/unknow/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="unknown">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">unknown</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/28/Node-js之fs模块/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Node.js之fs模块">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time></div>
-                    <a href="/2019/09/28/Node-js之fs模块/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Node.js之fs模块</a>
+                    <a href="/2019/09/29/unknow/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -781,7 +1062,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
