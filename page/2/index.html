@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 890 words)
+                    7 minutes read (About 1015 words)
                 </span>
                 
                 
@@ -242,7 +242,7 @@
 <h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-new-Vuex-Store"><a href="#3-3-new-Vuex-Store" class="headerlink" title="3.3 new Vuex.Store"></a>3.3 new Vuex.Store</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="hljs-number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-new-Vuex-Store"><a href="#3-3-new-Vuex-Store" class="headerlink" title="3.3 new Vuex.Store"></a>3.3 new Vuex.Store</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="hljs-number">123</span>,</span><br><span class="line">    todos: [],</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.todos.length,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.count++</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment (context) &#123;  <span class="hljs-comment">//Action函数接受一个与 store 实例具有相同方法和属性的 context 对象</span></span><br><span class="line">      context.commit(<span class="hljs-string">'increment'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -273,6 +273,14 @@
 <td>异步操作,在组件中使用是$store.dispath(‘’)</td>
 </tr>
 </tbody></table>
+<p>注意:</p>
+<ul>
+<li>Action 提交的是 mutation，而不是直接变更状态。</li>
+<li>Action 可以包含任意异步操作。</li>
+</ul>
+<p>Action方法调用mutation方法(简化代码):</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    increment (state) &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.count++</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">actions: &#123;</span><br><span class="line">  increment (&#123; commit &#125;) &#123;  <span class="hljs-comment">//通过commit提交一个 mutation方法</span></span><br><span class="line">    commit(<span class="hljs-string">'increment'</span>)  <span class="hljs-comment">//调用mutations内的方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="3-4-将store中的对象传入子组件"><a href="#3-4-将store中的对象传入子组件" class="headerlink" title="3.4 将store中的对象传入子组件"></a>3.4 将store中的对象传入子组件</h3><ul>
 <li>方法1</li>
 </ul>
