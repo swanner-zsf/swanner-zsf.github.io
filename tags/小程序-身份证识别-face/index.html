@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 221 words)
+                    2 minutes read (About 225 words)
                 </span>
                 
                 
@@ -165,12 +165,12 @@
         </h1>
         <div class="content">
             <h2 id="小程序拍照并本地保存"><a href="#小程序拍照并本地保存" class="headerlink" title="小程序拍照并本地保存"></a>小程序拍照并本地保存</h2><p>拍摄身份证得到照片，将照片路径保存至data中：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- camera.wxml --&gt;</span><br><span class="line">&lt;camera device-position=&quot;back&quot; flash=&quot;off&quot; binderror=&quot;error&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/camera&gt;</span><br><span class="line">&lt;button type=&quot;primary&quot; bindtap=&quot;takePhoto&quot;&gt;拍照&lt;/button&gt;</span><br><span class="line">&lt;view&gt;预览&lt;/view&gt;</span><br><span class="line">&lt;image mode=&quot;widthFix&quot; src=&quot;&#123;&#123;src&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- camera.wxml --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">"back"</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">"off"</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">"error"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100%; height: 300px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">camera</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">"takePhoto"</span>&gt;</span>拍照<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>预览<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"widthFix"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&#123;&#123;src&#125;&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: &apos;high&apos;,</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// camera.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  takePhoto() &#123;</span><br><span class="line">    const ctx = wx.createCameraContext()</span><br><span class="line">    ctx.takePhoto(&#123;</span><br><span class="line">      quality: 'high',</span><br><span class="line">      success: (res) =&gt; &#123;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">          src: res.tempImagePath</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  error(e) &#123;</span><br><span class="line">    console.log(e.detail)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="照片转base64编码格式"><a href="#照片转base64编码格式" class="headerlink" title="照片转base64编码格式"></a>照片转base64编码格式</h2><p>通过微信小程序文件管理器wx.getFileSystemManager获得照片路径，通过encoding将它转为base64编码格式。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: &apos;base64&apos;,</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = &apos;data:image/png;base64,&apos; + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">  filePath: this.data.src,</span><br><span class="line">  encoding: 'base64',</span><br><span class="line">  success: res =&gt; &#123;</span><br><span class="line">    let _img_base64 = 'data:image/png;base64,' + res.data;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h2 id="调用face-API"><a href="#调用face-API" class="headerlink" title="调用face++ API"></a>调用face++ API</h2><h3 id="通过wx-request向face-请求回数据"><a href="#通过wx-request向face-请求回数据" class="headerlink" title="通过wx.request向face++请求回数据"></a>通过wx.request向face++请求回数据</h3><p>请求参数(必选）:   </p>
 <ul>
@@ -178,9 +178,7 @@
 <li>api_secret: “xxx” </li>
 <li>image_url / image_file / image_base64  </li>
 </ul>
-<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: &apos;https://api-cn.faceplusplus.com/cardpp/v1/ocridcard&apos;,</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: &apos;&apos;,</span><br><span class="line">		api_secret: &apos;&apos;,</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: &quot;POST&quot;,</span><br><span class="line">	header: &#123;</span><br><span class="line">		&apos;content-type&apos;: &apos;application/x-www-form-urlencoded&apos; // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
-
-
+<h3 id="数据返回成功后，将数据保存"><a href="#数据返回成功后，将数据保存" class="headerlink" title="数据返回成功后，将数据保存"></a>数据返回成功后，将数据保存</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">	url: 'https://api-cn.faceplusplus.com/cardpp/v1/ocridcard',</span><br><span class="line">	data: &#123;</span><br><span class="line">		api_key: '',</span><br><span class="line">		api_secret: '',</span><br><span class="line">		image_base64: _img_base64</span><br><span class="line">	&#125;,</span><br><span class="line">	method: "POST",</span><br><span class="line">	header: &#123;</span><br><span class="line">		'content-type': 'application/x-www-form-urlencoded' // 默认值</span><br><span class="line">	&#125;,</span><br><span class="line">	success: function(res) &#123;</span><br><span class="line">		that.setData(&#123;</span><br><span class="line">		  identity : res.data.cards[0]</span><br><span class="line">		&#125;);</span><br><span class="line">		console.log(that.data.identity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -235,7 +233,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -347,6 +345,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -421,25 +438,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -458,7 +456,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -519,6 +517,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -593,25 +610,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -630,7 +628,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>

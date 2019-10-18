@@ -135,6 +135,81 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 382 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/18/web-py/">web.py</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>web.py是一款轻量级的python web开发框架，简单、高效，适合作为python web开发的入门框架。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install web.py==0.40</span><br></pre></td></tr></table></figure>
+
+<h2 id="web-py运行"><a href="#web-py运行" class="headerlink" title="web.py运行"></a>web.py运行</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> web <span class="hljs-comment">#导入web.py</span></span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">    <span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span> <span class="hljs-comment">#url映射</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span> <span class="hljs-comment">#url处理的类</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, world!"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    app = web.application(urls, globals())</span><br><span class="line">    app.run() <span class="hljs-comment">#启用web应用</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>给模板新建一个目录（命名为 templates），在该目录下新建一个以 .html 结尾的文件:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, world!</span><br></pre></td></tr></table></figure>
+
+<p>调用模板:</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render = web.template.render(<span class="hljs-string">'templates/'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> render.abc() <span class="hljs-comment">#这里的abc是对应于templates下的abc.html的文件名。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><p>安装pymysql</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pymysql</span><br></pre></td></tr></table></figure>
+
+<p>引入pymysql</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br></pre></td></tr></table></figure>
+
+<p>连接数据库</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db = web.database(dbn=<span class="hljs-string">'mysql'</span>, user=<span class="hljs-string">'username'</span>, pw=<span class="hljs-string">'password'</span>, db=<span class="hljs-string">'dbname'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>导入数据库数据</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">    todos = db.select(<span class="hljs-string">'todo'</span>) <span class="hljs-comment">#todo为数据库表格名</span></span><br><span class="line">    <span class="hljs-keyword">return</span> render.index(todos)</span><br></pre></td></tr></table></figure>
+
+<p>然后把URL列表改回来，只保留 /:</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br></pre></td></tr></table></figure>
+
+<p>编辑abc.html,遍历数据显示在客户端</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$def with (todos)</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">$for todo in todos:</span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"t$todo.id"</span>&gt;</span>$todo.title<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p>客户端通过input提交数据:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"add"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"title"</span> /&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Add"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过POST请求，向数据库传入数据，并在服务端刷新显示:</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br><span class="line"><span class="hljs-string">'/add'</span>, <span class="hljs-string">'add'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">add</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">POST</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        i = web.input() <span class="hljs-comment">#web.input 可以访问用户通过form提交的任何数据</span></span><br><span class="line">        n = db.insert(<span class="hljs-string">'todo'</span>, title=i.title) <span class="hljs-comment">#数据库插入数据</span></span><br><span class="line">        web.seeother(<span class="hljs-string">'/'</span>) <span class="hljs-comment">#网页跳转与重定向:POST完成处理后，浏览器会对新网址发出GET请求，完成新跳转。</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time>
                 
                 
@@ -690,7 +765,7 @@
             <h2 id="1-request介绍"><a href="#1-request介绍" class="headerlink" title="1. request介绍"></a>1. request介绍</h2><p>node中，http模块也可作为客户端使用（发送请求），第三方模块request对其使用方法进行了封装，操作更方便。</p>
 <h2 id="2-request安装"><a href="#2-request安装" class="headerlink" title="2. request安装"></a>2. request安装</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install request --save</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p><strong>引入request</strong></p>
+<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p>引入request</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-1-GET"><a href="#3-1-GET" class="headerlink" title="3.1 GET"></a>3.1 GET</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 发送Get请求</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数:请求的完整URL,包括参数</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数:请求结果回调函数,会传入3个参数,第一个错误,第二个响应对象,第三个请求数据</span></span><br><span class="line">request(url,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, data</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -701,13 +776,13 @@
 <li>application/json</li>
 <li>multipart/form-data</li>
 </ul>
-<p><strong>1.application/x-www-form-urlencoded</strong></p>
+<p>1.application/x-www-form-urlencoded</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">form</span>:&#123;<span class="hljs-attr">key</span>:<span class="hljs-string">'value'</span>&#125;&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.application/json</strong></p>
+<p>2.application/json</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="hljs-string">"POST"</span>,</span><br><span class="line">    json: <span class="hljs-literal">true</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"application/json"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="hljs-built_in">JSON</span>.stringify(requestData)</span><br><span class="line">&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><strong>3.multipart/form-data</strong></p>
+<p>3.multipart/form-data</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> formData = &#123;</span><br><span class="line">    <span class="hljs-comment">// Pass a simple key-value pair</span></span><br><span class="line">    my_field: <span class="hljs-string">'my_value'</span>,</span><br><span class="line">    <span class="hljs-comment">// Pass data via Buffers</span></span><br><span class="line">    my_buffer: <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),</span><br><span class="line">    <span class="hljs-comment">// Pass data via Streams</span></span><br><span class="line">    my_file: fs.createReadStream(__dirname + <span class="hljs-string">'/unicycle.jpg'</span>),</span><br><span class="line">&#125;;</span><br><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">formData</span>: formData&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) </span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
@@ -862,180 +937,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-21T15:19:16.000Z">2019-09-21</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 890 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/21/Vue-js入门/">Vue.js入门</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h1><h2 id="1-Vue-js知识点"><a href="#1-Vue-js知识点" class="headerlink" title="1. Vue.js知识点"></a>1. Vue.js知识点</h2><h3 id="1-1-mount-amp-el"><a href="#1-1-mount-amp-el" class="headerlink" title="1.1 $mount() &amp; el"></a>1.1 $mount() &amp; el</h3><p>$mount()为手动挂载，在项目中可用于延时挂载，之后要手动挂载上。new Vue时，el和$mount并没有本质上的不同。</p>
-<p><strong>未答疑：</strong></p>
-<table>
-<thead>
-<tr>
-<th>知识点</th>
-<th>问题</th>
-<th>相关链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>watch?computed</td>
-<td></td>
-<td><a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="noopener">link1</a></td>
-</tr>
-<tr>
-<td>event对象</td>
-<td>$event  $event.target.value</td>
-<td><a href="https://www.jianshu.com/p/6231de02c3e9" target="_blank" rel="noopener">link2</a></td>
-</tr>
-</tbody></table>
-<h2 id="2-iview"><a href="#2-iview" class="headerlink" title="2. iview"></a>2. iview</h2><h3 id="2-1-input"><a href="#2-1-input" class="headerlink" title="2.1 input"></a>2.1 input</h3><p>input数据双向绑定:</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=<span class="hljs-string">"value"</span></span><br></pre></td></tr></table></figure>
-
-<p>input type=”radio” name:<br>name 属性可设置或返回单选按钮的名称。<br>在多个单选按钮存在情况下，设置相同name，可实现单选效果。</p>
-<p>input 遍历绑定</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;label v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"item in arr"</span> :<span class="hljs-keyword">for</span>=<span class="hljs-string">"item"</span>&gt;</span><br><span class="line">    &lt;input :value=<span class="hljs-string">"item"</span>/&gt;&#123;&#123; item &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/label&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        arr: []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>input 修饰符</p>
-<ul>
-<li>.lazy</li>
-</ul>
-<p>在失去焦点的时候才更新，而不是实时更新</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.lazy</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>.number</li>
-</ul>
-<p>自动将用户的输入值转为 Number 类型</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>.trim</li>
-</ul>
-<p>自动过滤用户输入的首尾空格</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.trim</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-监听键盘事件"><a href="#2-2-监听键盘事件" class="headerlink" title="2.2 监听键盘事件"></a>2.2 监听键盘事件</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-input v-model=<span class="hljs-string">"input"</span> @keyup.enter.native=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">i-input</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>绑定事件多一个.native修饰符，是因为iview封装了个div在input标签外面，把原来的事件隐藏了，所以如果不加.native的话，按键不会生效。</p>
-<h3 id="2-3-响应式的数组方法"><a href="#2-3-响应式的数组方法" class="headerlink" title="2.3 响应式的数组方法"></a>2.3 响应式的数组方法</h3><p>响应式：</p>
-<ul>
-<li>push()</li>
-<li>pop()</li>
-<li>shift()…  </li>
-</ul>
-<p>非响应式（html页面不会响应）：</p>
-<ul>
-<li>this.array[0] = “a” (通过数组索引的形式改变数组元素)</li>
-</ul>
-<h3 id="2-4-扩展运算符-…"><a href="#2-4-扩展运算符-…" class="headerlink" title="2.4 扩展运算符(…)"></a>2.4 扩展运算符(…)</h3><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;</span><br><span class="line"><span class="hljs-keyword">let</span> b = &#123; ...a &#125;  <span class="hljs-comment">//&#123; a: 1, b: 2 &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-5-css-scoped-与-module"><a href="#2-5-css-scoped-与-module" class="headerlink" title="2.5 css: scoped 与 module"></a>2.5 css: scoped 与 module</h3><h4 id="2-5-1-scoped"><a href="#2-5-1-scoped" class="headerlink" title="2.5.1 scoped"></a>2.5.1 scoped</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>scoped作用:<br>阻止上层的css样式传递到下层，限制当前css作用域，使其只对当前组件生效。<br>深度作用:<br>如果希望scoped中的某个样式能够作用的更深，影响到子组件，可以使用&gt;&gt;&gt;操作符</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.content &gt;&gt;&gt; .title-wrap &#123;</span><br><span class="line">    font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注意看我将style中的lang=”scss”去掉了，因为加了预处理器后无法正确解析&gt;&gt;&gt;，这种情况可以使用/deep/代替，本质是&gt;&gt;&gt;的别名</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> scoped&gt;</span><br><span class="line">.content &#123;</span><br><span class="line">  /deep/ &#123;</span><br><span class="line">    .title-wrap &#123;</span><br><span class="line">      font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">      color: red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-5-2-module"><a href="#2-5-2-module" class="headerlink" title="2.5.2 module"></a>2.5.2 module</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> <span class="hljs-built_in">module</span>&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>module作用:</p>
-<ul>
-<li>快速定位</li>
-<li>灵活传递到任意子组件</li>
-</ul>
-<p>它在布局中的引用，都需要添加前缀$style,因为通过module作用的style都被保存到$style对象中。</p>
-<h3 id="2-6-disabled"><a href="#2-6-disabled" class="headerlink" title="2.6 disabled"></a>2.6 disabled</h3><p>控制元素是否可用</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button :disable=<span class="hljs-string">"true/false"</span>&gt;&#123;&#123; &#125;&#125;&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-7-filter过滤器"><a href="#2-7-filter过滤器" class="headerlink" title="2.7 filter过滤器"></a>2.7 filter过滤器</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123; msg | change &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">filters: &#123;</span><br><span class="line">  change (value) &#123;</span><br><span class="line"><span class="hljs-actionscript">    <span class="hljs-keyword">return</span> value + <span class="hljs-string">'&#123;STRING&#125;'</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Vuex"><a href="#3-Vuex" class="headerlink" title="3. Vuex"></a>3. Vuex</h2><h3 id="3-1-Vuex介绍"><a href="#3-1-Vuex介绍" class="headerlink" title="3.1 Vuex介绍"></a>3.1 Vuex介绍</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，将我们需要共享的data，使用vuex进行统一集中式的管理。</p>
-<h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-new-Vuex-Store"><a href="#3-3-new-Vuex-Store" class="headerlink" title="3.3 new Vuex.Store"></a>3.3 new Vuex.Store</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="hljs-number">123</span></span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>基本对象</th>
-<th>使用方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>state</td>
-<td>存储状态(变量)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>getters</td>
-<td>对数据获取之前的再次编译，可以理解为state的计算属性。我们在组件中使用 $store.getters.fun()</td>
-</tr>
-<tr>
-<td>3</td>
-<td>mutations</td>
-<td>修改状态，同步操作,在组件中使用$store.commit(‘’,params)</td>
-</tr>
-<tr>
-<td>4</td>
-<td>actions</td>
-<td>异步操作,在组件中使用是$store.dispath(‘’)</td>
-</tr>
-</tbody></table>
-<h3 id="3-4-将store中的对象传入子组件"><a href="#3-4-将store中的对象传入子组件" class="headerlink" title="3.4 将store中的对象传入子组件"></a>3.4 将store中的对象传入子组件</h3><ul>
-<li>方法1</li>
-</ul>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123; this.$store.state.count &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>方法2</li>
-</ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">      computed: mapState(&#123;</span><br><span class="line">        count: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.count <span class="hljs-comment">//映射 this.count为store.state.count</span></span><br><span class="line">    &#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>方法3</li>
-</ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    ...mapState([<span class="hljs-string">"count"</span>]) <span class="hljs-comment">//...对象展开运算符</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    ...mapMutations(),</span><br><span class="line">    ...mapActions(),</span><br><span class="line">    &#125; ,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1095,7 +996,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -1207,6 +1108,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -1281,25 +1201,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1318,7 +1219,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1379,6 +1280,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -1453,25 +1373,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1490,7 +1391,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>

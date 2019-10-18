@@ -156,7 +156,7 @@
             <h2 id="1-request介绍"><a href="#1-request介绍" class="headerlink" title="1. request介绍"></a>1. request介绍</h2><p>node中，http模块也可作为客户端使用（发送请求），第三方模块request对其使用方法进行了封装，操作更方便。</p>
 <h2 id="2-request安装"><a href="#2-request安装" class="headerlink" title="2. request安装"></a>2. request安装</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install request --save</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p><strong>引入request</strong></p>
+<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p>引入request</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-1-GET"><a href="#3-1-GET" class="headerlink" title="3.1 GET"></a>3.1 GET</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 发送Get请求</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数:请求的完整URL,包括参数</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数:请求结果回调函数,会传入3个参数,第一个错误,第二个响应对象,第三个请求数据</span></span><br><span class="line">request(url,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, data</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -167,13 +167,13 @@
 <li>application/json</li>
 <li>multipart/form-data</li>
 </ul>
-<p><strong>1.application/x-www-form-urlencoded</strong></p>
+<p>1.application/x-www-form-urlencoded</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">form</span>:&#123;<span class="hljs-attr">key</span>:<span class="hljs-string">'value'</span>&#125;&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.application/json</strong></p>
+<p>2.application/json</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="hljs-string">"POST"</span>,</span><br><span class="line">    json: <span class="hljs-literal">true</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"application/json"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="hljs-built_in">JSON</span>.stringify(requestData)</span><br><span class="line">&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><strong>3.multipart/form-data</strong></p>
+<p>3.multipart/form-data</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> formData = &#123;</span><br><span class="line">    <span class="hljs-comment">// Pass a simple key-value pair</span></span><br><span class="line">    my_field: <span class="hljs-string">'my_value'</span>,</span><br><span class="line">    <span class="hljs-comment">// Pass data via Buffers</span></span><br><span class="line">    my_buffer: <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),</span><br><span class="line">    <span class="hljs-comment">// Pass data via Streams</span></span><br><span class="line">    my_file: fs.createReadStream(__dirname + <span class="hljs-string">'/unicycle.jpg'</span>),</span><br><span class="line">&#125;;</span><br><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">formData</span>: formData&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) </span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
@@ -259,7 +259,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -371,6 +371,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -445,25 +464,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -482,7 +482,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -543,6 +543,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/18/web-py/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/12/flask/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
@@ -617,25 +636,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/09/29/进制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="进制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/进制/" class="title has-link-black-ter is-size-6 has-text-weight-normal">进制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -654,7 +654,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
