@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>web.py - Super Swanner</title>
+<title>vue 进阶 - Super Swanner</title>
 
 
 
@@ -78,7 +78,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="web.py" height="28">
+                <img src="/images/logo.svg" alt="vue 进阶" height="28">
             
             </a>
         </div>
@@ -134,13 +134,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time>
+                <time class="level-item has-text-grey" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 382 words)
+                    a minute read (About 119 words)
                 </span>
                 
                 
@@ -149,46 +149,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                web.py
+                vue 进阶
             
         </h1>
         <div class="content">
-            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>web.py是一款轻量级的python web开发框架，简单、高效，适合作为python web开发的入门框架。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install web.py==0.40</span><br></pre></td></tr></table></figure>
+            <h3 id="Vue-mixins"><a href="#Vue-mixins" class="headerlink" title="Vue mixins"></a>Vue mixins</h3><p>mixins就是混入</p>
+<ul>
+<li>一个混入对象可以包含任意组件选项。</li>
+<li>同一个生命周期，混入对象会比组件的先执行。</li>
+</ul>
+<p>1.创建一个test.js，用export暴露出mixins对象</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mixinsTest = &#123;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        hello()&#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="web-py运行"><a href="#web-py运行" class="headerlink" title="web.py运行"></a>web.py运行</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> web <span class="hljs-comment">#导入web.py</span></span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">    <span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span> <span class="hljs-comment">#url映射</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span> <span class="hljs-comment">#url处理的类</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, world!"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    app = web.application(urls, globals())</span><br><span class="line">    app.run() <span class="hljs-comment">#启用web应用</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>给模板新建一个目录（命名为 templates），在该目录下新建一个以 .html 结尾的文件:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, world!</span><br></pre></td></tr></table></figure>
-
-<p>调用模板:</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render = web.template.render(<span class="hljs-string">'templates/'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> render.abc() <span class="hljs-comment">#这里的abc是对应于templates下的abc.html的文件名。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><p>安装pymysql</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pymysql</span><br></pre></td></tr></table></figure>
-
-<p>引入pymysql</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br></pre></td></tr></table></figure>
-
-<p>连接数据库</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db = web.database(dbn=<span class="hljs-string">'mysql'</span>, user=<span class="hljs-string">'username'</span>, pw=<span class="hljs-string">'password'</span>, db=<span class="hljs-string">'dbname'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>导入数据库数据</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">    todos = db.select(<span class="hljs-string">'todo'</span>) <span class="hljs-comment">#todo为数据库表格名</span></span><br><span class="line">    <span class="hljs-keyword">return</span> render.index(todos)</span><br></pre></td></tr></table></figure>
-
-<p>然后把URL列表改回来，只保留 /:</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br></pre></td></tr></table></figure>
-
-<p>编辑abc.html,遍历数据显示在客户端</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$def with (todos)</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">$for todo in todos:</span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"t$todo.id"</span>&gt;</span>$todo.title<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p>客户端通过input提交数据:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"add"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"title"</span> /&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Add"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>通过POST请求，向数据库传入数据，并在服务端刷新显示:</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br><span class="line"><span class="hljs-string">'/add'</span>, <span class="hljs-string">'add'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">add</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">POST</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        i = web.input() <span class="hljs-comment">#web.input 可以访问用户通过form提交的任何数据</span></span><br><span class="line">        n = db.insert(<span class="hljs-string">'todo'</span>, title=i.title) <span class="hljs-comment">#数据库插入数据</span></span><br><span class="line">        web.seeother(<span class="hljs-string">'/'</span>) <span class="hljs-comment">#网页跳转与重定向:POST完成处理后，浏览器会对新网址发出GET请求，完成新跳转。</span></span><br></pre></td></tr></table></figure>
-
-
+<p>2.在组件中引入这个mixins对象，通过mixins:[xxx]，使用mixins对象</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;mixinsTest&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'&#123;&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//mixins的会先被调用,然后再执行组件的方法</span></span><br><span class="line">  mixins:[mixinsTest]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -212,17 +186,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/24/ES6-异步编程/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ES6 异步编程</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/12/flask/">
-                <span class="level-item">flask</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/27/js-事件处理方法/">
+                <span class="level-item">js 事件处理方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -719,7 +686,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="web.py" height="28">
+                    <img src="/images/logo.svg" alt="vue 进阶" height="28">
                 
                 </a>
                 <p class="is-size-7">

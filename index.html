@@ -135,13 +135,62 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 119 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/10/27/vue-进阶/">vue 进阶</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="Vue-mixins"><a href="#Vue-mixins" class="headerlink" title="Vue mixins"></a>Vue mixins</h3><p>mixins就是混入</p>
+<ul>
+<li>一个混入对象可以包含任意组件选项。</li>
+<li>同一个生命周期，混入对象会比组件的先执行。</li>
+</ul>
+<p>1.创建一个test.js，用export暴露出mixins对象</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mixinsTest = &#123;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        hello()&#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.在组件中引入这个mixins对象，通过mixins:[xxx]，使用mixins对象</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;mixinsTest&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'&#123;&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//mixins的会先被调用,然后再执行组件的方法</span></span><br><span class="line">  mixins:[mixinsTest]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 135 words)
+                    4 minutes read (About 550 words)
                 </span>
                 
                 
@@ -167,6 +216,9 @@
 <p>tagName: 只能用在元素节点上<br>nodeName: 可以用在任何节点上，可以说nodeName涵盖了tagName</p>
 <h3 id="event"><a href="#event" class="headerlink" title="$event"></a>$event</h3><p>访问原始的 DOM 事件,可以用特殊变量 $event 把它传入方法:</p>
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"func($event)"</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">    func(event) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>vue点击事件的节点信息获取与操作：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    f_click: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 当前点击的元素</span></span><br><span class="line">        event.target;</span><br><span class="line">        <span class="hljs-comment">// 绑定事件的元素</span></span><br><span class="line">        event.currentTarget;</span><br><span class="line">        <span class="hljs-comment">// （target与currentTarget的区别主要体现在使用事件委托时，发生事件委托时，点击的元素与绑定事件的元素非同一元素，反之不发生事件委托时，两者相同，是同一元素）</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的前一个节点信息（包含元素节点、属性节点、文本节点、注释节点）</span></span><br><span class="line">        event.currentTarget.previousSibling;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的前一个元素节点（只包含元素节点，只有html内容）</span></span><br><span class="line">        event.currentTarget.previousElementSibling;</span><br><span class="line">        <span class="hljs-comment">// 下一个元素信息获取使用 nextSibling、nextElementSibling</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的父节点信息</span></span><br><span class="line">        event.currentTarget.parentNode;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的父级元素</span></span><br><span class="line">        event.currentTarget.parentElement;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的第一个子节点信息</span></span><br><span class="line">        event.currentTarget.firstChild;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的第一个子元素</span></span><br><span class="line">        event.currentTarget.firstElementChild;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素中id为ceshi的元素集合</span></span><br><span class="line">        event.currentTarget.getElementById(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素中class为ceshi的元素集合</span></span><br><span class="line">        event.currentTarget.getElementsByClassName(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的的内容（类似jquery的text()）</span></span><br><span class="line">        event.currentTarget.textContent;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的的内容（类似jquery的html()）</span></span><br><span class="line">        event.currentTarget.innerHTML;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的ceshi属性（类似jquery的attr('ceshi')）</span></span><br><span class="line">        event.currentTarget.getAttributeNode(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 点击删除当前元素</span></span><br><span class="line">        event.currentTarget.parentElement.removeChild(event.currentTarget);</span><br><span class="line">        <span class="hljs-comment">// 点击删除当前元素的父级元素</span></span><br><span class="line">        event.currentTarget.parentElement.parentElement.removeChild(event.currentTarget.parentElement);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -865,69 +917,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 272 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/28/Node-js之request模块/">Node.js之request模块</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-request介绍"><a href="#1-request介绍" class="headerlink" title="1. request介绍"></a>1. request介绍</h2><p>node中，http模块也可作为客户端使用（发送请求），第三方模块request对其使用方法进行了封装，操作更方便。</p>
-<h2 id="2-request安装"><a href="#2-request安装" class="headerlink" title="2. request安装"></a>2. request安装</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install request --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-request请求"><a href="#3-request请求" class="headerlink" title="3. request请求"></a>3. request请求</h3><p>引入request</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request'</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-1-GET"><a href="#3-1-GET" class="headerlink" title="3.1 GET"></a>3.1 GET</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 发送Get请求</span></span><br><span class="line"><span class="hljs-comment">// 第一个参数:请求的完整URL,包括参数</span></span><br><span class="line"><span class="hljs-comment">// 第二个参数:请求结果回调函数,会传入3个参数,第一个错误,第二个响应对象,第三个请求数据</span></span><br><span class="line">request(url,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, data</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-POST"><a href="#3-2-POST" class="headerlink" title="3.2 POST"></a>3.2 POST</h4><p>post请求有3种方式，由请求头中的content-type决定，属于哪一种post请求:</p>
-<ul>
-<li>application/x-www-form-urlencoded</li>
-<li>application/json</li>
-<li>multipart/form-data</li>
-</ul>
-<p>1.application/x-www-form-urlencoded</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">form</span>:&#123;<span class="hljs-attr">key</span>:<span class="hljs-string">'value'</span>&#125;&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>2.application/json</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="hljs-string">"POST"</span>,</span><br><span class="line">    json: <span class="hljs-literal">true</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="hljs-string">"content-type"</span>: <span class="hljs-string">"application/json"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="hljs-built_in">JSON</span>.stringify(requestData)</span><br><span class="line">&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>3.multipart/form-data</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> formData = &#123;</span><br><span class="line">    <span class="hljs-comment">// Pass a simple key-value pair</span></span><br><span class="line">    my_field: <span class="hljs-string">'my_value'</span>,</span><br><span class="line">    <span class="hljs-comment">// Pass data via Buffers</span></span><br><span class="line">    my_buffer: <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]),</span><br><span class="line">    <span class="hljs-comment">// Pass data via Streams</span></span><br><span class="line">    my_file: fs.createReadStream(__dirname + <span class="hljs-string">'/unicycle.jpg'</span>),</span><br><span class="line">&#125;;</span><br><span class="line">request.post(&#123;<span class="hljs-attr">url</span>:url, <span class="hljs-attr">formData</span>: formData&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) </span>&#123;  </span><br><span class="line">    <span class="hljs-keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -987,7 +976,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </div>
             </div>
@@ -1099,6 +1088,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/27/vue-进阶/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue 进阶">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue 进阶</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/js-事件处理方法/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
@@ -1173,25 +1181,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/Flask-SocketIO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flask-SocketIO</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1210,7 +1199,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -1271,6 +1260,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/27/vue-进阶/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue 进阶">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue 进阶</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/js-事件处理方法/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
@@ -1345,25 +1353,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/09/Flask-SocketIO/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Flask-SocketIO">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time></div>
-                    <a href="/2019/10/09/Flask-SocketIO/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Flask-SocketIO</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1382,7 +1371,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
