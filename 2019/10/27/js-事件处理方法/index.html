@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 550 words)
+                    5 minutes read (About 776 words)
                 </span>
                 
                 
@@ -153,7 +153,17 @@
             
         </h1>
         <div class="content">
-            <h3 id="target-事件属性"><a href="#target-事件属性" class="headerlink" title="target 事件属性"></a>target 事件属性</h3><p>语法:</p>
+            <h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>访问dom的次数越多，就会增加浏览器重绘与重排的次数，页面性能优化的主要思想之一就是减少与dom的交互次数，提高性能。</p>
+<p>事件委托是利用事件的冒泡原理来实现的，委托目标节点的父级代为执行事件。</p>
+<h3 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h3><h4 id="“data-“"><a href="#“data-“" class="headerlink" title="“data-“"></a>“data-“</h4><ul>
+<li>HTML5规定为元素添加非标准的属性要添加前缀data-</li>
+<li>添加自定义属性之后，可以通过元素的dataset属性来访问自定义的值。</li>
+<li>在添加或读取属性的时候需要去掉前缀data-</li>
+<li>如果属性名称中还包含连字符(-)，需要转成驼峰命名方式，但如果在CSS中使用选择器，我们需要使用连字符格式</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"func($event)"</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in items"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">:data-id</span>=<span class="hljs-string">"index"</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    methods: &#123;</span><br><span class="line">        func(event) &#123;</span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-built_in">console</span>.log(event.target.dataset.id);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="target-事件属性"><a href="#target-事件属性" class="headerlink" title="target 事件属性"></a>target 事件属性</h3><p>语法:</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.target</span><br></pre></td></tr></table></figure>
 
 <p>事件属性可返回事件的目标节点（触发该事件的节点）</p>
@@ -195,7 +205,7 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/27/vue-进阶/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">vue 进阶</span>
+                <span class="level-item">Vue 进阶</span>
             </a>
         </div>
         
@@ -365,14 +375,14 @@
             
             <a href="/2019/10/27/vue-进阶/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue 进阶</a>
+                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -537,14 +547,14 @@
             
             <a href="/2019/10/27/vue-进阶/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue 进阶</a>
+                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
