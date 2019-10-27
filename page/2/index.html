@@ -135,6 +135,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-27T02:45:59.000Z">2019-09-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 402 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/27/express框架连接数据库/">express框架连接数据库</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-ORM"><a href="#1-ORM" class="headerlink" title="1. ORM"></a>1. ORM</h2><p>对象关系映射（Object Relational Mapping）：<br>ORM 技术是在对象和数据库之间提供了一条桥梁，前台的对象型数据和数据库中的关系型的数据通过这个桥梁来相互转化。</p>
+<h3 id="1-1-Sequelize"><a href="#1-1-Sequelize" class="headerlink" title="1.1 Sequelize"></a>1.1 Sequelize</h3><p>Sequelize 是一款比较流行的 ORM 框架</p>
+<h3 id="1-2-Sequelize安装"><a href="#1-2-Sequelize安装" class="headerlink" title="1.2 Sequelize安装"></a>1.2 Sequelize安装</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install sequelize --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-通过scquelize与数据库建立连接"><a href="#2-通过scquelize与数据库建立连接" class="headerlink" title="2.通过scquelize与数据库建立连接"></a>2.通过scquelize与数据库建立连接</h2><h3 id="2-1-创建sequelize实例"><a href="#2-1-创建sequelize实例" class="headerlink" title="2.1 创建sequelize实例"></a>2.1 创建sequelize实例</h3><p>要连接到数据库，必须创建一个Sequelize实例。这可以通过将连接参数分别传递到Sequelize构造函数或通过传递单个连接URI来完成：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'mariadb://user:pass@localhost:3306/dbname'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-测试连接"><a href="#2-2-测试连接" class="headerlink" title="2.2 测试连接"></a>2.2 测试连接</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sequelize</span><br><span class="line">  .authenticate()</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Connection has been established successfully.'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Unable to connect to the database:'</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">module</span>.exports = sequelize</span><br></pre></td></tr></table></figure>
+
+<p>将sequelize模块导出。</p>
+<h3 id="2-3-建模表格"><a href="#2-3-建模表格" class="headerlink" title="2.3 建模表格"></a>2.3 建模表格</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../db'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="hljs-keyword">const</span> Model = Sequelize.Model;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-comment">//class User 继承 Model &#123;&#125;</span></span><br><span class="line">User.init(&#123;</span><br><span class="line">  <span class="hljs-comment">// User初始化</span></span><br><span class="line">  username: &#123;</span><br><span class="line">    type: Sequelize.STRING,</span><br><span class="line">  &#125;,</span><br><span class="line">  password: &#123;</span><br><span class="line">    type: Sequelize.STRING</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  createdAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  updatedAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  tableName: <span class="hljs-string">'zhuzhu'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = User;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-查询"><a href="#2-4-查询" class="headerlink" title="2.4 查询"></a>2.4 查询</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> router = express.Router();</span><br><span class="line"><span class="hljs-keyword">let</span> User = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../model/User'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> _user = <span class="hljs-literal">null</span>;</span><br><span class="line"><span class="hljs-comment">/* GET home page. */</span></span><br><span class="line">router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>&#123;</span><br><span class="line">  User.findAll().then(<span class="hljs-function"><span class="hljs-params">users</span> =&gt;</span> &#123;</span><br><span class="line">    _us = <span class="hljs-built_in">JSON</span>.stringify(users, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>)</span><br><span class="line">    <span class="hljs-comment">//JSON.stringify()</span></span><br><span class="line">    <span class="hljs-comment">//第一个参数：被转换的值</span></span><br><span class="line">    <span class="hljs-comment">//第二个参数：被转换的字符串属性</span></span><br><span class="line">    <span class="hljs-comment">//第三个参数：如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"All users:"</span>, <span class="hljs-built_in">JSON</span>.stringify(_user, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">  res.render(<span class="hljs-string">'index'</span>, &#123; <span class="hljs-attr">title</span>: _user &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time>
                 
                 
@@ -223,7 +278,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1077 words)
+                    7 minutes read (About 1084 words)
                 </span>
                 
                 
@@ -322,7 +377,7 @@
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"[classA,isB?classB:'']"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>根据路由路径绑定内联样式:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mySelf"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123; on : '/' === $route.path &#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mySelf"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123; on : '/' === $route.path &#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">// $route =&gt; 路由信息对象</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-7-disabled"><a href="#2-7-disabled" class="headerlink" title="2.7 disabled"></a>2.7 disabled</h3><p>控制元素是否可用</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button :disable=<span class="hljs-string">"true/false"</span>&gt;&#123;&#123; &#125;&#125;&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
@@ -938,7 +993,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -1050,6 +1105,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/24/ES6-异步编程/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 异步编程">
@@ -1124,25 +1198,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/03/Vue-chat/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time></div>
-                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue.js + express + socket.io 聊天室项目实战</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1161,7 +1216,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1222,6 +1277,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/24/ES6-异步编程/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 异步编程">
@@ -1296,25 +1370,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/03/Vue-chat/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue.js + express + socket.io 聊天室项目实战">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time></div>
-                    <a href="/2019/10/03/Vue-chat/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue.js + express + socket.io 聊天室项目实战</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1333,7 +1388,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
