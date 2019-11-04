@@ -135,6 +135,55 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-28T08:59:28.000Z">2019-09-28</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 203 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/28/Node-js之fs模块/">Node.js之fs模块</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-fs介绍"><a href="#1-fs介绍" class="headerlink" title="1. fs介绍"></a>1. fs介绍</h2><p>node.js内置的fs模块就是文件系统模块，负责读写文件。和所有其他JS模块不同的是，fs模块同时提供了异步和同步的方法。</p>
+<h2 id="2-fs用法详解"><a href="#2-fs用法详解" class="headerlink" title="2. fs用法详解"></a>2. fs用法详解</h2><h3 id="2-1-fs引入"><a href="#2-1-fs引入" class="headerlink" title="2.1 fs引入"></a>2.1 fs引入</h3> <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-fs功能"><a href="#2-2-fs功能" class="headerlink" title="2.2 fs功能"></a>2.2 fs功能</h3><p>进行网络爬虫的时候，有时我们需要保存图片、js、css等文件，request支持文件流.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request(<span class="hljs-string">'https://www.baidu.com/img/bd_logo1.png'</span>).pipe(fs.createWriteStream(<span class="hljs-string">'a.png'</span>))</span><br><span class="line"><span class="hljs-comment">//抓取百度logo并保存到本地</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以将文件传给PUT或POST请求，用于文件上传。未提供header的情况下，会检测文件后缀名，在PUT请求中设置相应的content-type。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.createReadStream(<span class="hljs-string">'pic.jpg'</span>).pipe(request.put(<span class="hljs-string">'http://veb.com/upload'</span>))</span><br><span class="line"><span class="hljs-comment">//读取流pipe上传</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-28T08:38:38.000Z">2019-09-28</time>
                 
                 
@@ -532,7 +581,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1429 words)
+                    10 minutes read (About 1488 words)
                 </span>
                 
                 
@@ -786,6 +835,9 @@
 <td>将一个数转为指定位数的有效数字</td>
 </tr>
 </tbody></table>
+<h2 id="jQuery-遍历方法"><a href="#jQuery-遍历方法" class="headerlink" title="jQuery 遍历方法"></a>jQuery 遍历方法</h2><h3 id="each"><a href="#each" class="headerlink" title="$.each()"></a>$.each()</h3><p>$.each(array,function(index,value){})<br>用于遍历数组或对象</p>
+<h3 id="each-1"><a href="#each-1" class="headerlink" title="$().each()"></a>$().each()</h3><p>$(‘selector’).each(function(index,value){…})<br>用于遍历dom数组</p>
+<h3 id="array-forEach"><a href="#array-forEach" class="headerlink" title="array.forEach()"></a>array.forEach()</h3><p>arr.forEach(function(item,index,array){…})<br>用于遍历数组<br>forEach方法不会跳过null和undefined元素</p>
 
         </div>
         
@@ -1056,7 +1108,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        20
                     </p>
                 </div>
             </div>
@@ -1168,6 +1220,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/29/Vue-插件/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
+                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/vue-进阶/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
@@ -1242,25 +1313,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/12/flask/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
-                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1279,7 +1331,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -1340,6 +1392,25 @@
         
         <article class="media">
             
+            <a href="/2019/10/29/Vue-插件/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
+                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/27/vue-进阶/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
@@ -1414,25 +1485,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/12/flask/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="flask">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time></div>
-                    <a href="/2019/10/12/flask/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flask</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1451,7 +1503,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
