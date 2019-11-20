@@ -188,7 +188,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 248 words)
+                    6 minutes read (About 877 words)
                 </span>
                 
                 
@@ -215,7 +215,73 @@
 <h3 id="Vue-router路由导航"><a href="#Vue-router路由导航" class="headerlink" title="Vue router路由导航"></a>Vue router路由导航</h3><h4 id="1-router-link-to-”…”"><a href="#1-router-link-to-”…”" class="headerlink" title="1. router-link :to=”…”"></a>1. router-link :to=”…”</h4><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 字符串</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"apple"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 对象</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;path:'apple'&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 命名路由</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;name: 'applename'&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 直接路由带查询参数query，地址栏变成 /apple?color=red</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;path: 'apple', query: &#123;color: 'red' &#125;&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 命名路由带查询参数query，地址栏变成/apple?color=red</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;name: 'applename', query: &#123;color: 'red' &#125;&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 直接路由带路由参数params，提供了path，则params不生效</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;path: 'apple', params: &#123; color: 'red' &#125;&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="line">// 命名路由带路由参数params，地址栏是/apple/red</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;name: 'applename', params: &#123; color: 'red' &#125;&#125;"</span>&gt;</span> to apple<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-router-push-…"><a href="#2-router-push-…" class="headerlink" title="2. router.push(…)"></a>2. router.push(…)</h4><p>同样的规则也适用于router.push(…)方法</p>
-<h3 id="import-amp-amp-require"><a href="#import-amp-amp-require" class="headerlink" title="import &amp;&amp; require"></a>import &amp;&amp; require</h3><h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><h5 id="1-ying’ru"><a href="#1-ying’ru" class="headerlink" title="1. ying’ru"></a>1. ying’ru</h5>
+<!-- ### import && require
+
+#### import -->
+
+<h2 id="自定义指令directive"><a href="#自定义指令directive" class="headerlink" title="自定义指令directive"></a>自定义指令directive</h2><h3 id="按钮权限-btnPermissions"><a href="#按钮权限-btnPermissions" class="headerlink" title="按钮权限 btnPermissions"></a>按钮权限 btnPermissions</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**权限指令**/</span></span><br><span class="line"><span class="hljs-keyword">const</span> has = Vue.directive(<span class="hljs-string">'has'</span>, &#123;</span><br><span class="line"> bind: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el, binding, vnode</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 获取按钮权限</span></span><br><span class="line">  <span class="hljs-keyword">let</span> btnPermissions = vnode.context.$route.meta.btnPermissions.split(<span class="hljs-string">","</span>);</span><br><span class="line">  <span class="hljs-keyword">if</span> (!Vue.prototype.$_has(btnPermissions)) &#123;</span><br><span class="line">   el.parentNode.removeChild(el);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 权限检查方法</span></span><br><span class="line">Vue.prototype.$_has = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>&#123;</span><br><span class="line"> <span class="hljs-keyword">let</span> isExist = <span class="hljs-literal">false</span>;</span><br><span class="line"> <span class="hljs-keyword">let</span> btnPermissionsStr = sessionStorage.getItem(<span class="hljs-string">"btnPermissions"</span>);</span><br><span class="line"> <span class="hljs-keyword">if</span> (btnPermissionsStr == <span class="hljs-literal">undefined</span> || btnPermissionsStr == <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="hljs-keyword">if</span> (value.indexOf(btnPermissionsStr) &gt; <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">  isExist = <span class="hljs-literal">true</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="hljs-keyword">return</span> isExist;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">export</span> &#123;has&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在main.js文件引入文件</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> has <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/btnPermissions.js'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>页面中按钮只需加v-has即可</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">'editClick'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> <span class="hljs-attr">v-has</span>&gt;</span>编辑<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>自定义指令的钩子函数:</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>钩子函数</th>
+<th>生命周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>bind</td>
+<td>刚绑定指令触发</td>
+</tr>
+<tr>
+<td>2</td>
+<td>inserted</td>
+<td>元素插入父节点时候触发</td>
+</tr>
+<tr>
+<td>3</td>
+<td>update</td>
+<td>每次元素更新时触发</td>
+</tr>
+<tr>
+<td>4</td>
+<td>componentUpdated</td>
+<td>元素更新完成时触发</td>
+</tr>
+<tr>
+<td>5</td>
+<td>unbind</td>
+<td>指令解绑这时候触发</td>
+</tr>
+</tbody></table>
+<p>Object.assign<br>Object.keys</p>
+<h3 id="Vuex持久化-vuex-persistedstate"><a href="#Vuex持久化-vuex-persistedstate" class="headerlink" title="Vuex持久化: vuex-persistedstate"></a>Vuex持久化: vuex-persistedstate</h3><p>例如全局相关的，如登录状态、token、以及一些不常更新的状态等，我们更希望能够固化到本地，减少无用的接口访问</p>
+<p>安装:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vuex-persistedstate</span><br></pre></td></tr></table></figure>
+
+<p>store中index.js:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> persistedState <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex-persistedstate'</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="hljs-comment">// ...</span></span><br><span class="line">    plugins: [persistedState()]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>自定义存储方式:<br>vuex-persistedstate默认使用localStorage来固化数据</p>
+<p>需要使用sessionStorage的情况:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    persistedState(&#123; <span class="hljs-attr">storage</span>: <span class="hljs-built_in">window</span>.sessionStorage &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>使用cookie的情况:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> persistedState <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex-persistedstate'</span></span><br><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Cookies <span class="hljs-keyword">from</span> <span class="hljs-string">'js-cookie'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">  plugins: [</span><br><span class="line">    persistedState(&#123;</span><br><span class="line">      storage: &#123;</span><br><span class="line">        getItem: <span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> Cookies.get(key),</span><br><span class="line">        setItem: <span class="hljs-function">(<span class="hljs-params">key, value</span>) =&gt;</span> Cookies.set(key, value, &#123; <span class="hljs-attr">expires</span>: <span class="hljs-number">7</span> &#125;),</span><br><span class="line">        removeItem: <span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> Cookies.remove(key)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-nextTick"><a href="#Vue-nextTick" class="headerlink" title="Vue.nextTick"></a>Vue.nextTick</h3><p>Vue事件循环：<br>Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。</p>
+<p>Vue 异步执行 DOM 更新。只要观察到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据改变。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作上非常重要。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。</p>
+<p><img src="https://image-static.segmentfault.com/159/661/1596618069-5a5da8c8522c2" alt="图解"></p>
+<p>例子:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//改变数据</span></span><br><span class="line">vm.message = <span class="hljs-string">'changed'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//想要立即使用更新后的DOM。这样不行，因为设置message后DOM还没有更新</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(vm.$el.textContent) <span class="hljs-comment">// 并不会得到'changed'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//这样可以，nextTick里面的代码会在DOM更新后执行</span></span><br><span class="line">Vue.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(vm.$el.textContent) <span class="hljs-comment">//可以得到'changed'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
         </div>
         
         
