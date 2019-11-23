@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 877 words)
+                    8 minutes read (About 1202 words)
                 </span>
                 
                 
@@ -234,6 +234,57 @@
 <p><img src="https://image-static.segmentfault.com/159/661/1596618069-5a5da8c8522c2" alt="图解"></p>
 <p>例子:</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//改变数据</span></span><br><span class="line">vm.message = <span class="hljs-string">'changed'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//想要立即使用更新后的DOM。这样不行，因为设置message后DOM还没有更新</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(vm.$el.textContent) <span class="hljs-comment">// 并不会得到'changed'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//这样可以，nextTick里面的代码会在DOM更新后执行</span></span><br><span class="line">Vue.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(vm.$el.textContent) <span class="hljs-comment">//可以得到'changed'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="route-matched"><a href="#route-matched" class="headerlink" title="$route.matched"></a>$route.matched</h3><p>1 一个数组，包含当前路由的所有嵌套路径片段的路由记录</p>
+<p>2 一个路由匹配到的所有路由记录会暴露为 $route 对象 (还有在导航守卫中的路由对象) 的 $route.matched 数组</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">  $route: &#123;</span><br><span class="line">    handler(route) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$route.matched)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="pathToRegexp-—-url-的正则表达式"><a href="#pathToRegexp-—-url-的正则表达式" class="headerlink" title="pathToRegexp — url 的正则表达式"></a>pathToRegexp — url 的正则表达式</h3><p>安装</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install path-to-regexp --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> pathToRegexp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path-to-regexp'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> re = pathToRegexp(<span class="hljs-string">'/foo/:bar'</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(re);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// /^\/foo\/((?:[^\/]+?))(?:\/(?=$))?$/i</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h4><p>匹配 url 地址与规则是否相符</p>
+<h4 id="parse"><a href="#parse" class="headerlink" title="parse()"></a>parse()</h4><p>解析 url 字符串中的参数部分（:id）</p>
+<h4 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h4><p>快速填充 url 字符串的参数值</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> pathToRegexp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path-to-regexp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> url = <span class="hljs-string">'/user/:id'</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(pathToRegexp.parse(url));</span><br></pre></td></tr></table></figure>
+
+<p>打印结果:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="hljs-string">'/user'</span>,</span><br><span class="line">  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">'id'</span>,</span><br><span class="line">    prefix: <span class="hljs-string">'/'</span>,</span><br><span class="line">    delimiter: <span class="hljs-string">'/'</span>,</span><br><span class="line">    optional: <span class="hljs-literal">false</span>,</span><br><span class="line">    repeat: <span class="hljs-literal">false</span>,</span><br><span class="line">    partial: <span class="hljs-literal">false</span>,</span><br><span class="line">    pattern: <span class="hljs-string">'[^\\/]+?'</span> &#125; ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue手动刷新组件"><a href="#Vue手动刷新组件" class="headerlink" title="Vue手动刷新组件"></a>Vue手动刷新组件</h3><p>1.<a href="https://blog.csdn.net/xuaner8786/article/details/81217075" target="_blank" rel="noopener">vm.$forceUpdate</a> 强制刷新数据</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onShow() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.$forceUpdate();</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>2.<a href="https://www.jianshu.com/p/742142dc95f3" target="_blank" rel="noopener">Vue router-view绑定key值刷新页面</a></p>
+<h3 id="VUE-router-view-key-属性解释"><a href="#VUE-router-view-key-属性解释" class="headerlink" title="VUE router-view key 属性解释"></a>VUE router-view key 属性解释</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;section <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"app-main"</span>&gt;</span><br><span class="line">    &lt;transition name=<span class="hljs-string">"fade-transform"</span> mode=<span class="hljs-string">"out-in"</span>&gt;</span><br><span class="line">      &lt;router-view :key=<span class="hljs-string">"key"</span> /&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/transition&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>section&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/template&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">export default &#123;</span></span><br><span class="line"><span class="hljs-regexp">  name: 'AppMain',</span></span><br><span class="line"><span class="hljs-regexp">  computed: &#123;</span></span><br><span class="line"><span class="hljs-regexp">    key() &#123;</span></span><br><span class="line"><span class="hljs-regexp">      return this.$route.fullPath</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>key属性</th>
+<th>/page/1 =&gt; /page/2</th>
+<th>/page?id=1 =&gt; /page?id=2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不设置</td>
+<td>组件复用</td>
+<td>组件复用</td>
+</tr>
+<tr>
+<td>属性值为 $route.path</td>
+<td>组件不复用</td>
+<td>组件复用</td>
+</tr>
+<tr>
+<td>属性值为 $route.fullPath</td>
+<td>组件不复用</td>
+<td>组件不复用</td>
+</tr>
+</tbody></table>
+<p>组件复用钩子加载顺序:<br>beforeRouteUpdate</p>
+<p>组件不复用钩子加载顺序:<br>beforeRouteUpdate =&gt; created =&gt; mounted</p>
+
         </div>
         
         
