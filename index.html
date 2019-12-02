@@ -135,6 +135,139 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 452 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/11/30/nginx/">ubunto-nginx</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="nginx介绍"><a href="#nginx介绍" class="headerlink" title="nginx介绍"></a>nginx介绍</h3><p>Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器</p>
+<h4 id="两大主流web-server对比"><a href="#两大主流web-server对比" class="headerlink" title="两大主流web server对比"></a>两大主流web server对比</h4><table>
+<thead>
+<tr>
+<th>nginx</th>
+<th>apache</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轻量级</td>
+<td>模块较多，较全面</td>
+</tr>
+<tr>
+<td>处理请求是异步非阻塞</td>
+<td>阻塞型</td>
+</tr>
+<tr>
+<td>高度模块化的设计</td>
+<td>少bug</td>
+</tr>
+</tbody></table>
+<h4 id="ubunto环境下nginx运行命令"><a href="#ubunto环境下nginx运行命令" class="headerlink" title="ubunto环境下nginx运行命令"></a>ubunto环境下nginx运行命令</h4><p>安装：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<p>查看安装版本</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nginx -v</span><br></pre></td></tr></table></figure>
+
+<p>启动：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx start</span><br></pre></td></tr></table></figure>
+
+<p>停止：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx stop</span><br></pre></td></tr></table></figure>
+
+<p>重读配置文件：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx reload</span><br></pre></td></tr></table></figure>
+
+<p>重启：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx restart</span><br></pre></td></tr></table></figure>
+
+<p>查看进程：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux|grep nginx</span><br></pre></td></tr></table></figure>
+
+<p>操作手册：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man nginx</span><br></pre></td></tr></table></figure>
+
+<p>状态详解：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx status</span><br></pre></td></tr></table></figure>
+
+<p>nginx安装目录：<br>/etc/nginx</p>
+<p>主要配置文件夹：</p>
+<ul>
+<li><p>nginx.conf</p>
+</li>
+<li><p>sites-available: 有所有的（N个站点）配置，包括临时不启用的站点</p>
+</li>
+<li><p>sites-enabled: 当前启用的站点</p>
+</li>
+</ul>
+<p>补充：文件权限设置:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 file</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>说明：第1个7设置用户的权限，第2个7设置组的权限，第3个7设置其他所有者的权限。</li>
+<li>读-r-4</li>
+<li>写-w-2</li>
+<li>执行-x-1</li>
+</ul>
+<p>0: 没有权限<br>4: 读取权限<br>5: 4+1 | 读取+执行<br>6: 4+2 | 读取+写入<br>7: 4+2+1 | 读取+写入+执行</p>
+<p>查看文件尾：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tail [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查看文件头：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">head [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">访问链接：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">$ sudo install curl</span><br></pre></td></tr></table></figure>
+
+<p>访问链接：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s [源文件或目录] [目标文件或目录]</span><br></pre></td></tr></table></figure>
+
+<h3 id="nginx三大应用"><a href="#nginx三大应用" class="headerlink" title="nginx三大应用"></a>nginx三大应用</h3><h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://</span><br></pre></td></tr></table></figure>
+
+<h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><ol>
+<li>weight</li>
+</ol>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1 weight=1</span><br><span class="line">    server 192.168.0.2 weight=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>ip_hash</li>
+</ol>
+<p>每个访客固定访问一个后端服务器</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    ip_hash</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>fair</li>
+</ol>
+<p>后端服务器响应时间短优先分配</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">    fair</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">    proxy_pass http://sunpy.com;</span><br><span class="line">    #root   html;</span><br><span class="line">    #index  index.html index.htm;</span><br><span class="line">    include proxy_nginx.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico|svg)$ &#123; </span><br><span class="line">    root /nginx/sunpy_res/static/; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">error_page   500 502 503 504  /50x.html;</span><br><span class="line">location = /50x.html &#123;</span><br><span class="line">    root   html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time>
                 
                 
@@ -188,7 +321,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1202 words)
+                    9 minutes read (About 1379 words)
                 </span>
                 
                 
@@ -332,6 +465,17 @@
 </tbody></table>
 <p>组件复用钩子加载顺序:<br>beforeRouteUpdate</p>
 <p>组件不复用钩子加载顺序:<br>beforeRouteUpdate =&gt; created =&gt; mounted</p>
+<h3 id="refs"><a href="#refs" class="headerlink" title="$refs"></a>$refs</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.$refs.form1 === <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'form1'</span>] <span class="hljs-comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="render-函数"><a href="#render-函数" class="headerlink" title="render 函数"></a>render 函数</h3><p><a href="https://www.jianshu.com/p/3470a6d99a23" target="_blank" rel="noopener">render 函数</a></p>
+<h4 id="Functional-Render"><a href="#Functional-Render" class="headerlink" title="Functional Render"></a>Functional Render</h4><p><a href="https://www.jianshu.com/p/367ba1a7729b" target="_blank" rel="noopener">functional 函数化组件</a></p>
+<p>functional: true</p>
+<p>true 可以使组件无状态和无实例，也就是没有 data 和 this 上下文。这样用 Render 函数返回虚拟节点可以更容易渲染</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="hljs-function">(<span class="hljs-params">h, ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数一: h，即 createElement，是 Render 函数的核心。</p>
+<p>参数二: context, 来提供临时上下文。组件需要的 data、props、slots、children、parent 都是通过这个上下文来传递的，比如 this.level 要改写为 context.props.level，this.$slots.default 改写为 context.children。</p>
+<p>$options 获取自定义属性</p>
 
         </div>
         
@@ -973,91 +1117,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-29T12:58:39.000Z">2019-09-29</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 608 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/29/进制/">进制</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-位运算符"><a href="#1-位运算符" class="headerlink" title="1. 位运算符"></a>1. 位运算符</h2><table>
-<thead>
-<tr>
-<th></th>
-<th align="center">位运算符</th>
-<th>定义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td align="center">&amp;</td>
-<td>相同位的两个数字都为1，则为1；若有一个不为1，则为0。</td>
-</tr>
-<tr>
-<td>2</td>
-<td align="center">|</td>
-<td>相同位只要一个为1即为1。</td>
-</tr>
-<tr>
-<td>3</td>
-<td align="center">^</td>
-<td>某位不同则该位为1, 否则该位为0.</td>
-</tr>
-<tr>
-<td>4</td>
-<td align="center">~</td>
-<td>把内存中的0和1全部取反</td>
-</tr>
-<tr>
-<td>5</td>
-<td align="center">&lt;&lt;</td>
-<td>a &lt;&lt; b就表示把a转为二进制后左移b位（在后面添b个0）, a shl b的值实际上就是a乘以2的b次方</td>
-</tr>
-<tr>
-<td>6</td>
-<td align="center">&gt;&gt;</td>
-<td>a &gt;&gt; b表示二进制右移b位（去掉末b位），相当于a除以2的b次方（取整）</td>
-</tr>
-</tbody></table>
-<h3 id="1-1-与-amp"><a href="#1-1-与-amp" class="headerlink" title="1,1 与 &amp;"></a>1,1 与 &amp;</h3><p>用来判断一个整数的奇偶，二进制的最末位为0表示该数为偶数，最末位为1表示该数为奇数。</p>
-<h3 id="1-2-or运算"><a href="#1-2-or运算" class="headerlink" title="1.2 or运算 |"></a>1.2 or运算 |</h3><p>or运算通常用于二进制特定位上的无条件赋值，例如一个数or 1的结果就是把二进制最末位强行变成1。如果需要把二进制最末位变成0，对这个数or 1之后再减一就可以了，其实际意义就是把这个数强行变成最接近的偶数。<br>相同位只要一个为1即为1。</p>
-<h3 id="1-3-xor运算"><a href="#1-3-xor运算" class="headerlink" title="1.3 xor运算 ^"></a>1.3 xor运算 ^</h3><p>异或的符号是^。按位异或运算, 对等长二进制模式按位或二进制数的每一位执行逻辑按位异或操作. 操作的结果是如果某位不同则该位为1, 否则该位为0.</p>
-<h3 id="1-4-not运算"><a href="#1-4-not运算" class="headerlink" title="1.4 not运算 ~"></a>1.4 not运算 ~</h3><p>not运算的定义是把内存中的0和1全部取反。使用not运算时要格外小心，你需要注意整数类型有没有符号。如果not的对象是无符号整数（不能表示负数），那么得到的值就是它与该类型上界的差，因为无符号类型的数是用00到$FFFF依次表示的。</p>
-<h3 id="1-5-shl运算-lt-lt"><a href="#1-5-shl运算-lt-lt" class="headerlink" title="1.5 shl运算 &lt;&lt;"></a>1.5 shl运算 &lt;&lt;</h3><p>a shl b就表示把a转为二进制后左移b位（在后面添b个0）。例如100的二进制为1100100，而110010000转成十进制是400，那么100 shl 2 = 400。可以看出，a shl b的值实际上就是a乘以2的b次方，因为在二进制数后添一个0就相当于该数乘以2。</p>
-<h3 id="1-6-shr运算-gt-gt"><a href="#1-6-shr运算-gt-gt" class="headerlink" title="1.6 shr运算 &gt;&gt;"></a>1.6 shr运算 &gt;&gt;</h3><p>和shl相似，a shr b表示二进制右移b位（去掉末b位），相当于a除以2的b次方（取整）。</p>
-<h2 id="2-单精度、双精度"><a href="#2-单精度、双精度" class="headerlink" title="2. 单精度、双精度"></a>2. 单精度、双精度</h2>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1073,6 +1132,8 @@
             <li><a class="pagination-link is-current" href="/">1</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
             
         </ul>
     </nav>
@@ -1117,7 +1178,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -1229,6 +1290,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/30/nginx/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/29/Vue-插件/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
@@ -1303,25 +1383,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/18/web-py/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1333,6 +1394,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -1401,6 +1473,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/30/nginx/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/29/Vue-插件/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
@@ -1475,25 +1566,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/18/web-py/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1505,6 +1577,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">

@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1202 words)
+                    9 minutes read (About 1379 words)
                 </span>
                 
                 
@@ -284,6 +284,17 @@
 </tbody></table>
 <p>组件复用钩子加载顺序:<br>beforeRouteUpdate</p>
 <p>组件不复用钩子加载顺序:<br>beforeRouteUpdate =&gt; created =&gt; mounted</p>
+<h3 id="refs"><a href="#refs" class="headerlink" title="$refs"></a>$refs</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.$refs.form1 === <span class="hljs-keyword">this</span>.$refs[<span class="hljs-string">'form1'</span>] <span class="hljs-comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="render-函数"><a href="#render-函数" class="headerlink" title="render 函数"></a>render 函数</h3><p><a href="https://www.jianshu.com/p/3470a6d99a23" target="_blank" rel="noopener">render 函数</a></p>
+<h4 id="Functional-Render"><a href="#Functional-Render" class="headerlink" title="Functional Render"></a>Functional Render</h4><p><a href="https://www.jianshu.com/p/367ba1a7729b" target="_blank" rel="noopener">functional 函数化组件</a></p>
+<p>functional: true</p>
+<p>true 可以使组件无状态和无实例，也就是没有 data 和 this 上下文。这样用 Render 函数返回虚拟节点可以更容易渲染</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="hljs-function">(<span class="hljs-params">h, ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数一: h，即 createElement，是 Render 函数的核心。</p>
+<p>参数二: context, 来提供临时上下文。组件需要的 data、props、slots、children、parent 都是通过这个上下文来传递的，比如 this.level 要改写为 context.props.level，this.$slots.default 改写为 context.children。</p>
+<p>$options 获取自定义属性</p>
 
         </div>
         
@@ -367,7 +378,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -479,6 +490,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/30/nginx/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/29/Vue-插件/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
@@ -553,25 +583,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/18/web-py/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -583,6 +594,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -651,6 +673,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/30/nginx/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
+                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/29/Vue-插件/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
@@ -725,25 +766,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/18/web-py/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="web.py">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/web-py/" class="title has-link-black-ter is-size-6 has-text-weight-normal">web.py</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -755,6 +777,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
