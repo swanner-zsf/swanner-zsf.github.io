@@ -201,7 +201,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 326 words)
+                    3 minutes read (About 406 words)
                 </span>
                 
                 
@@ -272,7 +272,7 @@
 <li><p>sites-enabled: 当前启用的站点</p>
 </li>
 </ul>
-<h3 id="nginx三大应用"><a href="#nginx三大应用" class="headerlink" title="nginx三大应用"></a>nginx三大应用</h3><h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://</span><br></pre></td></tr></table></figure>
+<h3 id="nginx三大应用"><a href="#nginx三大应用" class="headerlink" title="nginx三大应用"></a>nginx三大应用</h3><h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 配置一个代理即 tomcat 服务器</span><br><span class="line">upstream tomcatServer &#123;</span><br><span class="line">    server 192.168.75.145:9090;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 配置一个虚拟主机</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name admin.service.itoken.funtl.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">            # 域名 admin.service.itoken.funtl.com 的请求全部转发到 tomcat_server 即 tomcat 服务上</span><br><span class="line">            proxy_pass http://tomcatServer;</span><br><span class="line">            # 欢迎页面，按照从左到右的顺序查找页面</span><br><span class="line">            index index.jsp index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><ol>
 <li>weight</li>
