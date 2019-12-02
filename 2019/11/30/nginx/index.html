@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 452 words)
+                    2 minutes read (About 326 words)
                 </span>
                 
                 
@@ -211,42 +211,26 @@
 <li><p>sites-enabled: 当前启用的站点</p>
 </li>
 </ul>
-<p>补充：文件权限设置:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 file</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>说明：第1个7设置用户的权限，第2个7设置组的权限，第3个7设置其他所有者的权限。</li>
-<li>读-r-4</li>
-<li>写-w-2</li>
-<li>执行-x-1</li>
-</ul>
-<p>0: 没有权限<br>4: 读取权限<br>5: 4+1 | 读取+执行<br>6: 4+2 | 读取+写入<br>7: 4+2+1 | 读取+写入+执行</p>
-<p>查看文件尾：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ tail [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查看文件头：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">$ head [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">访问链接：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">$ sudo install curl</span><br></pre></td></tr></table></figure>
-
-<p>访问链接：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s [源文件或目录] [目标文件或目录]</span><br></pre></td></tr></table></figure>
-
 <h3 id="nginx三大应用"><a href="#nginx三大应用" class="headerlink" title="nginx三大应用"></a>nginx三大应用</h3><h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://</span><br></pre></td></tr></table></figure>
 
 <h4 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h4><ol>
 <li>weight</li>
 </ol>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1 weight=1</span><br><span class="line">    server 192.168.0.2 weight=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1 weight=1</span><br><span class="line">    server 192.168.0.2 weight=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>ip_hash</li>
 </ol>
 <p>每个访客固定访问一个后端服务器</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    ip_hash</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    ip_hash</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>fair</li>
 </ol>
 <p>后端服务器响应时间短优先分配</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">    fair</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool&#123;</span><br><span class="line">    server 192.168.0.1:80</span><br><span class="line">    server 192.168.0.2:80</span><br><span class="line">    fair</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">    proxy_pass http://sunpy.com;</span><br><span class="line">    #root   html;</span><br><span class="line">    #index  index.html index.htm;</span><br><span class="line">    include proxy_nginx.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico|svg)$ &#123; </span><br><span class="line">    root /nginx/sunpy_res/static/; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">error_page   500 502 503 504  /50x.html;</span><br><span class="line">location = /50x.html &#123;</span><br><span class="line">    root   html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">    proxy_pass http://sunpy.com;</span><br><span class="line">    <span class="hljs-comment">#root   html;</span></span><br><span class="line">    <span class="hljs-comment">#index  index.html index.htm;</span></span><br><span class="line">    include proxy_nginx.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico|svg)$ &#123;</span><br><span class="line">    root /nginx/sunpy_res/static/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">error_page   500 502 503 504  /50x.html;</span><br><span class="line">location = /50x.html &#123;</span><br><span class="line">    root   html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -269,6 +253,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/02/ubunto/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ubunto</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -322,7 +313,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -434,6 +425,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/02/ubunto/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/nginx/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
@@ -508,25 +518,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/24/ES6-异步编程/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 异步编程">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T06:13:17.000Z">2019-10-24</time></div>
-                    <a href="/2019/10/24/ES6-异步编程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6 异步编程</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -538,6 +529,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -617,6 +619,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/02/ubunto/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/nginx/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
@@ -691,25 +712,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/24/ES6-异步编程/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 异步编程">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-24T06:13:17.000Z">2019-10-24</time></div>
-                    <a href="/2019/10/24/ES6-异步编程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6 异步编程</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -721,6 +723,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
