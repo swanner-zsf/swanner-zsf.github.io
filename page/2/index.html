@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 820 words)
+                    7 minutes read (About 1019 words)
                 </span>
                 
                 
@@ -194,6 +194,9 @@
 <p>3.通过vue实例方法$emit发送事件名称和需要传递的数据</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bus.$emit(<span class="hljs-string">'click'</span>, data) <span class="hljs-comment">// 这个click是一个自定义的事件名称，data就是你要传递的数据。</span></span><br></pre></td></tr></table></figure>
 
+<p>传递间组件页面切换生命周期:<br><img src="https://upload-images.jianshu.io/upload_images/5763769-1c04ab921c3d4876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/835/format/webp" alt="组件页面切换生命周期"><br>从页面A到页面B跳转的时候：<br>B组件 —— created —— beforeMount——A组件——beforeDestory——destoryed——B组件———mounted</p>
+<p>所以：<br>所以把A页面组件中的emit事件写在beforeDestory中去。因为这个时候，B页面组件已经被created了，也就是我们写的$on事件已经触发了</p>
+<p>作者：Katherine的小世界<br>链接：<a href="https://www.jianshu.com/p/fde85549e3b0" target="_blank" rel="noopener">https://www.jianshu.com/p/fde85549e3b0</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <p>4.被传递数据的组件内通过vue实例方法$on监听到事件和接受到数据,通常挂载监听在vue生命周期created和mounted当中的一个。</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bus.$on(<span class="hljs-string">'click'</span>, target =&gt; &#123;</span><br><span class="line">　　<span class="hljs-built_in">console</span>.log(target)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 

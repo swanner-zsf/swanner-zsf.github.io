@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1586 words)
+                    12 minutes read (About 1731 words)
                 </span>
                 
                 
@@ -306,6 +306,20 @@
 
 <p>运行顺序：</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data</span><br><span class="line">provide</span><br><span class="line">created  <span class="hljs-comment">// 在这个阶段$el还未生成，在这先处理privide的逻辑，子孙组件才可以取到inject的值</span></span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
+
+<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p>定义组件公用的变量、方法</p>
+<p>特点：</p>
+<ol>
+<li>方法和参数在各组件中不共享</li>
+<li>如methods,components等，选项会被合并，键冲突的组件会覆盖混入对象的</li>
+<li>值为函数的选项，如created,mounted等，就会被合并调用，混合对象里的钩子函数在组件里的钩子函数之前调用</li>
+</ol>
+<p>混入对象中的方法</p>
+<p>mixin.js:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">      num: <span class="hljs-number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello() &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'aaa'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需引入mixin的组件：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> mixin <span class="hljs-keyword">from</span> <span class="hljs-string">''</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  mixins: [mixin]</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.hello()</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.num)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
