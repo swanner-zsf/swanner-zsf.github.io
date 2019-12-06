@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1731 words)
+                    12 minutes read (About 1850 words)
                 </span>
                 
                 
@@ -321,6 +321,15 @@
 <p>需引入mixin的组件：</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> mixin <span class="hljs-keyword">from</span> <span class="hljs-string">''</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  mixins: [mixin]</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.hello()</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.num)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="slot与slot-scope"><a href="#slot与slot-scope" class="headerlink" title="slot与slot-scope"></a>slot与slot-scope</h3><h4 id="默认插槽-具名插槽-作用域插槽"><a href="#默认插槽-具名插槽-作用域插槽" class="headerlink" title="默认插槽 | 具名插槽 | 作用域插槽"></a>默认插槽 | 具名插槽 | 作用域插槽</h4><p>子组件:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"child"</span>&gt;</span><br><span class="line">    &lt;h3&gt;这里是子组件&lt;<span class="hljs-regexp">/h3&gt; </span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">    &lt;slot name="up"&gt;&lt;/</span>slot&gt; <span class="hljs-comment">// 具名插槽</span></span><br><span class="line">    &lt;slot&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span> <span class="hljs-comment">// 匿名插槽</span></span><br><span class="line">    &lt;slot name=<span class="hljs-string">"down"</span> :data=<span class="hljs-string">"data"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span> <span class="hljs-comment">//作用域插槽</span></span><br><span class="line">  &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">    data: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        data: [],</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>父组件:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child&gt;</span><br><span class="line">      &lt;div slot=<span class="hljs-string">"up"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> <span class="hljs-comment">//引入具名插槽</span></span><br><span class="line">      &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> <span class="hljs-comment">//引入匿名插槽</span></span><br><span class="line">      &lt;template slot-scope=<span class="hljs-string">"scope"</span>&gt;</span><br><span class="line">        &#123;&#123; scope.data &#125;&#125;</span><br><span class="line">      &lt;<span class="hljs-regexp">/template&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>child&gt;</span><br><span class="line">  &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://segmentfault.com/a/1190000012996217?utm_source=tag-newest" target="_blank" rel="noopener">vue中的slot与slot-scope</a></p>
+<h3 id="理解vue中的scope的使用"><a href="#理解vue中的scope的使用" class="headerlink" title="理解vue中的scope的使用"></a>理解vue中的scope的使用</h3><p><a href="https://www.cnblogs.com/tugenhua0707/p/7745735.html" target="_blank" rel="noopener">理解vue中的scope的使用</a> </p>
+<h3 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h3><p><a href="https://www.cnblogs.com/cpqwebfe/p/7048612.html" target="_blank" rel="noopener">Stylus在vue中的使用</a></p>
 
         </div>
         
@@ -404,7 +413,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -516,16 +525,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubunto/" class="media-left">
+            <a href="/2019/12/04/record/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -535,16 +544,35 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx/" class="media-left">
+            <a href="/2019/12/02/ubuntu/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -590,25 +618,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -627,7 +636,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -710,16 +719,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubunto/" class="media-left">
+            <a href="/2019/12/04/record/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -729,16 +738,35 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx/" class="media-left">
+            <a href="/2019/12/02/ubuntu/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -784,25 +812,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -821,7 +830,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

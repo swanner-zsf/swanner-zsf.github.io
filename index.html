@@ -135,6 +135,52 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 106 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/04/record/">record</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="element-ui-el-select"><a href="#element-ui-el-select" class="headerlink" title="element-ui | el-select"></a>element-ui | el-select</h3><p>element-ui如何正确的把el-select选项的value设置为对象？</p>
+<p>给 <el-select> 加上 value-key 属性，值为数据源数组元素中的唯一键<br>例如数据源数组</el-select></p>
+<p>[{id: 1, name: ‘张三’}, {id: 2, name: ‘李四’},{id: 3, name: ‘王五’}]</p>
+<p>那么可设置 value-key=”id” 、value-key=”name”<br>如下：</p>
+<el-select v-model="value" value-key="id" placeholder="请选择">
+
+<h4 id="el-scrollbar"><a href="#el-scrollbar" class="headerlink" title="el-scrollbar"></a>el-scrollbar</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="hljs-string">"height: 800px"</span>&gt;</span><br><span class="line">&lt;el-scrollbar style=<span class="hljs-string">"height: 100%"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">el-scrollbar</span>&gt;</span></span></span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">.el-scrollbar__view &#123;</span><br><span class="line">    overflow-x: hidden; <span class="hljs-comment">//隐藏x轴滚动条</span></span><br><span class="line">    overflow-y: hidden; <span class="hljs-comment">//隐藏y轴滚动条</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></el-select>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time>
                 
                 
@@ -150,11 +196,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/12/02/ubunto/">ubunto</a>
+                <a class="has-link-black-ter" href="/2019/12/02/ubuntu/">ubuntu</a>
             
         </h1>
         <div class="content">
-            <h3 id="linux-ubunto"><a href="#linux-ubunto" class="headerlink" title="linux || ubunto"></a>linux || ubunto</h3><p>只检查，不更新:</p>
+            <h3 id="linux-ubuntu"><a href="#linux-ubuntu" class="headerlink" title="linux || ubuntu"></a>linux || ubuntu</h3><p>只检查，不更新:</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
 <p>更新已安装的软件包:</p>
@@ -210,7 +256,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/11/30/nginx/">ubunto-nginx</a>
+                <a class="has-link-black-ter" href="/2019/11/30/nginx配置(ubuntu 18.04)/">nginx配置(ubuntu 18.04)</a>
             
         </h1>
         <div class="content">
@@ -365,7 +411,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1731 words)
+                    12 minutes read (About 1850 words)
                 </span>
                 
                 
@@ -546,6 +592,15 @@
 <p>需引入mixin的组件：</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> mixin <span class="hljs-keyword">from</span> <span class="hljs-string">''</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  mixins: [mixin]</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.hello()</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.num)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="slot与slot-scope"><a href="#slot与slot-scope" class="headerlink" title="slot与slot-scope"></a>slot与slot-scope</h3><h4 id="默认插槽-具名插槽-作用域插槽"><a href="#默认插槽-具名插槽-作用域插槽" class="headerlink" title="默认插槽 | 具名插槽 | 作用域插槽"></a>默认插槽 | 具名插槽 | 作用域插槽</h4><p>子组件:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"child"</span>&gt;</span><br><span class="line">    &lt;h3&gt;这里是子组件&lt;<span class="hljs-regexp">/h3&gt; </span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">    &lt;slot name="up"&gt;&lt;/</span>slot&gt; <span class="hljs-comment">// 具名插槽</span></span><br><span class="line">    &lt;slot&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span> <span class="hljs-comment">// 匿名插槽</span></span><br><span class="line">    &lt;slot name=<span class="hljs-string">"down"</span> :data=<span class="hljs-string">"data"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span> <span class="hljs-comment">//作用域插槽</span></span><br><span class="line">  &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">    data: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        data: [],</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>父组件:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;child&gt;</span><br><span class="line">      &lt;div slot=<span class="hljs-string">"up"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> <span class="hljs-comment">//引入具名插槽</span></span><br><span class="line">      &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span> <span class="hljs-comment">//引入匿名插槽</span></span><br><span class="line">      &lt;template slot-scope=<span class="hljs-string">"scope"</span>&gt;</span><br><span class="line">        &#123;&#123; scope.data &#125;&#125;</span><br><span class="line">      &lt;<span class="hljs-regexp">/template&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>child&gt;</span><br><span class="line">  &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://segmentfault.com/a/1190000012996217?utm_source=tag-newest" target="_blank" rel="noopener">vue中的slot与slot-scope</a></p>
+<h3 id="理解vue中的scope的使用"><a href="#理解vue中的scope的使用" class="headerlink" title="理解vue中的scope的使用"></a>理解vue中的scope的使用</h3><p><a href="https://www.cnblogs.com/tugenhua0707/p/7745735.html" target="_blank" rel="noopener">理解vue中的scope的使用</a> </p>
+<h3 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h3><p><a href="https://www.cnblogs.com/cpqwebfe/p/7048612.html" target="_blank" rel="noopener">Stylus在vue中的使用</a></p>
 
         </div>
         
@@ -915,151 +970,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-03T15:40:29.000Z">2019-10-03</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 814 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/03/Vue-chat/">vue.js + express + socket.io 聊天室项目实战</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-新建vue-chat项目"><a href="#1-新建vue-chat项目" class="headerlink" title="1. 新建vue-chat项目"></a>1. 新建vue-chat项目</h2><p>新建前端文件，后端文件，实现前后端分离</p>
-<ul>
-<li>chat-client</li>
-<li>chat-server</li>
-</ul>
-<h2 id="2-git绑定remote-branch"><a href="#2-git绑定remote-branch" class="headerlink" title="2. git绑定remote branch"></a>2. git绑定remote branch</h2><h3 id="2-1-创建gitignore文件"><a href="#2-1-创建gitignore文件" class="headerlink" title="2.1 创建gitignore文件"></a>2.1 创建gitignore文件</h3><p>将node_modules等配置文件放入gitignore文件中，实现本地工程文件与gitee绑定更加轻便。</p>
-<h3 id="2-2-初始化git仓库"><a href="#2-2-初始化git仓库" class="headerlink" title="2.2 初始化git仓库"></a>2.2 初始化git仓库</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-
-<p>在vue-chat文件夹下，项目中生成了 .git 子目录，也就是生成了一个git仓库。</p>
-<h3 id="2-3-关联远程仓库"><a href="#2-3-关联远程仓库" class="headerlink" title="2.3 关联远程仓库"></a>2.3 关联远程仓库</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add orgin &#123;REPO_URL&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-4-add-files-amp-amp-commit"><a href="#2-4-add-files-amp-amp-commit" class="headerlink" title="2.4 add files &amp;&amp; commit"></a>2.4 add files &amp;&amp; commit</h3><ul>
-<li>将文件添加到git仓库（暂存区）</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>保存</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -sam <span class="hljs-string">"&#123;NAME&#125;"</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第一次推送master分支的所有内容</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u orgin master</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>git回退指定版本号</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="hljs-built_in">log</span></span><br><span class="line">$ git reset --hard &#123;COMMIT_LOG_NO&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-socket-io"><a href="#3-socket-io" class="headerlink" title="3. socket.io"></a>3. socket.io</h2><p>socket.io是基于Node.js和WebSocket协议的实时通信开源框架，它包括客户端的JavaScript和服务器端的Node.js。</p>
-<blockquote>
-<p>双向通讯的协议<a href="https://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">WebSocket</a></p>
-</blockquote>
-<p>安装 socket.io</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save soclet.io</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-数据库新建与导入"><a href="#4-数据库新建与导入" class="headerlink" title="4. 数据库新建与导入"></a>4. 数据库新建与导入</h2><ol>
-<li><p>mysql中新建数据库chatroom</p>
-</li>
-<li><p>chatroom.sql中设置表格内容</p>
-</li>
-</ol>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS `message`;</span><br><span class="line">CREATE TABLE `message` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `message_content` varchar(140) NOT NULL,</span><br><span class="line">  `author` varchar(20) NOT NULL,</span><br><span class="line">  `created_at` datetime DEFAULT current_timestamp(),</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br><span class="line"></span><br><span class="line">DROP TABLE IF EXISTS `user`;</span><br><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `nickname` varchar(20) NOT NULL,</span><br><span class="line">  `created_at` datetime DEFAULT current_timestamp(),</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>将文件chatroom.sql导入数据库chatroom中</li>
-</ol>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u -p chatroom &lt; chatroom.sql</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-集成-socket-io"><a href="#5-集成-socket-io" class="headerlink" title="5. 集成 socket.io"></a>5. 集成 socket.io</h2><p>Socket.IO由两部分组成：</p>
-<ul>
-<li>与Node.JS HTTP Server集成（或安装在其上）的服务器:socket.io</li>
-<li>在浏览器端加载的客户端库:socket.io-client</li>
-</ul>
-<h3 id="5-1-socket-io模块实现基本通信"><a href="#5-1-socket-io模块实现基本通信" class="headerlink" title="5.1 socket.io模块实现基本通信"></a>5.1 socket.io模块实现基本通信</h3><p>server端:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save socket.io</span><br></pre></td></tr></table></figure>
-
-<p>在App.js编辑:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var express = require(<span class="hljs-string">'express'</span>);</span><br><span class="line">var app = express();</span><br><span class="line">var server = require(<span class="hljs-string">'http'</span>).Server(app);</span><br><span class="line">var io = require(<span class="hljs-string">'socket.io'</span>)(server);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;app: app, server: server, io: io&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>client端:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install --save socket.io-client</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import io from <span class="hljs-string">'socket.io-client'</span>;</span><br><span class="line"></span><br><span class="line">const socket = io(<span class="hljs-string">'http://localhost:3000'</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2-client端向server端发射事件"><a href="#5-2-client端向server端发射事件" class="headerlink" title="5.2 client端向server端发射事件"></a>5.2 client端向server端发射事件</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-actionscript">socket.emit(<span class="hljs-string">'key'</span>, msg);</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-3-server端接收并发射事件"><a href="#5-3-server端接收并发射事件" class="headerlink" title="5.3 server端接收并发射事件"></a>5.3 server端接收并发射事件</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.on(<span class="hljs-string">'connection'</span>, <span class="hljs-keyword">function</span>(socket)&#123;</span><br><span class="line">  socket.on(<span class="hljs-string">'key'</span>, <span class="hljs-keyword">function</span>(msg)&#123;</span><br><span class="line">    io.emit(<span class="hljs-string">'key'</span>, msg);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-server端数据存入数据库"><a href="#6-server端数据存入数据库" class="headerlink" title="6. server端数据存入数据库"></a>6. server端数据存入数据库</h2><ul>
-<li>安装sequelize</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -S sequelize</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装mariadb</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -S mariadb</span><br></pre></td></tr></table></figure>
-
-<p>通过sequelize创建连接</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const Sequelize = require(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line">const sequelize = new Sequelize(<span class="hljs-string">'mariadb://user:password@localhost:3306/databaseName'</span>);</span><br><span class="line">sequelize</span><br><span class="line">    .authenticate()</span><br><span class="line">    .<span class="hljs-keyword">then</span>(() =&gt; &#123;</span><br><span class="line">        console.log(<span class="hljs-string">'connection success'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.log(<span class="hljs-string">'connection fail'</span>, error)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">module.exports = sequelize;</span><br></pre></td></tr></table></figure>
-
-<p>新建model文件夹,新建表格文件message.js</p>
-<p>在message.js中创建model形式映射数据库</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const Sequelize = require(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line">const sequelize = require(<span class="hljs-string">'../db'</span>);</span><br><span class="line">  </span><br><span class="line">const Model = Sequelize.Model;</span><br><span class="line">class Message extends Model &#123;&#125;</span><br><span class="line">//class User 继承 Model &#123;&#125;</span><br><span class="line">Message.init(&#123;</span><br><span class="line">  // User初始化</span><br><span class="line">  message_content: &#123;</span><br><span class="line">    <span class="hljs-built_in">type</span>: Sequelize.STRING,</span><br><span class="line">  &#125;,</span><br><span class="line">  author: &#123;</span><br><span class="line">    <span class="hljs-built_in">type</span>: Sequelize.STRING</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  createdAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  updatedAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  tableName: <span class="hljs-string">'message'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = Message;</span><br></pre></td></tr></table></figure>
-
-<p>在socket中连接成功情况下，向数据库传输数据:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">message.create(&#123;JSON&#125;)</span><br><span class="line">   .<span class="hljs-keyword">then</span>((data) =&gt; &#123;</span><br><span class="line">       io.emit(<span class="hljs-string">'key'</span>, data);</span><br><span class="line">   &#125;)</span><br><span class="line">   .catch((error) =&gt; &#123;</span><br><span class="line">       io.emit(<span class="hljs-string">'key'</span>, error);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-socket自定义名称空间作为聊天房间"><a href="#7-socket自定义名称空间作为聊天房间" class="headerlink" title="7. socket自定义名称空间作为聊天房间"></a>7. socket自定义名称空间作为聊天房间</h2><p>client端</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"roomSocket"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">data() &#123;</span><br><span class="line"><span class="hljs-actionscript">  <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-actionscript">    roomSocket: <span class="hljs-literal">null</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-actionscript"><span class="hljs-keyword">this</span>.roomSocket = io(<span class="hljs-string">'http://localhost:3000'</span>);</span></span><br><span class="line"><span class="hljs-actionscript"><span class="hljs-keyword">this</span>.roomSocket.emit(<span class="hljs-string">'create'</span>, <span class="hljs-keyword">this</span>.roomName);</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>server端:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">io.sockets.on(<span class="hljs-string">'connection'</span>, (socket) =&gt; &#123;</span><br><span class="line">  socket.on(<span class="hljs-string">'create'</span>, (room) =&gt; &#123;</span><br><span class="line">    socket.join(room);</span><br><span class="line">    socket.emit(<span class="hljs-string">'create_success'</span>, <span class="hljs-string">''</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-socket在房间路径下进行通信"><a href="#8-socket在房间路径下进行通信" class="headerlink" title="8. socket在房间路径下进行通信"></a>8. socket在房间路径下进行通信</h2><p>client端:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-actionscript"><span class="hljs-keyword">this</span>.roomSocket.emit(<span class="hljs-string">'msg'</span>, obj);</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>server端:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.on(<span class="hljs-string">'msg'</span>, data =&gt; &#123;</span><br><span class="line">  io.sockets.in(room).emit(<span class="hljs-string">'broadcast_msg'</span>, obj);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ol start="9">
-<li>登入获取用户名，存入vuex,发送信息时自动发送用户名、发送时间</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -1121,7 +1031,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -1233,16 +1143,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubunto/" class="media-left">
+            <a href="/2019/12/04/record/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1252,16 +1162,35 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx/" class="media-left">
+            <a href="/2019/12/02/ubuntu/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1307,25 +1236,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1344,7 +1254,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1427,16 +1337,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubunto/" class="media-left">
+            <a href="/2019/12/04/record/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubunto/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
+                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1446,16 +1356,35 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx/" class="media-left">
+            <a href="/2019/12/02/ubuntu/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubunto-nginx">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubunto-nginx</a>
+                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1501,25 +1430,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/27/js-事件处理方法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js 事件处理方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/js-事件处理方法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">js 事件处理方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1538,7 +1448,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
