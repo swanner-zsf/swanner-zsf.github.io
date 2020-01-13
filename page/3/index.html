@@ -135,6 +135,661 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-27T02:45:59.000Z">2019-09-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 402 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/27/express框架连接数据库/">express框架连接数据库</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-ORM"><a href="#1-ORM" class="headerlink" title="1. ORM"></a>1. ORM</h2><p>对象关系映射（Object Relational Mapping）：<br>ORM 技术是在对象和数据库之间提供了一条桥梁，前台的对象型数据和数据库中的关系型的数据通过这个桥梁来相互转化。</p>
+<h3 id="1-1-Sequelize"><a href="#1-1-Sequelize" class="headerlink" title="1.1 Sequelize"></a>1.1 Sequelize</h3><p>Sequelize 是一款比较流行的 ORM 框架</p>
+<h3 id="1-2-Sequelize安装"><a href="#1-2-Sequelize安装" class="headerlink" title="1.2 Sequelize安装"></a>1.2 Sequelize安装</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install sequelize --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-通过scquelize与数据库建立连接"><a href="#2-通过scquelize与数据库建立连接" class="headerlink" title="2.通过scquelize与数据库建立连接"></a>2.通过scquelize与数据库建立连接</h2><h3 id="2-1-创建sequelize实例"><a href="#2-1-创建sequelize实例" class="headerlink" title="2.1 创建sequelize实例"></a>2.1 创建sequelize实例</h3><p>要连接到数据库，必须创建一个Sequelize实例。这可以通过将连接参数分别传递到Sequelize构造函数或通过传递单个连接URI来完成：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'mariadb://user:pass@localhost:3306/dbname'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-测试连接"><a href="#2-2-测试连接" class="headerlink" title="2.2 测试连接"></a>2.2 测试连接</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sequelize</span><br><span class="line">  .authenticate()</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Connection has been established successfully.'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Unable to connect to the database:'</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">module</span>.exports = sequelize</span><br></pre></td></tr></table></figure>
+
+<p>将sequelize模块导出。</p>
+<h3 id="2-3-建模表格"><a href="#2-3-建模表格" class="headerlink" title="2.3 建模表格"></a>2.3 建模表格</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../db'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="hljs-keyword">const</span> Model = Sequelize.Model;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-comment">//class User 继承 Model &#123;&#125;</span></span><br><span class="line">User.init(&#123;</span><br><span class="line">  <span class="hljs-comment">// User初始化</span></span><br><span class="line">  username: &#123;</span><br><span class="line">    type: Sequelize.STRING,</span><br><span class="line">  &#125;,</span><br><span class="line">  password: &#123;</span><br><span class="line">    type: Sequelize.STRING</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  createdAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  updatedAt: <span class="hljs-literal">false</span>,</span><br><span class="line">  tableName: <span class="hljs-string">'zhuzhu'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = User;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-查询"><a href="#2-4-查询" class="headerlink" title="2.4 查询"></a>2.4 查询</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> router = express.Router();</span><br><span class="line"><span class="hljs-keyword">let</span> User = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../model/User'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> _user = <span class="hljs-literal">null</span>;</span><br><span class="line"><span class="hljs-comment">/* GET home page. */</span></span><br><span class="line">router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>&#123;</span><br><span class="line">  User.findAll().then(<span class="hljs-function"><span class="hljs-params">users</span> =&gt;</span> &#123;</span><br><span class="line">    _us = <span class="hljs-built_in">JSON</span>.stringify(users, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>)</span><br><span class="line">    <span class="hljs-comment">//JSON.stringify()</span></span><br><span class="line">    <span class="hljs-comment">//第一个参数：被转换的值</span></span><br><span class="line">    <span class="hljs-comment">//第二个参数：被转换的字符串属性</span></span><br><span class="line">    <span class="hljs-comment">//第三个参数：如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"All users:"</span>, <span class="hljs-built_in">JSON</span>.stringify(_user, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">  res.render(<span class="hljs-string">'index'</span>, &#123; <span class="hljs-attr">title</span>: _user &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-22T16:12:28.000Z">2019-09-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 308 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/23/node-js入门/">node.js入门</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-node-js搭建http服务"><a href="#1-node-js搭建http服务" class="headerlink" title="1.node.js搭建http服务"></a>1.node.js搭建http服务</h2><h3 id="1-1-hello-word-demo"><a href="#1-1-hello-word-demo" class="headerlink" title="1.1 hello word demo"></a>1.1 hello word demo</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>,log(req.url);</span><br><span class="line">    res.write(<span class="hljs-string">"&lt;html&gt;&lt;body&gt;hello world&lt;/body&gt;&lt;/html&gt;"</span>)</span><br><span class="line">&#125;).listen(<span class="hljs-number">3000</span>, <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"server running..."</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-GET-amp-amp-POST"><a href="#1-2-GET-amp-amp-POST" class="headerlink" title="1.2 GET &amp;&amp; POST"></a>1.2 GET &amp;&amp; POST</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">"url"</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(req.method);</span><br><span class="line">    <span class="hljs-keyword">if</span>(req.method === <span class="hljs-string">"GET"</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> params = url.parse(req.url, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>)</span><br><span class="line">        res.end(<span class="hljs-built_in">JSON</span>.stringify(params));</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(req.method === <span class="hljs-string">"POST"</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> data_str = <span class="hljs-string">""</span>;</span><br><span class="line">        req.on(<span class="hljs-string">"data"</span>, (chunk) =&gt; &#123;</span><br><span class="line">            data_str += chunk</span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(data_str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).listen(<span class="hljs-number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"srever running..."</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>node.js中url.parse() 方法使用说明:</strong></p>
+<p>将一个url字符串转换成对象并返回</p>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url.parse(urlStr,  [parseQueryString], [slashesDenoteHost])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接收参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>urlStr</td>
+<td>url字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>parseQueryString</td>
+<td>为true时将使用查询模块分析查询字符串，默认为false</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slashesDenoteHost</td>
+<td>默认为false，//foo/bar 形式的字符串将被解释成 { pathname: ‘//foo/bar’ },如果设置成true，//foo/bar 形式的字符串将被解释成  { host: ‘foo’, pathname: ‘/bar’ }</td>
+</tr>
+</tbody></table>
+<h2 id="2-Express搭建http服务"><a href="#2-Express搭建http服务" class="headerlink" title="2. Express搭建http服务"></a>2. Express搭建http服务</h2><h3 id="2-1-Express安装"><a href="#2-1-Express安装" class="headerlink" title="2.1 Express安装"></a>2.1 Express安装</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install express --save</span><br><span class="line">$ cnpm install</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Express框架实例"><a href="#2-2-Express框架实例" class="headerlink" title="2.2 Express框架实例"></a>2.2 Express框架实例</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">"express"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> app = express();</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded());</span><br><span class="line"></span><br><span class="line">app.get(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="hljs-string">"hello world"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RetObj</span>(<span class="hljs-params">statusCode, msg</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>;</span><br><span class="line">    ret.statusCode = statusCode;</span><br><span class="line">    ret.msg = msg,</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.post(<span class="hljs-string">"/"</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="hljs-comment">//检查key值是否存在</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(!(<span class="hljs-string">""</span> <span class="hljs-keyword">in</span> req.body)) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">4000</span>, <span class="hljs-string">"fail"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> ret = RetObj(<span class="hljs-number">2000</span>, <span class="hljs-string">"success"</span>);</span><br><span class="line">        req.send(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="hljs-number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"express server running on 3000..."</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-21T15:19:16.000Z">2019-09-21</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1108 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/21/Vue-js入门/">Vue.js入门</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h1><h2 id="1-Vue-js知识点"><a href="#1-Vue-js知识点" class="headerlink" title="1. Vue.js知识点"></a>1. Vue.js知识点</h2><h3 id="1-1-mount-amp-el"><a href="#1-1-mount-amp-el" class="headerlink" title="1.1 $mount() &amp; el"></a>1.1 $mount() &amp; el</h3><p>$mount()为手动挂载，在项目中可用于延时挂载，之后要手动挂载上。new Vue时，el和$mount并没有本质上的不同。</p>
+<p><strong>未答疑：</strong></p>
+<table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>问题</th>
+<th>相关链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>watch?computed</td>
+<td></td>
+<td><a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="noopener">link1</a></td>
+</tr>
+<tr>
+<td>event对象</td>
+<td>$event  $event.target.value</td>
+<td><a href="https://www.jianshu.com/p/6231de02c3e9" target="_blank" rel="noopener">link2</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-iview"><a href="#2-iview" class="headerlink" title="2. iview"></a>2. iview</h2><h3 id="2-1-input"><a href="#2-1-input" class="headerlink" title="2.1 input"></a>2.1 input</h3><p>input数据双向绑定:</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=<span class="hljs-string">"value"</span></span><br></pre></td></tr></table></figure>
+
+<p>input type=”radio” name:<br>name 属性可设置或返回单选按钮的名称。<br>在多个单选按钮存在情况下，设置相同name，可实现单选效果。</p>
+<p>input 遍历绑定</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;label v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"item in arr"</span> :<span class="hljs-keyword">for</span>=<span class="hljs-string">"item"</span>&gt;</span><br><span class="line">    &lt;input :value=<span class="hljs-string">"item"</span>/&gt;&#123;&#123; item &#125;&#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/label&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        arr: []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>input 修饰符</p>
+<ul>
+<li>.lazy</li>
+</ul>
+<p>在失去焦点的时候才更新，而不是实时更新</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.lazy</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.number</li>
+</ul>
+<p>自动将用户的输入值转为 Number 类型</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>.trim</li>
+</ul>
+<p>自动过滤用户输入的首尾空格</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.trim</span>=<span class="hljs-string">""</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-监听键盘事件"><a href="#2-2-监听键盘事件" class="headerlink" title="2.2 监听键盘事件"></a>2.2 监听键盘事件</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-input v-model=<span class="hljs-string">"input"</span> @keyup.enter.native=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">i-input</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>绑定事件多一个.native修饰符，是因为iview封装了个div在input标签外面，把原来的事件隐藏了，所以如果不加.native的话，按键不会生效。</p>
+<h3 id="2-3-响应式的数组方法"><a href="#2-3-响应式的数组方法" class="headerlink" title="2.3 响应式的数组方法"></a>2.3 响应式的数组方法</h3><p>响应式：</p>
+<ul>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()…  </li>
+</ul>
+<p>非响应式（html页面不会响应）：</p>
+<ul>
+<li>this.array[0] = “a” (通过数组索引的形式改变数组元素)</li>
+</ul>
+<h3 id="2-4-扩展运算符-…"><a href="#2-4-扩展运算符-…" class="headerlink" title="2.4 扩展运算符(…)"></a>2.4 扩展运算符(…)</h3><p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;</span><br><span class="line"><span class="hljs-keyword">let</span> b = &#123; ...a &#125;  <span class="hljs-comment">//&#123; a: 1, b: 2 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-css-scoped-与-module"><a href="#2-5-css-scoped-与-module" class="headerlink" title="2.5 css: scoped 与 module"></a>2.5 css: scoped 与 module</h3><h4 id="2-5-1-scoped"><a href="#2-5-1-scoped" class="headerlink" title="2.5.1 scoped"></a>2.5.1 scoped</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>scoped作用:<br>阻止上层的css样式传递到下层，限制当前css作用域，使其只对当前组件生效。<br>深度作用:<br>如果希望scoped中的某个样式能够作用的更深，影响到子组件，可以使用&gt;&gt;&gt;操作符</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">.content &gt;&gt;&gt; .title-wrap &#123;</span><br><span class="line">    font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意看我将style中的lang=”scss”去掉了，因为加了预处理器后无法正确解析&gt;&gt;&gt;，这种情况可以使用/deep/代替，本质是&gt;&gt;&gt;的别名</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> scoped&gt;</span><br><span class="line">.content &#123;</span><br><span class="line">  /deep/ &#123;</span><br><span class="line">    .title-wrap &#123;</span><br><span class="line">      font-size: <span class="hljs-number">20</span>px;</span><br><span class="line">      color: red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-2-module"><a href="#2-5-2-module" class="headerlink" title="2.5.2 module"></a>2.5.2 module</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=<span class="hljs-string">"scss"</span> <span class="hljs-built_in">module</span>&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>module作用:</p>
+<ul>
+<li>快速定位</li>
+<li>灵活传递到任意子组件</li>
+</ul>
+<p>它在布局中的引用，都需要添加前缀$style,因为通过module作用的style都被保存到$style对象中。</p>
+<h3 id="2-6-动态绑定class"><a href="#2-6-动态绑定class" class="headerlink" title="2.6 动态绑定class"></a>2.6 动态绑定class</h3><h4 id="class"><a href="#class" class="headerlink" title=":class"></a>:class</h4><p>我们可以把:class直接赋值一个对象:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mySelf"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"classObject"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">data:&#123;</span><br><span class="line">    classObject:&#123;</span><br><span class="line">      'class-a':true,</span><br><span class="line">      'class-b':false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据条件切换列表的class，可以用三元表达式:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"[classA,isB?classB:'']"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>根据路由路径绑定内联样式:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mySelf"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"&#123; on : '/' === $route.path &#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">// $route =&gt; 路由信息对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-disabled"><a href="#2-7-disabled" class="headerlink" title="2.7 disabled"></a>2.7 disabled</h3><p>控制元素是否可用</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button :disable=<span class="hljs-string">"true/false"</span>&gt;&#123;&#123; &#125;&#125;&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-filter过滤器"><a href="#2-8-filter过滤器" class="headerlink" title="2.8 filter过滤器"></a>2.8 filter过滤器</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123; msg | change &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">filters: &#123;</span><br><span class="line">  change (value) &#123;</span><br><span class="line"><span class="hljs-actionscript">    <span class="hljs-keyword">return</span> value + <span class="hljs-string">'&#123;STRING&#125;'</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Vuex"><a href="#3-Vuex" class="headerlink" title="3. Vuex"></a>3. Vuex</h2><h3 id="3-1-Vuex介绍"><a href="#3-1-Vuex介绍" class="headerlink" title="3.1 Vuex介绍"></a>3.1 Vuex介绍</h3><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，将我们需要共享的data，使用vuex进行统一集中式的管理。</p>
+<h3 id="3-2-vue实例全局引入store对象"><a href="#3-2-vue实例全局引入store对象" class="headerlink" title="3.2 vue实例全局引入store对象"></a>3.2 vue实例全局引入store对象</h3><p>Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> c(app)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-new-Vuex-Store"><a href="#3-3-new-Vuex-Store" class="headerlink" title="3.3 new Vuex.Store"></a>3.3 new Vuex.Store</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="hljs-number">123</span>,</span><br><span class="line">    todos: [],</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.todos.length,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.count++</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment (context) &#123;  <span class="hljs-comment">//Action函数接受一个与 store 实例具有相同方法和属性的 context 对象</span></span><br><span class="line">      context.commit(<span class="hljs-string">'increment'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>基本对象</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>state</td>
+<td>存储状态(变量)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>getters</td>
+<td>对数据获取之前的再次编译，可以理解为state的计算属性。我们在组件中使用 $store.getters.fun()</td>
+</tr>
+<tr>
+<td>3</td>
+<td>mutations</td>
+<td>修改状态，同步操作,在组件中使用$store.commit(‘’,params)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>actions</td>
+<td>异步操作,在组件中使用是$store.dispath(‘’)</td>
+</tr>
+</tbody></table>
+<p>注意:</p>
+<ul>
+<li>Action 提交的是 mutation，而不是直接变更状态。</li>
+<li>Action 可以包含任意异步操作。</li>
+</ul>
+<p>Action方法调用mutation方法(简化代码):</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">    increment (state) &#123;  <span class="hljs-comment">//传入state参数</span></span><br><span class="line">      state.count++</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">actions: &#123;</span><br><span class="line">  increment (&#123; commit &#125;) &#123;  <span class="hljs-comment">//通过commit提交一个 mutation方法</span></span><br><span class="line">    commit(<span class="hljs-string">'increment'</span>)  <span class="hljs-comment">//调用mutations内的方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-将store中的对象传入子组件"><a href="#3-4-将store中的对象传入子组件" class="headerlink" title="3.4 将store中的对象传入子组件"></a>3.4 将store中的对象传入子组件</h3><ul>
+<li>方法1</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;&#123; this.$store.state.count &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法2</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">      computed: mapState(&#123;</span><br><span class="line">        count: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.count <span class="hljs-comment">//映射 this.count为store.state.count</span></span><br><span class="line">    &#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法3</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    ...mapState([<span class="hljs-string">"count"</span>]) <span class="hljs-comment">//...对象展开运算符</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    ...mapMutations(),</span><br><span class="line">    ...mapActions(),</span><br><span class="line">    &#125; ,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>传入store下home模块下的state数据</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; mapState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'vuex'</span></span><br><span class="line"></span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState(&#123;<span class="hljs-string">"area"</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.home.area&#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-19T14:56:19.000Z">2019-09-19</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1565 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/19/JavaScript基础/">JavaScript基础</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="1-Array"><a href="#1-Array" class="headerlink" title="1. Array"></a>1. Array</h1><h2 id="1-1-熟悉"><a href="#1-1-熟悉" class="headerlink" title="1.1 熟悉"></a>1.1 熟悉</h2><ul>
+<li>toString()</li>
+<li>push() 数组末尾添加元素，<strong>并返回添加元素后的数组长度。</strong></li>
+<li>pop() 删除数组的最后一个元素，<strong>并返回该删除元素。</strong></li>
+<li>reverse() 用于颠倒排列数组元素，返回改变后的数组。</li>
+</ul>
+<h2 id="1-2-不熟悉"><a href="#1-2-不熟悉" class="headerlink" title="1.2 不熟悉"></a>1.2 不熟悉</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Array.isArray()</td>
+<td>判断是否为数组,返回布尔值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>valueOf()</td>
+<td>数组的valueOf()方法返回数组本身</td>
+</tr>
+<tr>
+<td>3</td>
+<td>shift()</td>
+<td>用于删除数组的第一个元素，并返回该元素</td>
+</tr>
+<tr>
+<td>4</td>
+<td>unshift()</td>
+<td>在数组的第一个位置添加元素，并返回添加新元素后的数组长度</td>
+</tr>
+<tr>
+<td>5</td>
+<td>join()</td>
+<td>以指定参数作为分隔符，将所有数组元素连接成为一个字符串返回</td>
+</tr>
+<tr>
+<td>6</td>
+<td>concat()</td>
+<td>用于多个数组的合并</td>
+</tr>
+<tr>
+<td>7</td>
+<td>slice()</td>
+<td>用于提取目标数组的一部分，返回一个新数组。第一个参数为起始位置，第二个参数为终止位置，如果省略第二个参数，则一直返回到数组最后一个元素 <strong>（重要应用：将类似数组的对象转为真正的数组</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>splice(start, count, addElement1, …)</td>
+<td>第一个参数是删除的起始位置，第二个参数是被删除的个数，后面的参数表示要被插入数组的新元素。<strong>（如果只是单纯地插入元素，第二个参数可以设为0；如果只提供第一个参数，等同于将原数组在指定位置拆分成两个数组）</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>sort()</td>
+<td>数值先被转成字符串再按字典排序;  <strong>自定义排序：传入一个函数作为参数</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>map()</td>
+<td>将数组的所有成员依次传入参数函数</td>
+</tr>
+<tr>
+<td>11</td>
+<td>forEach()</td>
+<td>forEach()无法中断执行，总是会将所有成员遍历完。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>filter()</td>
+<td>过滤数组成员，返回新数组，filter方法的参数函数可以接受三个参数：当前成员，当前位置和整个数组。filter方法还可以接受第二个参数，用来绑定参数函数内部的this变量。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>some(), every()</td>
+<td>接受一个函数作为参数，该函数接受三个参数：当前成员、当前位置和整个数组，然后返回一个布尔值。</td>
+</tr>
+<tr>
+<td>14</td>
+<td>reduce(), reduceRight()</td>
+<td>依次处理数组的每个成员，它的参数函数接受以下4个参数：1.累积变量，默认为数组的第一个成员 2.当前变量，默认为数组的第二个成员 3.当前位置（从0开始）4.原数组</td>
+</tr>
+<tr>
+<td>15</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>返回给定元素在数组中第一次和最后一次出现的位置， 如果没有出现则返回-1。</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-Array要点"><a href="#1-3-Array要点" class="headerlink" title="1.3 Array要点"></a>1.3 Array要点</h2><p>构造函数写法 new Array() 缺陷：<br>不同的参数会导致行为不一致，因此不建议使用它生成新数组，直接使用数组字面量更好：  </p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2];</span><br></pre></td></tr></table></figure>
+
+<p>判断对象类型：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-String"><a href="#2-String" class="headerlink" title="2. String"></a>2. String</h1><h2 id="2-1-String实例属性"><a href="#2-1-String实例属性" class="headerlink" title="2.1 String实例属性"></a>2.1 String实例属性</h2><p>String.prototype.length</p>
+<h2 id="2-2-String实例方法"><a href="#2-2-String实例方法" class="headerlink" title="2.2 String实例方法"></a>2.2 String实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>charAt()</td>
+<td>返回指定位置的字符，可以用数组下标代替</td>
+</tr>
+<tr>
+<td>2</td>
+<td>concat()</td>
+<td>连接两个字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>slice()</td>
+<td>从原数组取出字符串并返回</td>
+</tr>
+<tr>
+<td>4</td>
+<td>substring()</td>
+<td>与slice()方法相似，不同之处：substring()会将负数的参数自动变成0；当第二个参数小于第一个参数，会自动互换位置。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>substr()</td>
+<td>与slice(),substring()相似，不同之处：如果第一个参数是负数，表示倒数计算的字符位置。如果第二个参数是负数，将被自动转为0，因此会返回空字符串。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>indexOf(), lastIndexOf()</td>
+<td>可以接受第二个参数，表示从该位置向后（向前）匹配。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>trim()</td>
+<td>去除字符串两端的空格，返回一个新字符串，不改变原字符串</td>
+</tr>
+<tr>
+<td>8</td>
+<td>toLowerCase()/  toUpperCase()</td>
+<td>全部转为小写/全部转为大写</td>
+</tr>
+<tr>
+<td>9</td>
+<td>match()</td>
+<td>用于确定原字符串是否匹配某个子字符串，返回匹配的第一个字符串，没找到返回null;返回的数组还有index属性和input属性，分别表示匹配字符串开始的位置和原始字符串。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>search(), replace()</td>
+<td>基本等同于match(),返回值为匹配的第一个位置，没找到返回-1；replace() 一般情况下只替换第一个匹配。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>split()</td>
+<td>分割字符串，第二个参数限定返回数组的最大成员数。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>localeCompare()</td>
+<td>比较两个字符串：&lt;0,0,&gt;0</td>
+</tr>
+</tbody></table>
+<h1 id="3-Math"><a href="#3-Math" class="headerlink" title="3. Math"></a>3. Math</h1><h2 id="3-1-Math静态属性"><a href="#3-1-Math静态属性" class="headerlink" title="3.1 Math静态属性"></a>3.1 Math静态属性</h2><p>Math.E: 常数e<br>Math.PI: 常数π</p>
+<h2 id="3-2-Math静态方法"><a href="#3-2-Math静态方法" class="headerlink" title="3.2 Math静态方法"></a>3.2 Math静态方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Math.abs()</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Math.ceil()</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Math.floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Math.max()</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Math.min()</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Math.round()</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Math.random</td>
+<td>随机值</td>
+</tr>
+</tbody></table>
+<h1 id="4-Number"><a href="#4-Number" class="headerlink" title="4. Number"></a>4. Number</h1><h2 id="4-1-Number静态属性"><a href="#4-1-Number静态属性" class="headerlink" title="4.1 Number静态属性"></a>4.1 Number静态属性</h2><p>Number.POSITIVE_INFINITY：正的无限，指向Infinity。<br>Number.NEGATIVE_INFINITY：负的无限，指向-Infinity。<br>Number.NaN：表示非数值，指向NaN。<br>Number.MIN_VALUE：表示最小的正数（即最接近0的正数，在64位浮点数体系中为5e-324）。<br>Number.MAX_SAFE_INTEGER：表示能够精确表示的最大整数，即9007199254740991。<br>Number.MIN_SAFE_INTEGER：表示能够精确表示的最小整数，即-9007199254740991。</p>
+<h2 id="4-2-Number实例方法"><a href="#4-2-Number实例方法" class="headerlink" title="4.2 Number实例方法"></a>4.2 Number实例方法</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>函数名称</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Number.prototype.toString()</td>
+<td>用来将一个数值转为字符串形式</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Number.prototype.toFixed()</td>
+<td>将一个数转为指定位数的小数，然后返回这个小数对应的字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Number.prototype.toExponential()</td>
+<td>将一个数转为科学计数法形式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Number.prototype.toPrecision()</td>
+<td>将一个数转为指定位数的有效数字</td>
+</tr>
+</tbody></table>
+<h2 id="jQuery-遍历方法"><a href="#jQuery-遍历方法" class="headerlink" title="jQuery 遍历方法"></a>jQuery 遍历方法</h2><h3 id="each"><a href="#each" class="headerlink" title="$.each()"></a>$.each()</h3><p>$.each(array,function(index,value){})<br>用于遍历数组或对象</p>
+<h3 id="each-1"><a href="#each-1" class="headerlink" title="$().each()"></a>$().each()</h3><p>$(‘selector’).each(function(index,value){…})<br>用于遍历dom数组</p>
+<h3 id="array-forEach"><a href="#array-forEach" class="headerlink" title="array.forEach()"></a>array.forEach()</h3><p>arr.forEach(function(item,index,array){…})<br>用于遍历数组<br>forEach方法不会跳过null和undefined元素</p>
+<h2 id="5-amp-amp-运算符"><a href="#5-amp-amp-运算符" class="headerlink" title="5. || &amp;&amp; 运算符"></a>5. || &amp;&amp; 运算符</h2><h3 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h3><p>console.log( 5 &amp;&amp; 4 );//当结果为真时，返回第二个为真的值4<br>console.log( 0 &amp;&amp; 4 );//当结果为假时，返回第一个为假的值0</p>
+<h3 id><a href="#" class="headerlink" title="||"></a>||</h3><p>console.log( 5 || 4 );//当结果为真时，返回第一个为真的值5<br>console.log( 0 || 0 );//当结果为假时，返回第二个为假的值0<br>console.log((3||2)&amp;&amp;(5||0));//5</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-16T09:13:16.000Z">2019-09-16</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a few seconds read (About 0 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/09/16/微信小程序form提交/">微信小程序form提交.md.</a>
+            
+        </h1>
+        <div class="content">
+            
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-15T07:12:09.000Z">2019-09-15</time>
                 
                 
@@ -346,7 +1001,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        28
                     </p>
                 </div>
             </div>
@@ -458,16 +1113,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/04/record/" class="media-left">
+            <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -477,16 +1132,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubuntu/" class="media-left">
+            <a href="/2020/01/10/vue-konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -496,16 +1151,16 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+            <a href="/2020/01/09/Konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -515,16 +1170,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/29/Vue-插件/" class="media-left">
+            <a href="/2020/01/09/html5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -534,16 +1189,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/vue-进阶/" class="media-left">
+            <a href="/2020/01/08/css/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -562,6 +1217,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -652,16 +1318,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/04/record/" class="media-left">
+            <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -671,16 +1337,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubuntu/" class="media-left">
+            <a href="/2020/01/10/vue-konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -690,16 +1356,16 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+            <a href="/2020/01/09/Konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -709,16 +1375,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/29/Vue-插件/" class="media-left">
+            <a href="/2020/01/09/html5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -728,16 +1394,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/vue-进阶/" class="media-left">
+            <a href="/2020/01/08/css/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -756,6 +1422,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -842,7 +1519,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 John Doe&nbsp;
+                &copy; 2020 John Doe&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 

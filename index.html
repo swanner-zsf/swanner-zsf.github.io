@@ -135,6 +135,382 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 446 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/10/three-js/">three.js</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="Vue-three-js"><a href="#Vue-three-js" class="headerlink" title="Vue three.js"></a>Vue three.js</h3><p>1.安装three.js</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install three</span><br></pre></td></tr></table></figure>
+
+<p>2.安装轨道控件插件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install three-orbit-controls</span><br></pre></td></tr></table></figure>
+
+<p>3.安装加载.obj和.mtl文件的插件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save three-obj-mtl-loader</span><br></pre></td></tr></table></figure>
+
+<p>4.安装渲染器插件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save three-css2drender</span><br></pre></td></tr></table></figure>
+
+<p>5.在需要使用到three的页面中引入</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Three <span class="hljs-keyword">from</span> <span class="hljs-string">'three'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"container"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Three <span class="hljs-keyword">from</span> <span class="hljs-string">'three'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">      camera: <span class="hljs-literal">null</span>,</span><br><span class="line">      scene: <span class="hljs-literal">null</span>,</span><br><span class="line">      renderer: <span class="hljs-literal">null</span>,</span><br><span class="line">      mesh: <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.init()</span><br><span class="line">    <span class="hljs-keyword">this</span>.animate()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    init() &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> container = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'container'</span>)</span><br><span class="line">      <span class="hljs-comment">//新建摄像机</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.camera = <span class="hljs-keyword">new</span> Three.PerspectiveCamera(<span class="hljs-number">45</span>, container.clientWidth / container.clientHeight, <span class="hljs-number">0.01</span>, <span class="hljs-number">10</span>)</span><br><span class="line">      <span class="hljs-keyword">this</span>.camera.position.z = <span class="hljs-number">0.6</span></span><br><span class="line">      <span class="hljs-comment">//新建场景</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.scene = <span class="hljs-keyword">new</span> Three.Scene()</span><br><span class="line">      <span class="hljs-comment">//新建几何体</span></span><br><span class="line">      <span class="hljs-keyword">let</span> geometry = <span class="hljs-keyword">new</span> Three.BoxGeometry(<span class="hljs-number">0.2</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.2</span>)</span><br><span class="line">      <span class="hljs-comment">//新建网格法向量材质</span></span><br><span class="line">      <span class="hljs-keyword">let</span> material = <span class="hljs-keyword">new</span> Three.MeshNormalMaterial()</span><br><span class="line">      <span class="hljs-comment">//创建网格</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.mesh = <span class="hljs-keyword">new</span> Three.Mesh(geometry, material)</span><br><span class="line">      <span class="hljs-keyword">this</span>.scene.add(<span class="hljs-keyword">this</span>.mesh)</span><br><span class="line">      <span class="hljs-comment">//新建渲染器</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.renderer = <span class="hljs-keyword">new</span> Three.WebGLRenderer(&#123;<span class="hljs-attr">antialias</span>: <span class="hljs-literal">true</span>&#125;)</span><br><span class="line">      <span class="hljs-keyword">this</span>.renderer.setSize(container.clientWidth, container.clientHeight)</span><br><span class="line">      container.appendChild(<span class="hljs-keyword">this</span>.renderer.domElement)</span><br><span class="line">    &#125;,</span><br><span class="line">    animate() &#123;</span><br><span class="line">      <span class="hljs-comment">//请求动画帧</span></span><br><span class="line">      requestAnimationFrame(<span class="hljs-keyword">this</span>.animate)</span><br><span class="line">      <span class="hljs-keyword">this</span>.mesh.rotation.x += <span class="hljs-number">0.01</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.mesh.rotation.y += <span class="hljs-number">0.02</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.renderer.render(<span class="hljs-keyword">this</span>.scene, <span class="hljs-keyword">this</span>.camera)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>组group</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> group = <span class="hljs-keyword">new</span> THREE.Group()</span><br><span class="line">group.add(mesh1, mesh2)</span><br><span class="line">group.position.set()</span><br><span class="line">scene.add(group)</span><br></pre></td></tr></table></figure>
+
+<h5 id="几何体Geometry"><a href="#几何体Geometry" class="headerlink" title="几何体Geometry:"></a>几何体Geometry:</h5><ul>
+<li><p>立方体(BoxGeometry)<br>BoxGeometry(width, height, dept, widthSegments, heightSegments, depthSegments)</p>
+</li>
+<li><p>圆形（CircleGeometry）</p>
+</li>
+<li><p>柱体（CylinderGeometry)</p>
+</li>
+<li><p>球体（SphereGeometry)<br>SphereGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)</p>
+</li>
+<li><p>多边形(ShapeGeometry)</p>
+</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rectShape= <span class="hljs-keyword">new</span> THREE.Shape();</span><br><span class="line">rectShape.moveTo(<span class="hljs-number">1</span>,<span class="hljs-number">4</span>);</span><br><span class="line">rectShape.lineTo(<span class="hljs-number">1</span>, <span class="hljs-number">8</span>);</span><br><span class="line">rectShape.lineTo(<span class="hljs-number">5</span>, <span class="hljs-number">8</span>);</span><br><span class="line">rectShape.lineTo(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>);</span><br><span class="line">rectShape.lineTo(<span class="hljs-number">3</span>, <span class="hljs-number">-4</span>);</span><br><span class="line">rectShape.lineTo(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> rectGeom = <span class="hljs-keyword">new</span> THREE.ShapeGeometry( rectShape );</span><br><span class="line"><span class="hljs-keyword">var</span> rectMesh = <span class="hljs-keyword">new</span> THREE.Mesh( rectGeom, <span class="hljs-keyword">new</span> THREE.MeshBasicMaterial( &#123; <span class="hljs-attr">color</span>: <span class="hljs-number">0xff0000</span> &#125; ) )</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>文字（TextGeometry）</li>
+</ul>
+<h6 id="Mesh"><a href="#Mesh" class="headerlink" title="Mesh"></a>Mesh</h6><p>几何体是不能被渲染的，只有几何体和材质结合成网格才能被渲染到屏幕上</p>
+<p>属性:</p>
+<p>position</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mesh.position.set(x,y,z)</span><br></pre></td></tr></table></figure>
+
+<p>rotation</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mesh.rotation.set(x,y,z)</span><br></pre></td></tr></table></figure>
+
+<p>scale</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mesh.scale.set(x,y,z)</span><br></pre></td></tr></table></figure>
+
+<p>translate</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mesh.translate.set(x,y,z)</span><br></pre></td></tr></table></figure>
+
+<p>visible: true/false</p>
+<h4 id="ThreeBSP库"><a href="#ThreeBSP库" class="headerlink" title="ThreeBSP库"></a>ThreeBSP库</h4><table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>intersect（交集）</td>
+<td>重合的部分定义形状</td>
+</tr>
+<tr>
+<td>union（并集）</td>
+<td>联合起来的部分定义形状</td>
+</tr>
+<tr>
+<td>subtract（差集）</td>
+<td>重叠的部分定义形状</td>
+</tr>
+</tbody></table>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 197 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/10/vue-konva/">vue-konva</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="vue-konva"><a href="#vue-konva" class="headerlink" title="vue-konva"></a>vue-konva</h2><h3 id="Vue-安装"><a href="#Vue-安装" class="headerlink" title="Vue 安装"></a>Vue 安装</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-konva konva --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-main-js引用"><a href="#Vue-main-js引用" class="headerlink" title="Vue main.js引用"></a>Vue main.js引用</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="hljs-string">'vue'</span>;</span><br><span class="line">import VueKonva from <span class="hljs-string">'vue-konva'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueKonva)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue-使用"><a href="#Vue-使用" class="headerlink" title="Vue 使用"></a>Vue 使用</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">v-stage</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"configKonva"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">v-layer</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">v-circle</span> <span class="hljs-attr">:config</span>=<span class="hljs-string">"configCircle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">v-circle</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">v-layer</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">v-stage</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">      configKonva: &#123;</span><br><span class="line">        width: <span class="hljs-number">200</span>,</span><br><span class="line">        height: <span class="hljs-number">200</span></span><br><span class="line">      &#125;,</span><br><span class="line">      configCircle: &#123;</span><br><span class="line">        x: <span class="hljs-number">100</span>,</span><br><span class="line">        y: <span class="hljs-number">100</span>,</span><br><span class="line">        radius: <span class="hljs-number">70</span>,</span><br><span class="line">        fill: <span class="hljs-string">"red"</span>,</span><br><span class="line">        stroke: <span class="hljs-string">"black"</span>,</span><br><span class="line">        strokeWidth: <span class="hljs-number">4</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="basic-shapes"><a href="#basic-shapes" class="headerlink" title="basic shapes"></a>basic shapes</h4><p>v-rect,<br>v-circle,<br>v-ellipse,<br>v-line,<br>v-image,<br>v-text,<br>v-text-path,<br>v-star,<br>v-label,<br>v-path,<br>v-regular-polygon…</p>
+<h4 id="events"><a href="#events" class="headerlink" title="events"></a>events</h4><p>click,<br>dblclick,<br>mouseenter,<br>mouseleave,<br>mousemove,<br>mouseover,<br>mousedown,<br>mouseup,<br>mouseout,<br>touchstart,<br>dragstart,<br>dragmove,<br>dragend…</p>
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> anim = <span class="hljs-keyword">new</span> Konva.Animation(</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">frame</span>) </span>&#123;</span><br><span class="line">    &#125;, layer)</span><br><span class="line"></span><br><span class="line">anim.start() <span class="hljs-comment">//启动动画</span></span><br><span class="line">anim.stop() <span class="hljs-comment">//结束动画</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="循环播放动画"><a href="#循环播放动画" class="headerlink" title="循环播放动画"></a>循环播放动画</h5><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> loopTween = <span class="hljs-keyword">new</span> Konva.Tween(&#123;</span><br><span class="line">    node: star, <span class="hljs-comment">//设置要表现动画的 Konva对象</span></span><br><span class="line">    rotation: <span class="hljs-number">360</span>,  <span class="hljs-comment">//旋转360度</span></span><br><span class="line">    duration: <span class="hljs-number">2</span>,    <span class="hljs-comment">//动画持续时间</span></span><br><span class="line">    easing: Konva.Easings.Linear,</span><br><span class="line">    onFinish: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.reset(); <span class="hljs-comment">//重置动画</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.play();  <span class="hljs-comment">//重新播放动画</span></span><br><span class="line">    &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">loopTween.play();</span><br></pre></td></tr></table></figure>
+
+<h5 id="回放且循环播放动画"><a href="#回放且循环播放动画" class="headerlink" title="回放且循环播放动画"></a>回放且循环播放动画</h5><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rect.to(&#123;</span><br><span class="line">    duration: <span class="hljs-number">2</span>,</span><br><span class="line">    scale: <span class="hljs-number">1.5</span>,</span><br><span class="line">    yoyo: <span class="hljs-literal">true</span> <span class="hljs-comment">//此设置也可以用于tween</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 368 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/09/Konva/">Konva</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="Konva"><a href="#Konva" class="headerlink" title="Konva"></a>Konva</h3><h4 id="Konva构造"><a href="#Konva构造" class="headerlink" title="Konva构造"></a>Konva构造</h4><p>stage-layer-group-shape</p>
+<h4 id="Konva创建步骤"><a href="#Konva创建步骤" class="headerlink" title="Konva创建步骤"></a>Konva创建步骤</h4><p>1.创建舞台stage</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> stage = <span class="hljs-keyword">new</span> Konva.Stage(&#123;</span><br><span class="line">    container : <span class="hljs-string">'demo'</span>,    <span class="hljs-comment">//container 用来容纳舞台的容器</span></span><br><span class="line">    width : <span class="hljs-built_in">window</span>.innerWidth,</span><br><span class="line">    height : <span class="hljs-built_in">window</span>.innerHeight</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2.创建层layer</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> layer = <span class="hljs-keyword">new</span> Konva.Layer();  <span class="hljs-comment">//创建一个层</span></span><br><span class="line">stage.add(layer);               <span class="hljs-comment">//把层添加到舞台</span></span><br></pre></td></tr></table></figure>
+
+<p>3.创建shape图形</p>
+<ul>
+<li>Konva.Rect() 矩形</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> outRect = <span class="hljs-keyword">new</span> Konva.Rect(&#123;</span><br><span class="line">    x:<span class="hljs-number">100</span>,      <span class="hljs-comment">//矩形相对父容器的坐标</span></span><br><span class="line">    y:<span class="hljs-number">100</span>,</span><br><span class="line">    width: <span class="hljs-number">500</span>,   <span class="hljs-comment">//矩形的宽高</span></span><br><span class="line">    height:<span class="hljs-number">50</span>,</span><br><span class="line">    strokeWidth:<span class="hljs-number">10</span>,    <span class="hljs-comment">//描边的宽度</span></span><br><span class="line">    stroke:<span class="hljs-string">'#aaa'</span>,     <span class="hljs-comment">//描边的颜色</span></span><br><span class="line">    cornerRadius: <span class="hljs-number">25</span>      <span class="hljs-comment">//圆角</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> innerRect = <span class="hljs-keyword">new</span> Konva.Rect(&#123;</span><br><span class="line">    x:<span class="hljs-number">100</span>,</span><br><span class="line">    y:<span class="hljs-number">100</span>,</span><br><span class="line">    width: <span class="hljs-number">500</span>*<span class="hljs-number">0.5</span>,      <span class="hljs-comment">//设置外部矩形的宽度为外部矩形的一半</span></span><br><span class="line">    height:<span class="hljs-number">50</span>,</span><br><span class="line">    fill:<span class="hljs-string">'skyblue'</span>,      <span class="hljs-comment">//填充颜色</span></span><br><span class="line">    cornerRadius: <span class="hljs-number">25</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Konva.Circle() 圆形</li>
+<li>Konva.Wedge() 扇形</li>
+<li>Konva.Ellipse() 椭圆</li>
+<li>Konva.Text() 文字</li>
+<li>Konva.Image() 图片</li>
+<li>Konva.Line() 划线</li>
+<li>Konva.star() 星星</li>
+</ul>
+<p><a href="https://www.jianshu.com/p/a859854fc4c5" target="_blank" rel="noopener">konva basic Shape 例子</a></p>
+<p>4.创建组group</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> group = <span class="hljs-keyword">new</span> Konva.Group(&#123;</span><br><span class="line">    x : <span class="hljs-number">0</span>,</span><br><span class="line">    y : <span class="hljs-number">0</span></span><br><span class="line">&#125;);</span><br><span class="line">group.add(innerRect);     <span class="hljs-comment">//把两个矩形添加到组中</span></span><br><span class="line">group.add(outRect);</span><br><span class="line">layer.add(group);    <span class="hljs-comment">//把组添加到层中</span></span><br><span class="line">layer.draw();</span><br></pre></td></tr></table></figure>
+
+<h4 id="konva动画效果"><a href="#konva动画效果" class="headerlink" title="konva动画效果"></a>konva动画效果</h4><p>tween对象 指定动画持续时间 指定变化的样式 tween.play()</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> tween = <span class="hljs-keyword">new</span> Konva.Tween(&#123;</span><br><span class="line">    node: rect,  <span class="hljs-comment">//要进行动画的Konva对象</span></span><br><span class="line">    x: <span class="hljs-number">300</span>,  <span class="hljs-comment">//要进行动画的属性</span></span><br><span class="line">    opacity: <span class="hljs-number">0.8</span>,</span><br><span class="line">    duration: <span class="hljs-number">1</span>,  <span class="hljs-comment">//持续时间</span></span><br><span class="line">    easing: Konva.Easings.EaseIn, <span class="hljs-comment">//动画的动画效果</span></span><br><span class="line">    yoyo: <span class="hljs-literal">true</span>,  <span class="hljs-comment">//是否进行循环播放的设置</span></span><br><span class="line">    onFinish: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//动画执行结束后，执行此方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">tween.play();  <span class="hljs-comment">//启动动画</span></span><br></pre></td></tr></table></figure>
+
+<p>简写: 图形.to()</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rect.to(&#123;</span><br><span class="line">    x: <span class="hljs-number">100</span>,</span><br><span class="line">    y: <span class="hljs-number">100</span>,</span><br><span class="line">    opactity: <span class="hljs-number">.1</span>,</span><br><span class="line">    duration: <span class="hljs-number">3</span>,</span><br><span class="line">    onFinish: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Animation对象</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> animate = <span class="hljs-keyword">new</span> Konva.Animation(</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">frame</span>)</span>&#123; <span class="hljs-comment">//frame 时间参数</span></span><br><span class="line">        star.rotate(<span class="hljs-number">10</span>);</span><br><span class="line">    &#125;, layer);</span><br><span class="line">    animate.start();</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 282 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/09/html5/">html5</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myCanvas"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>补充: canvas宽高不加px,否则fillRect()后图形会被拉伸</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> cxt = c.getContext(<span class="hljs-string">"2d"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>补充: canvas节点需通过getElementById获取</p>
+<h4 id="填充形状"><a href="#填充形状" class="headerlink" title="填充形状"></a>填充形状</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> cxt = c.getContext(<span class="hljs-string">"2d"</span>);</span><br><span class="line">cxt.fillStyle = <span class="hljs-string">"#FF0000"</span>;</span><br><span class="line">cxt.fillRect(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">150</span>,<span class="hljs-number">75</span>);</span><br></pre></td></tr></table></figure>
+
+<p>fillStyle 填充颜色|渐变|图片<br>fillRect(x, y, width, height) 规定了形状、位置和尺寸</p>
+<h4 id="绘制线条"><a href="#绘制线条" class="headerlink" title="绘制线条"></a>绘制线条</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> c=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> cxt=c.getContext(<span class="hljs-string">"2d"</span>);</span><br><span class="line">cxt.moveTo(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>);</span><br><span class="line">cxt.lineTo(<span class="hljs-number">150</span>,<span class="hljs-number">50</span>);</span><br><span class="line">cxt.lineTo(<span class="hljs-number">10</span>,<span class="hljs-number">50</span>);</span><br><span class="line">cxt.stroke()</span><br></pre></td></tr></table></figure>
+
+<p>stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径</p>
+<h4 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> cxt = c.getContext(<span class="hljs-string">"2d"</span>);</span><br><span class="line">cxt.fillStyle = <span class="hljs-string">"#FF0000"</span>;</span><br><span class="line">cxt.beginPath();</span><br><span class="line">cxt.arc(<span class="hljs-number">70</span>,<span class="hljs-number">18</span>,<span class="hljs-number">15</span>,<span class="hljs-number">0</span>,<span class="hljs-built_in">Math</span>.PI*<span class="hljs-number">2</span>,<span class="hljs-literal">true</span>); <span class="hljs-comment">//true逆时针 / false顺时针</span></span><br><span class="line">cxt.closePath();</span><br><span class="line">cxt.fill();</span><br></pre></td></tr></table></figure>
+
+<p>fill() 方法填充当前的图像（路径）<br>context.arc(x,y,r,sAngle,eAngle,counterclockwise)</p>
+<h4 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>)</span><br><span class="line"><span class="hljs-keyword">var</span> cxt = c.getContext(<span class="hljs-string">"2d"</span>)</span><br><span class="line"><span class="hljs-keyword">var</span> grd = cxt.createLinearGradient(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">175</span>,<span class="hljs-number">50</span>)</span><br><span class="line">grd.addColorStop(<span class="hljs-number">0</span>,<span class="hljs-string">"#FF0000"</span>)</span><br><span class="line">grd.addColorStop(<span class="hljs-number">1</span>,<span class="hljs-string">"#00FF00"</span>)</span><br><span class="line">cxt.fillStyle = grd</span><br><span class="line">cxt.fillRect(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">175</span>,<span class="hljs-number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<p>context.createLinearGradient(x0,y0,x1,y1)<br>gradient.addColorStop(stop,color)</p>
+<h4 id="其它实例"><a href="#其它实例" class="headerlink" title="其它实例"></a>其它实例</h4><p><a href="https://www.cnblogs.com/qijunjun/p/7269750.html" target="_blank" rel="noopener">canvas绘制多样图形</a></p>
+<p><a href="https://wow.techbrood.com/fiddle/12040" target="_blank" rel="noopener">html5 交互式人物画像</a></p>
+<p><a href="https://www.cnblogs.com/html5tricks/p/9204735.html" target="_blank" rel="noopener">16个富有创意的HTML5 Canvas动画特效集合</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 701 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/08/css/">css</a>
+            
+        </h1>
+        <div class="content">
+            <h4 id="nth-child-n"><a href="#nth-child-n" class="headerlink" title=":nth-child(n)"></a>:nth-child(n)</h4><p>定义: 选择器匹配父元素中的第 n 个子元素</p>
+<p>实例一：<br>指定每个 p 元素匹配的父元素中第 2 个子元素的背景色</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-child(2)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ff0000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例二：<br>奇数和偶数是可以作为关键字使用用于相匹配的子元素</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background</span>:<span class="hljs-number">#ff0000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-child(even)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background</span>:<span class="hljs-number">#0000ff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例三：<br>使用公式（an+ b）<br>描述：a代表一个循环的大小，N是一个计数器（从0开始），以及b是偏移量</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-child(3n+0)</span>&#123;</span><br><span class="line">    <span class="hljs-attribute">background</span>:<span class="hljs-number">#ff0000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="before-amp-amp-after"><a href="#before-amp-amp-after" class="headerlink" title="::before &amp;&amp; ::after"></a>::before &amp;&amp; ::after</h4><p>边框渐变发光效果实例:</p>
+<p><img src="https://img-blog.csdnimg.cn/20190413114332194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbW9uX3l1,size_16,color_FFFFFF,t_70" alt="边框渐变发光效果"></p>
+<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.box</span><br><span class="line">    <span class="hljs-attribute">position</span> relative</span><br><span class="line">    <span class="hljs-attribute">width</span> <span class="hljs-number">100px</span></span><br><span class="line">    <span class="hljs-attribute">height</span> <span class="hljs-number">100px</span></span><br><span class="line">    &amp;::before</span><br><span class="line">        <span class="hljs-attribute">content</span> <span class="hljs-string">''</span> //必填</span><br><span class="line">        <span class="hljs-attribute">position</span> absolute</span><br><span class="line">        <span class="hljs-attribute">top</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">left</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">right</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">bottom</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">background</span> linear-gradient(<span class="hljs-number">235deg</span>,<span class="hljs-number">#89ff00</span>,<span class="hljs-number">#060c21</span>,<span class="hljs-number">#00bcd4</span>)</span><br><span class="line">        <span class="hljs-comment">//三色渐变，中间为背景色，融入背景</span></span><br><span class="line">        <span class="hljs-attribute">z-index</span> -<span class="hljs-number">1</span></span><br><span class="line">    &amp;::after</span><br><span class="line">        <span class="hljs-attribute">content</span> <span class="hljs-string">''</span> //必填</span><br><span class="line">        <span class="hljs-attribute">position</span> absolute</span><br><span class="line">        <span class="hljs-attribute">top</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">left</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">right</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">bottom</span> -<span class="hljs-number">2px</span></span><br><span class="line">        <span class="hljs-attribute">background</span> linear-gradient(<span class="hljs-number">235deg</span>,<span class="hljs-number">#89ff00</span>,<span class="hljs-number">#060c21</span>,<span class="hljs-number">#00bcd4</span>)</span><br><span class="line">        <span class="hljs-comment">//三色渐变，中间为背景色，融入背景</span></span><br><span class="line">        <span class="hljs-attribute">z-index</span> -<span class="hljs-number">2</span></span><br><span class="line">        <span class="hljs-attribute">filter</span> blur(<span class="hljs-number">40px</span>) //添加模糊滤镜</span><br></pre></td></tr></table></figure>
+
+<h4 id="css实现矩形四个边角加粗"><a href="#css实现矩形四个边角加粗" class="headerlink" title="css实现矩形四个边角加粗"></a>css实现矩形四个边角加粗</h4><p><img src="https://upload-images.jianshu.io/upload_images/1645245-eda835023968e293.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/494/format/webp" alt></p>
+<p>html:</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>css:</p>
+<figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">.main</span><br><span class="line">    <span class="hljs-attribute">position</span> relative</span><br><span class="line">    <span class="hljs-attribute">width</span> <span class="hljs-number">400px</span></span><br><span class="line">    <span class="hljs-attribute">height</span> <span class="hljs-number">200px</span></span><br><span class="line">    <span class="hljs-attribute">border</span> <span class="hljs-number">1px</span> solid red</span><br><span class="line">    <span class="hljs-selector-tag">span</span>:nth-child(<span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-attribute">position</span> absolute</span><br><span class="line">        <span class="hljs-attribute">left</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">top</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">padding</span> <span class="hljs-number">15px</span></span><br><span class="line">        <span class="hljs-attribute">border-style</span> solid</span><br><span class="line">        <span class="hljs-attribute">border-color</span> rebeccapurple</span><br><span class="line">        <span class="hljs-attribute">border-width</span> <span class="hljs-number">5px</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span></span><br><span class="line">    <span class="hljs-selector-tag">span</span>:nth-child(<span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-attribute">position</span> absolute</span><br><span class="line">        <span class="hljs-attribute">right</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">top</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">padding</span> <span class="hljs-number">15px</span></span><br><span class="line">        <span class="hljs-attribute">border-style</span> solid</span><br><span class="line">        <span class="hljs-attribute">border-color</span> rebeccapurple</span><br><span class="line">        <span class="hljs-attribute">border-width</span> <span class="hljs-number">5px</span> <span class="hljs-number">5px</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-selector-tag">span</span>:nth-child(<span class="hljs-number">3</span>)</span><br><span class="line">        <span class="hljs-attribute">position</span> absolute</span><br><span class="line">        <span class="hljs-attribute">right</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">bottom</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">padding</span> <span class="hljs-number">15px</span></span><br><span class="line">        <span class="hljs-attribute">border-style</span> solid</span><br><span class="line">        <span class="hljs-attribute">border-color</span> rebeccapurple</span><br><span class="line">        <span class="hljs-attribute">border-width</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">5px</span> <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-selector-tag">span</span>:nth-child(<span class="hljs-number">4</span>)</span><br><span class="line">        <span class="hljs-attribute">position</span>: absolute</span><br><span class="line">        <span class="hljs-attribute">left</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">bottom</span> -<span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-attribute">padding</span> <span class="hljs-number">15px</span></span><br><span class="line">        <span class="hljs-attribute">border-style</span> solid</span><br><span class="line">        <span class="hljs-attribute">border-color</span> rebeccapurple</span><br><span class="line">        <span class="hljs-attribute">border-width</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">5px</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="css实现矩形四角边框-方法二"><a href="#css实现矩形四角边框-方法二" class="headerlink" title="css实现矩形四角边框(方法二)"></a>css实现矩形四角边框(方法二)</h4><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.box</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">    <span class="hljs-attribute">top</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">    <span class="hljs-attribute">left</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">    <span class="hljs-attribute">background</span>: linear-gradient(to left, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) left top no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">bottom</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) left top no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">left</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) right top no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">bottom</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) right top no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">left</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) left bottom no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">bottom</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) left bottom no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">left</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) right bottom no-repeat,</span><br><span class="line">                linear-gradient(to <span class="hljs-attribute">left</span>, <span class="hljs-number">#f00</span>, <span class="hljs-number">#f00</span>) right bottom no-repeat;</span><br><span class="line">    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">1px</span> <span class="hljs-number">20px</span>, <span class="hljs-number">20px</span> <span class="hljs-number">1px</span>, <span class="hljs-number">1px</span> <span class="hljs-number">20px</span>, <span class="hljs-number">20px</span> <span class="hljs-number">1px</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="extend-amp-amp-继承"><a href="#extend-amp-amp-继承" class="headerlink" title="@extend &amp;&amp; 继承"></a>@extend &amp;&amp; 继承</h4><p>@extend: 一个选择器的样式从另一选择器继承。</p>
+<p>如果一个样式与另外一个样式几乎相同，只有少量的区别，则使用 @extend 就显得很有用。</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.button-basic</span>  &#123;</span><br><span class="line">  <span class="hljs-attribute">border</span>: none;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span> <span class="hljs-number">30px</span>;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.button-report</span>  &#123;</span><br><span class="line">  @extend .button-basic;</span><br><span class="line">  <span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-tag">red</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><p>@keyframes</p>
+<p>“from” 和 “to”，等同于 0% 和 100%。</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">animation</span>: myfirst <span class="hljs-number">5s</span>;</span><br><span class="line">    <span class="hljs-attribute">-webkit-animation</span>: myfirst <span class="hljs-number">5s</span>; <span class="hljs-comment">/* Safari 与 Chrome */</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="hljs-keyword">keyframes</span> myfirst &#123;</span><br><span class="line">    <span class="hljs-selector-tag">from</span> &#123;<span class="hljs-attribute">background</span>: red;&#125;</span><br><span class="line">    <span class="hljs-selector-tag">to</span> &#123;<span class="hljs-attribute">background</span>: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> myfirst /* Safari 与 Chrome */</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-selector-tag">from</span> &#123;<span class="hljs-attribute">background</span>: red;&#125;</span><br><span class="line">    <span class="hljs-selector-tag">to</span> &#123;<span class="hljs-attribute">background</span>: yellow;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>0% 是动画的开始，100% 是动画的完成</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@<span class="hljs-keyword">keyframes</span> myfirst</span><br><span class="line">&#123;</span><br><span class="line">    0%   &#123;<span class="hljs-attribute">background</span>: red;&#125;</span><br><span class="line">    25%  &#123;<span class="hljs-attribute">background</span>: yellow;&#125;</span><br><span class="line">    50%  &#123;<span class="hljs-attribute">background</span>: blue;&#125;</span><br><span class="line">    100% &#123;<span class="hljs-attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> myfirst /* Safari 与 Chrome */</span><br><span class="line">&#123;</span><br><span class="line">    0%   &#123;<span class="hljs-attribute">background</span>: red;&#125;</span><br><span class="line">    25%  &#123;<span class="hljs-attribute">background</span>: yellow;&#125;</span><br><span class="line">    50%  &#123;<span class="hljs-attribute">background</span>: blue;&#125;</span><br><span class="line">    100% &#123;<span class="hljs-attribute">background</span>: green;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time>
                 
                 
@@ -411,7 +787,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1850 words)
+                    15 minutes read (About 2253 words)
                 </span>
                 
                 
@@ -601,360 +977,27 @@
 <p><a href="https://segmentfault.com/a/1190000012996217?utm_source=tag-newest" target="_blank" rel="noopener">vue中的slot与slot-scope</a></p>
 <h3 id="理解vue中的scope的使用"><a href="#理解vue中的scope的使用" class="headerlink" title="理解vue中的scope的使用"></a>理解vue中的scope的使用</h3><p><a href="https://www.cnblogs.com/tugenhua0707/p/7745735.html" target="_blank" rel="noopener">理解vue中的scope的使用</a> </p>
 <h3 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h3><p><a href="https://www.cnblogs.com/cpqwebfe/p/7048612.html" target="_blank" rel="noopener">Stylus在vue中的使用</a></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-27T02:52:01.000Z">2019-10-27</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 776 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/27/js-事件处理方法/">js 事件处理方法</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>访问dom的次数越多，就会增加浏览器重绘与重排的次数，页面性能优化的主要思想之一就是减少与dom的交互次数，提高性能。</p>
-<p>事件委托是利用事件的冒泡原理来实现的，委托目标节点的父级代为执行事件。</p>
-<h3 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h3><h4 id="“data-“"><a href="#“data-“" class="headerlink" title="“data-“"></a>“data-“</h4><ul>
-<li>HTML5规定为元素添加非标准的属性要添加前缀data-</li>
-<li>添加自定义属性之后，可以通过元素的dataset属性来访问自定义的值。</li>
-<li>在添加或读取属性的时候需要去掉前缀data-</li>
-<li>如果属性名称中还包含连字符(-)，需要转成驼峰命名方式，但如果在CSS中使用选择器，我们需要使用连字符格式</li>
-</ul>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"func($event)"</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in items"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">:data-id</span>=<span class="hljs-string">"index"</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    methods: &#123;</span><br><span class="line">        func(event) &#123;</span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-built_in">console</span>.log(event.target.dataset.id);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="target-事件属性"><a href="#target-事件属性" class="headerlink" title="target 事件属性"></a>target 事件属性</h3><p>语法:</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.target</span><br></pre></td></tr></table></figure>
-
-<p>事件属性可返回事件的目标节点（触发该事件的节点）</p>
-<h3 id="nodeName-amp-amp-tagName"><a href="#nodeName-amp-amp-tagName" class="headerlink" title="nodeName &amp;&amp; tagName"></a>nodeName &amp;&amp; tagName</h3><p>DOM里面一共有12种节点类型，常见的3种节点类型:</p>
-<ul>
-<li>元素节点 (标签)</li>
-<li>属性节点 (id, name, class)</li>
-<li>文本节点 (文本内容)</li>
-</ul>
-<p>tagName: 只能用在元素节点上<br>nodeName: 可以用在任何节点上，可以说nodeName涵盖了tagName</p>
-<h3 id="event"><a href="#event" class="headerlink" title="$event"></a>$event</h3><p>访问原始的 DOM 事件,可以用特殊变量 $event 把它传入方法:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"func($event)"</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">    func(event) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>vue点击事件的节点信息获取与操作：</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    f_click: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 当前点击的元素</span></span><br><span class="line">        event.target;</span><br><span class="line">        <span class="hljs-comment">// 绑定事件的元素</span></span><br><span class="line">        event.currentTarget;</span><br><span class="line">        <span class="hljs-comment">// （target与currentTarget的区别主要体现在使用事件委托时，发生事件委托时，点击的元素与绑定事件的元素非同一元素，反之不发生事件委托时，两者相同，是同一元素）</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的前一个节点信息（包含元素节点、属性节点、文本节点、注释节点）</span></span><br><span class="line">        event.currentTarget.previousSibling;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的前一个元素节点（只包含元素节点，只有html内容）</span></span><br><span class="line">        event.currentTarget.previousElementSibling;</span><br><span class="line">        <span class="hljs-comment">// 下一个元素信息获取使用 nextSibling、nextElementSibling</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的父节点信息</span></span><br><span class="line">        event.currentTarget.parentNode;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的父级元素</span></span><br><span class="line">        event.currentTarget.parentElement;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的第一个子节点信息</span></span><br><span class="line">        event.currentTarget.firstChild;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的第一个子元素</span></span><br><span class="line">        event.currentTarget.firstElementChild;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素中id为ceshi的元素集合</span></span><br><span class="line">        event.currentTarget.getElementById(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素中class为ceshi的元素集合</span></span><br><span class="line">        event.currentTarget.getElementsByClassName(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的的内容（类似jquery的text()）</span></span><br><span class="line">        event.currentTarget.textContent;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的的内容（类似jquery的html()）</span></span><br><span class="line">        event.currentTarget.innerHTML;</span><br><span class="line">        <span class="hljs-comment">// 获得绑定事件元素的ceshi属性（类似jquery的attr('ceshi')）</span></span><br><span class="line">        event.currentTarget.getAttributeNode(<span class="hljs-string">"ceshi"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 点击删除当前元素</span></span><br><span class="line">        event.currentTarget.parentElement.removeChild(event.currentTarget);</span><br><span class="line">        <span class="hljs-comment">// 点击删除当前元素的父级元素</span></span><br><span class="line">        event.currentTarget.parentElement.parentElement.removeChild(event.currentTarget.parentElement);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-24T06:13:17.000Z">2019-10-24</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 385 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/24/ES6-异步编程/">ES6 异步编程</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p>单线程是Javascript语言最本质的特性之一，Javascript引擎在运行js代码的时候，同一个时间只能执行单个任务。</p>
-<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>所谓的”异步”，就是一个任务分成两段，先执行第一段，然后转而执行其他任务，等做好了准备，再回过头执行第二段。</p>
-<h2 id="处理异步的方式"><a href="#处理异步的方式" class="headerlink" title="处理异步的方式"></a>处理异步的方式</h2><h3 id="1-回调函数-callback"><a href="#1-回调函数-callback" class="headerlink" title="1. 回调函数(callback)"></a>1. 回调函数(callback)</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params">callback</span>)</span>&#123;</span><br><span class="line">　　setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">　　　　<span class="hljs-comment">// f1的任务代码</span></span><br><span class="line">　　　　callback();</span><br><span class="line">　　&#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 执行</span></span><br><span class="line">f1(f2)</span><br></pre></td></tr></table></figure>
-
-<p>注意: <strong>回调并不一定就是异步。</strong></p>
-<p>同步回调:</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">A</span>(<span class="hljs-params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I am A"</span>);</span><br><span class="line">    callback();  <span class="hljs-comment">//调用该函数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">B</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I am B"</span>);</span><br><span class="line">&#125;</span><br><span class="line">A(B);</span><br></pre></td></tr></table></figure>
-
-<p>异步回调:</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMime</span>(<span class="hljs-params">callback</span>)</span>&#123;</span><br><span class="line">    fs.readFile(<span class="hljs-string">'mime.json'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,data</span>)</span>&#123;</span><br><span class="line">        callback(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">getMime(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(result.toString());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-事件监听"><a href="#2-事件监听" class="headerlink" title="2. 事件监听"></a>2. 事件监听</h3><p>监听函数有：on，bind，listen，addEventListener，observe</p>
-<h3 id="3-promiss对象"><a href="#3-promiss对象" class="headerlink" title="3. promiss对象"></a>3. promiss对象</h3><p>promise有两种状态:<br>1、等待（pending)<br>2、完成（settled）</p>
-<p>promise会一直处于等待状态，直到它所包装的异步调用返回/超时/结束。</p>
-<p>promise完成状态分成两类:<br>1、解决（resolved）<br>2、拒绝（rejected）</p>
-<h4 id="async、await"><a href="#async、await" class="headerlink" title="async、await"></a>async、await</h4><p>async函数返回一个 Promise 对象，可以使用then方法添加回调函数。<br>async函数内部return语句返回的值，会成为then方法回调函数的参数。<br>只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-18T10:27:24.000Z">2019-10-18</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 382 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/18/web-py/">web.py</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>web.py是一款轻量级的python web开发框架，简单、高效，适合作为python web开发的入门框架。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install web.py==0.40</span><br></pre></td></tr></table></figure>
-
-<h2 id="web-py运行"><a href="#web-py运行" class="headerlink" title="web.py运行"></a>web.py运行</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> web <span class="hljs-comment">#导入web.py</span></span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">    <span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span> <span class="hljs-comment">#url映射</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span> <span class="hljs-comment">#url处理的类</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello, world!"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">    app = web.application(urls, globals())</span><br><span class="line">    app.run() <span class="hljs-comment">#启用web应用</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>给模板新建一个目录（命名为 templates），在该目录下新建一个以 .html 结尾的文件:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>, world!</span><br></pre></td></tr></table></figure>
-
-<p>调用模板:</p>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render = web.template.render(<span class="hljs-string">'templates/'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">index</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        <span class="hljs-keyword">return</span> render.abc() <span class="hljs-comment">#这里的abc是对应于templates下的abc.html的文件名。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><p>安装pymysql</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pymysql</span><br></pre></td></tr></table></figure>
-
-<p>引入pymysql</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> pymysql</span><br></pre></td></tr></table></figure>
-
-<p>连接数据库</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db = web.database(dbn=<span class="hljs-string">'mysql'</span>, user=<span class="hljs-string">'username'</span>, pw=<span class="hljs-string">'password'</span>, db=<span class="hljs-string">'dbname'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>导入数据库数据</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">GET</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">    todos = db.select(<span class="hljs-string">'todo'</span>) <span class="hljs-comment">#todo为数据库表格名</span></span><br><span class="line">    <span class="hljs-keyword">return</span> render.index(todos)</span><br></pre></td></tr></table></figure>
-
-<p>然后把URL列表改回来，只保留 /:</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br></pre></td></tr></table></figure>
-
-<p>编辑abc.html,遍历数据显示在客户端</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$def with (todos)</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">$for todo in todos:</span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"t$todo.id"</span>&gt;</span>$todo.title<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p>客户端通过input提交数据:</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"add"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"title"</span> /&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Add"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>通过POST请求，向数据库传入数据，并在服务端刷新显示:</p>
-<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">'/'</span>, <span class="hljs-string">'index'</span>,</span><br><span class="line"><span class="hljs-string">'/add'</span>, <span class="hljs-string">'add'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">add</span>:</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">POST</span><span class="hljs-params">(self)</span>:</span></span><br><span class="line">        i = web.input() <span class="hljs-comment">#web.input 可以访问用户通过form提交的任何数据</span></span><br><span class="line">        n = db.insert(<span class="hljs-string">'todo'</span>, title=i.title) <span class="hljs-comment">#数据库插入数据</span></span><br><span class="line">        web.seeother(<span class="hljs-string">'/'</span>) <span class="hljs-comment">#网页跳转与重定向:POST完成处理后，浏览器会对新网址发出GET请求，完成新跳转。</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-12T05:25:28.000Z">2019-10-12</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 14 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/12/flask/">flask</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="flask-全局变量g"><a href="#flask-全局变量g" class="headerlink" title="flask 全局变量g"></a>flask 全局变量g</h2><h2 id="flask-session组件"><a href="#flask-session组件" class="headerlink" title="flask-session组件"></a>flask-session组件</h2><h2 id="lask-caching组件"><a href="#lask-caching组件" class="headerlink" title="lask_caching组件"></a>lask_caching组件</h2>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-09T08:47:02.000Z">2019-10-09</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 676 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/09/Flask-SocketIO/">Flask-SocketIO</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-Flask-SocketIO介绍"><a href="#1-Flask-SocketIO介绍" class="headerlink" title="1. Flask-SocketIO介绍"></a>1. Flask-SocketIO介绍</h2><p>Flask是python的web框架,Flask-SocketIO使Flask应用程序可以访问客户端和服务器之间的低延迟双向通信。</p>
-<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><ul>
-<li><p>pycharm新建flask项目</p>
-</li>
-<li><p>搭建虚拟环境</p>
-</li>
-</ul>
-<p>虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响。</p>
-<p>安装虚拟环境</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m venv venv</span><br></pre></td></tr></table></figure>
-
-<p>激活虚拟环境</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-
-<p><em>退出虚拟环境</em></p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>新建需求文件requirement.txt，放置记录所有依赖包及其精确的版本号，以便新环境部署</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch requirement.txt</span><br></pre></td></tr></table></figure>
-
-<p>requirement.txt:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">flask</span><br><span class="line">flask-appconfig</span><br><span class="line">flask-bootstrap</span><br><span class="line">flask-nav</span><br><span class="line">flask-sqlalchemy</span><br><span class="line">flask-login</span><br><span class="line">flask-debug</span><br><span class="line">flask-wtf</span><br><span class="line">flask-admin</span><br><span class="line">flask-sqlacodegen  <span class="hljs-comment">#创建数据库模型</span></span><br><span class="line">flask-babelex</span><br><span class="line">flask-httpauth</span><br><span class="line">flask-session</span><br><span class="line">flask-cors  <span class="hljs-comment">#跨域配置</span></span><br><span class="line">pymysql  <span class="hljs-comment">#python3连接数据库mysql的库</span></span><br><span class="line">requests</span><br><span class="line">flask-socketio  <span class="hljs-comment">#建立客户端与服务端双向通信</span></span><br></pre></td></tr></table></figure>
-
-<p>安装依赖包，安装requirement.txt依赖</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install -r requirement.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="flask-使用"><a href="#flask-使用" class="headerlink" title="flask 使用"></a>flask 使用</h2><ul>
-<li>创建flask实例对象</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app = Flask(__name__)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>构建实例对象从URL到python函数的映射关系</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(<span class="hljs-string">'/'</span>)</span><br><span class="line">def index():</span><br><span class="line">    <span class="hljs-built_in">return</span> <span class="hljs-string">'hello word'</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动服务器</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>端口号设置</li>
-</ul>
-<p>PyCharm =&gt; edit Configurations =&gt; additional options =&gt; –port {NUMBER}</p>
-<h2 id="flask-socketio使用"><a href="#flask-socketio使用" class="headerlink" title="flask-socketio使用"></a>flask-socketio使用</h2><ul>
-<li>引入flask_socketio、flask_cors</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from flask_socketio import SocketIO, join_room, leave_room, send, emit</span><br><span class="line">from flask_cors import CORS</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">cors = CORS(app)  <span class="hljs-comment">#允许跨域</span></span><br><span class="line">app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'secret!'</span>  <span class="hljs-comment">#配置秘钥</span></span><br><span class="line">socketio = SocketIO(app, cors_allowed_origins=<span class="hljs-string">'*'</span>)  <span class="hljs-comment">#配置允许跨域访问的源，</span></span><br><span class="line">*表示全部允许</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:</span><br><span class="line">    socketio.run(app)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建聊天房间</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'join'</span>)  <span class="hljs-comment">#监听key值</span></span><br><span class="line">def on_join(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    join_room(room)  <span class="hljs-comment">#加入房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has entered the room.'</span>, room=room)</span><br><span class="line"></span><br><span class="line">@socketio.on(<span class="hljs-string">'leave'</span>)</span><br><span class="line">def on_leave(data):</span><br><span class="line">    username = data[<span class="hljs-string">'username'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    leave_room(room)  <span class="hljs-comment">#离开房间</span></span><br><span class="line">    send(username + <span class="hljs-string">' has left the room.'</span>, room=room)</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据存入数据库"><a href="#数据存入数据库" class="headerlink" title="数据存入数据库"></a>数据存入数据库</h2><ul>
-<li>生成model.py文件</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flask-sqlacodegen <span class="hljs-string">'mysql+pymysql://&#123;USERNAME&#125;:&#123;PASSWORD&#125;@localhost/&#123;DATABASENAME&#125;'</span> --outfile <span class="hljs-string">"model.py"</span>  --flask</span><br></pre></td></tr></table></figure>
-
-<p>使用sqlacodegen声明数据模型:</p>
-<p>model.py:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from flask_sqlalchemy import SQLAlchemy</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line">class Message(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'message'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    message_content = db.Column(db.String(140), nullable=False)</span><br><span class="line">    author = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class User(db.Model):</span><br><span class="line">    __tablename__ = <span class="hljs-string">'user'</span></span><br><span class="line"></span><br><span class="line">    id = db.Column(db.Integer, primary_key=True)</span><br><span class="line">    nickname = db.Column(db.String(20), nullable=False)</span><br><span class="line">    created_at = db.Column(db.DateTime, server_default=db.FetchedValue())</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>app.py中:</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from model import db, Message</span><br><span class="line"></span><br><span class="line">app.config[<span class="hljs-string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="hljs-string">'mysql+pymysql://user:password@localhost:3306/databaseName'</span>  <span class="hljs-comment">#通过sqlacodegen将数据库与flask连接</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>socket.io监听数据并将数据存入数据库</li>
-</ul>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@socketio.on(<span class="hljs-string">'msg'</span>)</span><br><span class="line">def on_msg(data):</span><br><span class="line">    author = data[<span class="hljs-string">'author'</span>]</span><br><span class="line">    message_content = data[<span class="hljs-string">'message'</span>]</span><br><span class="line">    room = data[<span class="hljs-string">'room'</span>]</span><br><span class="line">    <span class="hljs-built_in">print</span>(author + <span class="hljs-string">' in '</span> + room + <span class="hljs-string">' says: '</span> + data[<span class="hljs-string">'message'</span>])</span><br><span class="line">    message = Message(</span><br><span class="line">        author=author,</span><br><span class="line">        message_content=message_content</span><br><span class="line">    )</span><br><span class="line">    db.session.add(message)  <span class="hljs-comment">#将message存入</span></span><br><span class="line">    db.session.commit()  <span class="hljs-comment">#保存</span></span><br><span class="line">    res = &#123;</span><br><span class="line">        <span class="hljs-string">'author'</span>: author,</span><br><span class="line">        <span class="hljs-string">'message_content'</span>: message_content</span><br><span class="line">    &#125;</span><br><span class="line">    emit(<span class="hljs-string">'broadcast_msg'</span>, res, room=room)</span><br></pre></td></tr></table></figure>
-
+<h3 id="Vue中div高度自适应"><a href="#Vue中div高度自适应" class="headerlink" title="Vue中div高度自适应"></a>Vue中div高度自适应</h3><p><a href="https://www.cnblogs.com/Kyaya/p/10309148.html" target="_blank" rel="noopener">Vue中div高度自适应</a></p>
+<h4 id="Vue-实现登陆后长时间未点击自动退出登录"><a href="#Vue-实现登陆后长时间未点击自动退出登录" class="headerlink" title="Vue 实现登陆后长时间未点击自动退出登录"></a>Vue 实现登陆后长时间未点击自动退出登录</h4><p>App.vue是Vue项目的主组件，所以当App.vue的div被点击后，更新最后一次点击时间，可以实现监听所有页面是否被监听</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=<span class="hljs-string">"app"</span> @click=<span class="hljs-string">"clicked"</span>&gt;</span><br><span class="line">        <span class="hljs-comment">// TO DO</span></span><br><span class="line">    &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>&#123;</span><br><span class="line">    name: <span class="hljs-string">'App'</span>,</span><br><span class="line">    data ()&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">            lTime: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime(), <span class="hljs-comment">// 最后一次点击的时间</span></span><br><span class="line">            ctTime: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime(), <span class="hljs-comment">//当前时间</span></span><br><span class="line">            tOut: <span class="hljs-number">10</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>   <span class="hljs-comment">//超时时间10min</span></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;,</span><br><span class="line">    mounted () &#123;</span><br><span class="line">        <span class="hljs-built_in">window</span>.setInterval(<span class="hljs-keyword">this</span>.tTime, <span class="hljs-number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    methods:&#123;</span><br><span class="line">        clicked () &#123;</span><br><span class="line">            <span class="hljs-keyword">this</span>.lTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()  <span class="hljs-comment">//当界面被点击更新点击时间</span></span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        tTime() &#123;</span><br><span class="line">            <span class="hljs-keyword">this</span>.cTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()</span><br><span class="line">            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ctTime -<span class="hljs-keyword">this</span>.lTime &gt; tOut) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">JSON</span>.parse(sessionStorage.getItem(<span class="hljs-string">'Login'</span>)) === <span class="hljs-literal">true</span>)&#123;</span><br><span class="line">                    <span class="hljs-comment">// 退出登录</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Moment-js"><a href="#Moment-js" class="headerlink" title="Moment.js"></a>Moment.js</h3><p><a href="https://www.jianshu.com/p/9c10543420de" target="_blank" rel="noopener">Moment.js</a></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install moment --save</span><br></pre></td></tr></table></figure>
+
+<p>Object.assign<br>Object.key<br>Date.parse 精确到10位的时间戳(毫秒数)<br>window.location.reload()<br>addRoutes<br><a href="https://www.cnblogs.com/fqh123/p/11094296.html" target="_blank" rel="noopener">vue-element-admin登录逻辑，以及动态添加路由</a><br><a href="https://www.cnblogs.com/zhuhuoxingguang/p/11759001.html" target="_blank" rel="noopener">关于vue-router当中addRoutes的使用</a></p>
+<h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><h4 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a>redirect</h4><p>“重定向”的意思是，当用户访问 /a时，URL 将会被替换成 /b，然后匹配路由为 /b</p>
+<h4 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h4><p>/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样</p>
+<p><a href="https://blog.csdn.net/xiaoranzhizhu/article/details/70473734" target="_blank" rel="noopener">office 所有后缀对应的 content-type</a></p>
+<h3 id="iconfont图标"><a href="#iconfont图标" class="headerlink" title="iconfont图标"></a>iconfont图标</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install css-loader style-loader file-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>引入iconfont本地文件</p>
+<p>main.js引入</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">'./assets/font/iconfont.css'</span></span><br></pre></td></tr></table></figure>
+
+<p>组件引入</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class="iconfont"&gt;&amp;#xe8ff;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/5473b7e98e36" target="_blank" rel="noopener">vue上传csv，读取</a></p>
 
         </div>
         
@@ -1031,7 +1074,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        28
                     </p>
                 </div>
             </div>
@@ -1143,16 +1186,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/04/record/" class="media-left">
+            <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1162,16 +1205,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubuntu/" class="media-left">
+            <a href="/2020/01/10/vue-konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1181,16 +1224,16 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+            <a href="/2020/01/09/Konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1200,16 +1243,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/29/Vue-插件/" class="media-left">
+            <a href="/2020/01/09/html5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1219,16 +1262,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/vue-进阶/" class="media-left">
+            <a href="/2020/01/08/css/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1247,6 +1290,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -1337,16 +1391,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/04/record/" class="media-left">
+            <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="record">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/record/" class="title has-link-black-ter is-size-6 has-text-weight-normal">record</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1356,16 +1410,16 @@
         
         <article class="media">
             
-            <a href="/2019/12/02/ubuntu/" class="media-left">
+            <a href="/2020/01/10/vue-konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ubuntu">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/ubuntu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
+                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1375,16 +1429,16 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="media-left">
+            <a href="/2020/01/09/Konva/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="nginx配置(ubuntu 18.04)">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T06:20:42.000Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/nginx配置(ubuntu 18.04)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">nginx配置(ubuntu 18.04)</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1394,16 +1448,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/29/Vue-插件/" class="media-left">
+            <a href="/2020/01/09/html5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 插件">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T01:32:39.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/Vue-插件/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 插件</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
+                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1413,16 +1467,16 @@
         
         <article class="media">
             
-            <a href="/2019/10/27/vue-进阶/" class="media-left">
+            <a href="/2020/01/08/css/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Vue 进阶">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T04:01:52.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/vue-进阶/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue 进阶</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
+                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1441,6 +1495,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -1527,7 +1592,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 John Doe&nbsp;
+                &copy; 2020 John Doe&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
