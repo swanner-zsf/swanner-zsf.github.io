@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 106 words)
+                    a minute read (About 129 words)
                 </span>
                 
                 
@@ -159,7 +159,12 @@
 <p>那么可设置 value-key=”id” 、value-key=”name”<br>如下：</p>
 <el-select v-model="value" value-key="id" placeholder="请选择">
 
-<h4 id="el-scrollbar"><a href="#el-scrollbar" class="headerlink" title="el-scrollbar"></a>el-scrollbar</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="hljs-string">"height: 800px"</span>&gt;</span><br><span class="line">&lt;el-scrollbar style=<span class="hljs-string">"height: 100%"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">el-scrollbar</span>&gt;</span></span></span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">.el-scrollbar__view &#123;</span><br><span class="line">    overflow-x: hidden; <span class="hljs-comment">//隐藏x轴滚动条</span></span><br><span class="line">    overflow-y: hidden; <span class="hljs-comment">//隐藏y轴滚动条</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></el-select>
+<h4 id="el-scrollbar"><a href="#el-scrollbar" class="headerlink" title="el-scrollbar"></a>el-scrollbar</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="hljs-string">"height: 800px"</span>&gt;</span><br><span class="line">&lt;el-scrollbar style=<span class="hljs-string">"height: 100%"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">el-scrollbar</span>&gt;</span></span></span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">.el-scrollbar__view &#123;</span><br><span class="line">    overflow-x: hidden; <span class="hljs-comment">//隐藏x轴滚动条</span></span><br><span class="line">    overflow-y: hidden; <span class="hljs-comment">//隐藏y轴滚动条</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="阻止el-image-viewer点击事件冒泡"><a href="#阻止el-image-viewer点击事件冒泡" class="headerlink" title="阻止el-image-viewer点击事件冒泡"></a>阻止el-image-viewer点击事件冒泡</h4><p>套个div，div上写@click.stop</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"mini"</span> @<span class="hljs-attr">click.stop</span>=<span class="hljs-string">"onPreview()"</span>&gt;</span>图片<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> @<span class="hljs-attr">click.stop</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">el-image-viewer</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"showViewer"</span> <span class="hljs-attr">:on-close</span>=<span class="hljs-string">"closeViewer"</span> <span class="hljs-attr">:url-list</span>=<span class="hljs-string">"[url]"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-image-viewer</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</el-select>
         </div>
         
         
@@ -242,7 +247,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        31
                     </p>
                 </div>
             </div>
@@ -354,6 +359,63 @@
         
         <article class="media">
             
+            <a href="/2020/01/14/mockjs/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T02:24:36.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/mockjs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mockjs</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/14/i18n国际化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="i18n国际化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T16:14:12.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/i18n国际化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">i18n国际化</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/13/ES6新特性/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6新特性">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T02:41:16.000Z">2020-01-13</time></div>
+                    <a href="/2020/01/13/ES6新特性/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6新特性</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
@@ -390,63 +452,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/09/Konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/09/html5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/08/css/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
-                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -465,7 +470,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -559,6 +564,63 @@
         
         <article class="media">
             
+            <a href="/2020/01/14/mockjs/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-14T02:24:36.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/mockjs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mockjs</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/14/i18n国际化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="i18n国际化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T16:14:12.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/i18n国际化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">i18n国际化</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/13/ES6新特性/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6新特性">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T02:41:16.000Z">2020-01-13</time></div>
+                    <a href="/2020/01/13/ES6新特性/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6新特性</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/10/three-js/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
@@ -595,63 +657,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/09/Konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T08:58:12.000Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/Konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/09/html5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="html5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:36:14.000Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/html5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">html5</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/08/css/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="css">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-08T07:51:59.000Z">2020-01-08</time></div>
-                    <a href="/2020/01/08/css/" class="title has-link-black-ter is-size-6 has-text-weight-normal">css</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -670,7 +675,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
