@@ -183,7 +183,7 @@
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mock.setup(&#123;</span><br><span class="line">    timeout: <span class="hljs-string">'200-600'</span> <span class="hljs-comment">//响应事件介于200和600毫秒之间</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h6 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h6><p>Mock.Random 是一个工具类，用于生成各种随机数据。<br>Mock.Random 的方法在数据模板中称为『占位符』，书写格式为 @占位符(参数 [, 参数])。</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> data = Mock.mock(<span class="hljs-string">'/demo'</span>,<span class="hljs-string">'get'</span>,&#123;</span><br><span class="line">    name: <span class="hljs-string">'@cname'</span>,</span><br><span class="line">    email: <span class="hljs-string">'@email'</span>,</span><br><span class="line">    flag: <span class="hljs-string">'@boolean'</span>,</span><br><span class="line">    date: <span class="hljs-string">'@datetime'</span>,</span><br><span class="line">    age: <span class="hljs-string">'@natural(1,100)'</span>,</span><br><span class="line">    info: <span class="hljs-string">'@csentence'</span>, <span class="hljs-comment">//生成中文句子</span></span><br><span class="line">    address: <span class="hljs-string">'@county(true)'</span>,</span><br><span class="line">    intr: <span class="hljs-string">'@string'</span>,</span><br><span class="line">    img: <span class="hljs-string">'@dateImage'</span>,</span><br><span class="line">    id: <span class="hljs-string">'@id'</span> <span class="hljs-comment">//生成身份证号码</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> data = Mock.mock(<span class="hljs-string">'/demo'</span>,<span class="hljs-string">'get'</span>,&#123;</span><br><span class="line">    name: <span class="hljs-string">'@cname'</span>,</span><br><span class="line">    email: <span class="hljs-string">'@email'</span>,</span><br><span class="line">    flag: <span class="hljs-string">'@boolean'</span>,</span><br><span class="line">    date: <span class="hljs-string">'@datetime'</span>,</span><br><span class="line">    age: <span class="hljs-string">'@natural(1,100)'</span>,</span><br><span class="line">    info: <span class="hljs-string">'@csentence'</span>, <span class="hljs-comment">//生成中文句子</span></span><br><span class="line">    address: <span class="hljs-string">'@county(true)'</span>,</span><br><span class="line">    intr: <span class="hljs-string">'@string'</span>,</span><br><span class="line">    img: <span class="hljs-string">'@dateImage'</span>,</span><br><span class="line">    id: <span class="hljs-string">'@id'</span> <span class="hljs-comment">//生成身份证号码</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h6 id="Mock-Random-extend-扩展"><a href="#Mock-Random-extend-扩展" class="headerlink" title="Mock.Random.extend() 扩展"></a>Mock.Random.extend() 扩展</h6><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Mock.Random.extend(&#123;</span><br><span class="line">  constellation: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">date</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> arr=[<span class="hljs-string">'白羊座'</span>, <span class="hljs-string">'金牛座'</span>, <span class="hljs-string">'双子座'</span>, <span class="hljs-string">'巨蟹座'</span>, <span class="hljs-string">'狮子座'</span>, <span class="hljs-string">'处女座'</span>, <span class="hljs-string">'天秤座'</span>, <span class="hljs-string">'天蝎座'</span>, <span class="hljs-string">'射手座'</span>, <span class="hljs-string">'摩羯座'</span>, <span class="hljs-string">'水瓶座'</span>, <span class="hljs-string">'双鱼座'</span>]</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pick(arr)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">Mock.mock(&#123;</span><br><span class="line">    constellation: <span class="hljs-string">'@constellation'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -211,6 +211,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/19/vue源码解析/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">vue源码解析</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -264,7 +271,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        31
+                        33
                     </p>
                 </div>
             </div>
@@ -376,6 +383,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/webpack-devtool/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack devtool">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T01:54:34.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/webpack-devtool/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack devtool</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/vue源码解析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue源码解析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T03:14:53.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/vue源码解析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue源码解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/14/mockjs/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
@@ -431,44 +476,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/10/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/vue-konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -487,7 +494,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -581,6 +588,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/webpack-devtool/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack devtool">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T01:54:34.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/webpack-devtool/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack devtool</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/vue源码解析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue源码解析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T03:14:53.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/vue源码解析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue源码解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/14/mockjs/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
@@ -636,44 +681,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/10/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/vue-konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -692,7 +699,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>

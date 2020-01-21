@@ -135,6 +135,137 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-20T01:54:34.000Z">2020-01-20</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 233 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/20/webpack-devtool/">webpack devtool</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="webpack-devtool"><a href="#webpack-devtool" class="headerlink" title="webpack devtool"></a>webpack devtool</h2><p>devtool用作调试，主要配置有七种:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13805935-5616f8a35b8a6262.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/718/format/webp" alt></p>
+<h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p>每个模块都被eval包裹，并且后面跟着sourceUrl,调试的时候，根据这个sourceUrl找到的index.js文件的。</p>
+<h4 id="source-map"><a href="#source-map" class="headerlink" title="source-map"></a>source-map</h4><p>这种配置会生成一个带有.map文件，调试的时候，通过这个.map文件去定位原来的代码位置。</p>
+<h4 id="cheap"><a href="#cheap" class="headerlink" title="cheap"></a>cheap</h4><p>低消耗打包，打包的时候map文件，不会保存原始代码的列位置信息，只包含行位置信息。</p>
+<h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><p>加上这个字段的话，调试的代码不会被转换，会保留原始代码语法。</p>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>devtool模式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发环境</td>
+<td>eval, eval-source-map, cheap-eval-source-map, cheap-module-eval-source-map, cheap-module-source-map</td>
+</tr>
+<tr>
+<td>生产环境</td>
+<td>source-map hidden-source-map nosources-source-map</td>
+</tr>
+</tbody></table>
+<p><a href="https://www.jianshu.com/p/62dc120d96d0" target="_blank" rel="noopener">webpack devtool</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-19T03:14:53.000Z">2020-01-19</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 896 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/19/vue源码解析/">vue源码解析</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="vue源码解析"><a href="#vue源码解析" class="headerlink" title="vue源码解析"></a>vue源码解析</h2><p>vue工作机制<br><img src="https://upload-images.jianshu.io/upload_images/13524162-5fb811b66355bbd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/738/format/webp" alt></p>
+<h3 id="compile编译器"><a href="#compile编译器" class="headerlink" title="compile编译器"></a>compile编译器</h3><p>三步走：</p>
+<ul>
+<li>将模板解析为AST(抽象语法树)<br>parse使用正则等方式解析template模板中的指令</li>
+<li>优化AST<br>optimize主要作用是标记static静态节点，更新界面时diff直接跳过静态节点，减少比较过程，优化patch性能。</li>
+<li>将AST转换为render函数<br>generate将AST转换为render函数，render的返回值是VNode，VNode是Vue的虚拟DOM节点</li>
+</ul>
+<p>简要流程:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">compileToFunctions <span class="hljs-comment">//带缓存的编译器</span></span><br><span class="line">&lt;==</span><br><span class="line">createCompiler <span class="hljs-comment">//创建编译器</span></span><br><span class="line">&lt;==</span><br><span class="line">createCompilerCreator</span><br><span class="line">&lt;==</span><br><span class="line">createCompileToFunctionFn</span><br><span class="line">&lt;==</span><br><span class="line">createFunction</span><br></pre></td></tr></table></figure>
+
+<h3 id="observe-监听数据变化"><a href="#observe-监听数据变化" class="headerlink" title="observe 监听数据变化"></a>observe 监听数据变化</h3><p><img src="https://upload-images.jianshu.io/upload_images/13524162-9248cd7d8b308581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/755/format/webp" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 监听</span></span><br><span class="line">observe(obj)&#123;</span><br><span class="line"><span class="hljs-keyword">if</span>(!obj || <span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">'object'</span>)&#123;  <span class="hljs-comment">//判断书数据存在且是一个对象</span></span><br><span class="line">    <span class="hljs-keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 遍历该对象</span></span><br><span class="line"><span class="hljs-built_in">Object</span>.keys(obj).forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span>&#123;  <span class="hljs-comment">//遍历拿出所有属性</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.defineReactive(obj,key,obj[key]);  <span class="hljs-comment">//数据响应化函数</span></span><br><span class="line">&#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//  数据响应化</span></span><br><span class="line">defineReactive(obj,key,val)&#123; <span class="hljs-comment">// 可称为数据劫持</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">this</span>.observe(val); <span class="hljs-comment">//多层遍历，递归解决数据的嵌套</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(obj,key,&#123;</span><br><span class="line">    <span class="hljs-keyword">get</span>()&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> val;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-keyword">set</span>(newVal)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(newVal === val)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    val = newVal;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>属性更新了：<span class="hljs-subst">$&#123;val&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h4><p>直接在一个对象上定义一个新属性，或者修改一个已经存在的属性</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">Object</span>.defineProperty(obj, prop, desc) <span class="hljs-comment">//(对象,属性名,属性描述符)</span></span><br></pre></td></tr></table></figure>
+
+<p>属性的特性以及内部属性:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5016475-9cd41a36735b667d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt></p>
+<blockquote>
+<p>不变性:<br>1.对象常量<br>结合writable: false 和 configurable: false 就可以创建一个真正的常量属性（不可修改，不可重新定义或者删除）<br>2.禁止扩展<br>如果你想禁止一个对象添加新属性并且保留已有属性，就可以使用Object.preventExtensions(…)<br>3.密封<br>Object.seal()会创建一个密封的对象，这个方法实际上会在一个现有对象上调用object.preventExtensions(…)并把所有现有属性标记为configurable:false。<br>密封之后不仅不能添加新属性，也不能重新配置或者删除任何现有属性（虽然可以改属性的值）<br>4.冻结<br>Object.freeze()会创建一个冻结对象，这个方法实际上会在一个现有对象上调用Object.seal(),并把所有现有属性标记为writable: false,这样就无法修改它们的值。</p>
+</blockquote>
+<h3 id="Dep类-amp-amp-Watcher类"><a href="#Dep类-amp-amp-Watcher类" class="headerlink" title="Dep类 &amp;&amp; Watcher类"></a>Dep类 &amp;&amp; Watcher类</h3><p>读数据 &gt;&gt;&gt; 触发get()方法 &gt;&gt;&gt; 把当前的watcher对象(存放在Dep.target中)收集到Dep类中，<br>写数据 &gt;&gt;&gt; 触发set()方法 &gt;&gt;&gt; 通知Dep类调用notify来触发所有的watcher对象的update方法更新对应视图。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 依赖对象 用来管理Watcher</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="hljs-comment">// 这里存放若干依赖(Watcher)</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.deps = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// 添加依赖方法</span></span><br><span class="line">  addDep(dep)&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.deps.push(dep);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//通知方法  用于通知所有依赖去做更新</span></span><br><span class="line">  notify()&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.deps.forEach(<span class="hljs-function"><span class="hljs-params">dep</span> =&gt;</span> dep.update())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 观察者，监听器：负责更新视图</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">watcher</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="hljs-comment">// 将当期watcher实例指定到Dep静态属性target</span></span><br><span class="line">    Dep.target = <span class="hljs-keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// 更新操作</span></span><br><span class="line">  update()&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'属性更新了'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在vue类中创建watch()</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">constructor</span>(option) &#123; <span class="hljs-comment">//constructor 是一种用于创建和初始化class创建的对象的特殊方法。</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.$options = option;</span><br><span class="line">    <span class="hljs-comment">// 数据响应化</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.$data = option.data;</span><br><span class="line">    <span class="hljs-keyword">this</span>.observe(<span class="hljs-keyword">this</span>.$data);  <span class="hljs-comment">//observe 监听方法</span></span><br><span class="line">    <span class="hljs-comment">//模拟watcher创建</span></span><br><span class="line">    <span class="hljs-keyword">new</span> watcher();</span><br><span class="line">    <span class="hljs-keyword">this</span>.$data.name = <span class="hljs-string">'雷神之斧2'</span>;</span><br><span class="line">    <span class="hljs-keyword">new</span> watcher();</span><br><span class="line">    <span class="hljs-keyword">this</span>.$data.list.litile = <span class="hljs-string">'大个子2'</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在遍历data的时候在defineReactive方法中添加依赖</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">get</span>()&#123;</span><br><span class="line">        Dep.target &amp;&amp; dep.addDep(Dep.target);  <span class="hljs-comment">//添加依赖</span></span><br><span class="line">        <span class="hljs-keyword">return</span> val;</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-01-14T02:24:36.000Z">2020-01-14</time>
                 
                 
@@ -184,7 +315,7 @@
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mock.setup(&#123;</span><br><span class="line">    timeout: <span class="hljs-string">'200-600'</span> <span class="hljs-comment">//响应事件介于200和600毫秒之间</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h6 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h6><p>Mock.Random 是一个工具类，用于生成各种随机数据。<br>Mock.Random 的方法在数据模板中称为『占位符』，书写格式为 @占位符(参数 [, 参数])。</p>
-<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> data = Mock.mock(<span class="hljs-string">'/demo'</span>,<span class="hljs-string">'get'</span>,&#123;</span><br><span class="line">    name: <span class="hljs-string">'@cname'</span>,</span><br><span class="line">    email: <span class="hljs-string">'@email'</span>,</span><br><span class="line">    flag: <span class="hljs-string">'@boolean'</span>,</span><br><span class="line">    date: <span class="hljs-string">'@datetime'</span>,</span><br><span class="line">    age: <span class="hljs-string">'@natural(1,100)'</span>,</span><br><span class="line">    info: <span class="hljs-string">'@csentence'</span>, <span class="hljs-comment">//生成中文句子</span></span><br><span class="line">    address: <span class="hljs-string">'@county(true)'</span>,</span><br><span class="line">    intr: <span class="hljs-string">'@string'</span>,</span><br><span class="line">    img: <span class="hljs-string">'@dateImage'</span>,</span><br><span class="line">    id: <span class="hljs-string">'@id'</span> <span class="hljs-comment">//生成身份证号码</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> data = Mock.mock(<span class="hljs-string">'/demo'</span>,<span class="hljs-string">'get'</span>,&#123;</span><br><span class="line">    name: <span class="hljs-string">'@cname'</span>,</span><br><span class="line">    email: <span class="hljs-string">'@email'</span>,</span><br><span class="line">    flag: <span class="hljs-string">'@boolean'</span>,</span><br><span class="line">    date: <span class="hljs-string">'@datetime'</span>,</span><br><span class="line">    age: <span class="hljs-string">'@natural(1,100)'</span>,</span><br><span class="line">    info: <span class="hljs-string">'@csentence'</span>, <span class="hljs-comment">//生成中文句子</span></span><br><span class="line">    address: <span class="hljs-string">'@county(true)'</span>,</span><br><span class="line">    intr: <span class="hljs-string">'@string'</span>,</span><br><span class="line">    img: <span class="hljs-string">'@dateImage'</span>,</span><br><span class="line">    id: <span class="hljs-string">'@id'</span> <span class="hljs-comment">//生成身份证号码</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h6 id="Mock-Random-extend-扩展"><a href="#Mock-Random-extend-扩展" class="headerlink" title="Mock.Random.extend() 扩展"></a>Mock.Random.extend() 扩展</h6><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Mock.Random.extend(&#123;</span><br><span class="line">  constellation: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">date</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> arr=[<span class="hljs-string">'白羊座'</span>, <span class="hljs-string">'金牛座'</span>, <span class="hljs-string">'双子座'</span>, <span class="hljs-string">'巨蟹座'</span>, <span class="hljs-string">'狮子座'</span>, <span class="hljs-string">'处女座'</span>, <span class="hljs-string">'天秤座'</span>, <span class="hljs-string">'天蝎座'</span>, <span class="hljs-string">'射手座'</span>, <span class="hljs-string">'摩羯座'</span>, <span class="hljs-string">'水瓶座'</span>, <span class="hljs-string">'双鱼座'</span>]</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pick(arr)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">Mock.mock(&#123;</span><br><span class="line">    constellation: <span class="hljs-string">'@constellation'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -708,117 +839,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-04T09:44:41.000Z">2019-12-04</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 129 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/04/record/">record</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="element-ui-el-select"><a href="#element-ui-el-select" class="headerlink" title="element-ui | el-select"></a>element-ui | el-select</h3><p>element-ui如何正确的把el-select选项的value设置为对象？</p>
-<p>给 <el-select> 加上 value-key 属性，值为数据源数组元素中的唯一键<br>例如数据源数组</el-select></p>
-<p>[{id: 1, name: ‘张三’}, {id: 2, name: ‘李四’},{id: 3, name: ‘王五’}]</p>
-<p>那么可设置 value-key=”id” 、value-key=”name”<br>如下：</p>
-<el-select v-model="value" value-key="id" placeholder="请选择">
-
-<h4 id="el-scrollbar"><a href="#el-scrollbar" class="headerlink" title="el-scrollbar"></a>el-scrollbar</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="hljs-string">"height: 800px"</span>&gt;</span><br><span class="line">&lt;el-scrollbar style=<span class="hljs-string">"height: 100%"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">el-scrollbar</span>&gt;</span></span></span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">.el-scrollbar__view &#123;</span><br><span class="line">    overflow-x: hidden; <span class="hljs-comment">//隐藏x轴滚动条</span></span><br><span class="line">    overflow-y: hidden; <span class="hljs-comment">//隐藏y轴滚动条</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="阻止el-image-viewer点击事件冒泡"><a href="#阻止el-image-viewer点击事件冒泡" class="headerlink" title="阻止el-image-viewer点击事件冒泡"></a>阻止el-image-viewer点击事件冒泡</h4><p>套个div，div上写@click.stop</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"mini"</span> @<span class="hljs-attr">click.stop</span>=<span class="hljs-string">"onPreview()"</span>&gt;</span>图片<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> @<span class="hljs-attr">click.stop</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">el-image-viewer</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"showViewer"</span> <span class="hljs-attr">:on-close</span>=<span class="hljs-string">"closeViewer"</span> <span class="hljs-attr">:url-list</span>=<span class="hljs-string">"[url]"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-image-viewer</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</el-select>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-02T14:34:08.000Z">2019-12-02</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 160 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/02/ubuntu/">ubuntu</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="linux-ubuntu"><a href="#linux-ubuntu" class="headerlink" title="linux || ubuntu"></a>linux || ubuntu</h3><p>只检查，不更新:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-<p>更新已安装的软件包:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt upgrade 软件包名</span><br></pre></td></tr></table></figure>
-
-<p>补充：文件权限设置:</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 file</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>说明：第1个7设置用户的权限，第2个7设置组的权限，第3个7设置其他所有者的权限。</li>
-<li>读-r-4</li>
-<li>写-w-2</li>
-<li>执行-x-1</li>
-</ul>
-<p>0: 没有权限<br>4: 读取权限<br>5: 4+1 | 读取+执行<br>6: 4+2 | 读取+写入<br>7: 4+2+1 | 读取+写入+执行</p>
-<p>查看文件尾：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ tail [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查看文件头：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">$ head [参数] [文件]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">访问链接：</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">$ sudo install curl</span><br></pre></td></tr></table></figure>
-
-<p>访问链接：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s [源文件或目录] [目标文件或目录]</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -882,7 +902,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        31
+                        33
                     </p>
                 </div>
             </div>
@@ -994,6 +1014,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/webpack-devtool/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack devtool">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T01:54:34.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/webpack-devtool/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack devtool</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/vue源码解析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue源码解析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T03:14:53.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/vue源码解析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue源码解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/14/mockjs/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
@@ -1049,44 +1107,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/10/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/vue-konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1105,7 +1125,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1199,6 +1219,44 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/webpack-devtool/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack devtool">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T01:54:34.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/webpack-devtool/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack devtool</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/19/vue源码解析/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue源码解析">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-19T03:14:53.000Z">2020-01-19</time></div>
+                    <a href="/2020/01/19/vue源码解析/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue源码解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/14/mockjs/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="mockjs">
@@ -1254,44 +1312,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/10/three-js/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="three.js">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T08:59:44.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/three-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">three.js</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/vue-konva/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue-konva">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T02:48:36.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/vue-konva/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue-konva</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1310,7 +1330,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
